@@ -980,7 +980,9 @@
         <ul>
             <li>LIMIT 限价单</li>
             <li>MARKET 市价单</li>
-            <li>STOP_MARKET 止损市价单</li>
+            <li>STOP 止损限价单</li>
+            <li>STOP_MARKET 止盈限价单</li>
+            <li>TAKE_PROFIT 止损市价单</li>
             <li>TAKE_PROFIT_MARKET 止盈市价单</li>
         </ul>
 
@@ -3324,7 +3326,7 @@ GET /futures/data/basis
                 <td>type</td>
                 <td>ENUM</td>
                 <td>YES</td>
-                <td>订单类型 <code>LIMIT</code>, <code>MARKET</code>,<code>STOP_MARKET</code>, <code>TAKE_PROFIT_MARKET</code>
+                <td>订单类型 <code>LIMIT</code>, <code>MARKET</code>,<code>STOP</code>,<code>STOP_MARKET</code>,<code>TAKE_PROFIT</code>, <code>TAKE_PROFIT_MARKET</code>
                 </td>
             </tr>
             <tr>
