@@ -479,13 +479,13 @@
                 <li>
                     <a href="#87a7130ac5" class="toc-h2 toc-link" data-title="获取划转历史">获取划转历史</a>
                 </li>
-                <li>
+        <!--        <li>
                     <a href="#trade" class="toc-h2 toc-link" data-title="更改持仓模式(TRADE)">更改持仓模式(TRADE)</a>
-                </li>
-                <li>
+                </li>-->
+   <!--             <li>
                     <a href="#user_data" class="toc-h2 toc-link"
                        data-title="查询持仓模式(USER_DATA)">查询持仓模式(USER_DATA)</a>
-                </li>
+                </li>-->
                 <li>
                     <a href="#trade-2" class="toc-h2 toc-link" data-title="下单 (TRADE)">下单 (TRADE)</a>
                 </li>
@@ -3110,13 +3110,13 @@ GET /futures/data/basis
                 <td>from</td>
                 <td>Integer</td>
                 <td>YES</td>
-                <td>划转起始账户。eg.1、现货 3、永续合约账户</td>
+                <td>划转起始账户。eg.1、现货、 2、简单合约、 3、永续合约账户</td>
             </tr>
             <tr>
                 <td>to</td>
                 <td>Integer</td>
                 <td>YES</td>
-                <td>划转目标账户。eg.1、现货 3、永续合约账户</td>
+                <td>划转目标账户。eg.1、现货、2、简单合约、 3、永续合约账户</td>
             </tr>
             <tr>
                 <td>qty</td>
@@ -3231,7 +3231,7 @@ GET /futures/data/basis
         </table>
         <p>只能查询最近90天的划转记录。即当前时间减去90的划转记录。</p>
 
-        <h2 id='trade'>更改持仓模式(TRADE)</h2>
+       <!-- <h2 id='trade'>更改持仓模式(TRADE)</h2>
         <blockquote>
             <p><strong>响应:</strong></p>
         </blockquote>
@@ -3324,7 +3324,7 @@ GET /futures/data/basis
                 <td></td>
             </tr>
             </tbody>
-        </table>
+        </table>-->
 
         <h2 id='trade-2'>下单 (TRADE)</h2>
         <blockquote>
