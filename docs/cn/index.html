@@ -990,9 +990,7 @@
             <ul>
                 <li>LIMIT 限价单</li>
                 <li>MARKET 市价单</li>
-                <li>STOP 止损限价单</li>
-                <li>STOP_MARKET 止盈限价单</li>
-                <li>TAKE_PROFIT 止损市价单</li>
+                <li>STOP_MARKET 止损市价单</li>
                 <li>TAKE_PROFIT_MARKET 止盈市价单</li>
             </ul>
 
@@ -3148,6 +3146,7 @@ GET /futures/data/basis
 
             <h2 id='87a7130ac5'>获取划转历史(USER)</h2>
 
+
             <blockquote>
                 <p><strong>响应:</strong></p>
             </blockquote>
@@ -3178,7 +3177,56 @@ GET /futures/data/basis
             <p><strong>权重:</strong> 1</p>
             <p>获取现货账户与合约账户之间的资金划转历史记录</a>.</p>
 
+            <p><strong>参数:</strong></p>
 
+            <table>
+                <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>类型</th>
+                    <th>是否必需</th>
+                    <th>描述</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>symbol</td>
+                    <td>String</td>
+                    <td>YES</td>
+                    <td>币种  eg BTC、ETH</td>
+                </tr>
+                <tr>
+                    <td>from</td>
+                    <td>Integer</td>
+                    <td>YES</td>
+                    <td>划转起始账户。eg.1、现货 3、永续合约账户</td>
+                </tr>
+                <tr>
+                    <td>to</td>
+                    <td>Integer</td>
+                    <td>YES</td>
+                    <td>划转目标账户。eg.1、现货 3、永续合约账户</td>
+                </tr>
+                <tr>
+                    <td>qty</td>
+                    <td>BigDecimal</td>
+                    <td>YES</td>
+                    <td>划转数量，划转数量必须大于零.</td>
+                <tr>
+                    <td>recvWindow</td>
+                    <td>LONG</td>
+                    <td>NO</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>timestamp</td>
+                    <td>LONG</td>
+                    <td>YES</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
             <h2 id='trade'>更改持仓模式(TRADE)</h2>
             <blockquote>
                 <p><strong>响应:</strong></p>
@@ -3348,7 +3396,7 @@ POST /dapi/v1/order  (HMAC SHA256)
                         <td>type</td>
                         <td>ENUM</td>
                         <td>YES</td>
-                        <td>订单类型 <code>LIMIT</code>, <code>MARKET</code>,<code>STOP</code>,<code>STOP_MARKET</code>,<code>TAKE_PROFIT</code> <code>TAKE_PROFIT_MARKET</code>
+                        <td>订单类型 <code>LIMIT</code>, <code>MARKET</code>,<code>STOP_MARKET</code>, <code>TAKE_PROFIT_MARKET</code>
                         </td>
                     </tr>
                     <tr>
