@@ -3193,26 +3193,32 @@ GET /futures/data/basis
                 <tr>
                     <td>symbol</td>
                     <td>String</td>
-                    <td>YES</td>
+                    <td>NO</td>
                     <td>币种  eg BTC、ETH</td>
                 </tr>
                 <tr>
-                    <td>from</td>
+                    <td>current</td>
                     <td>Integer</td>
-                    <td>YES</td>
-                    <td>划转起始账户。eg.1、现货 3、永续合约账户</td>
+                    <td>NO</td>
+                    <td>默认第一页</td>
                 </tr>
                 <tr>
-                    <td>to</td>
+                    <td>size</td>
                     <td>Integer</td>
-                    <td>YES</td>
-                    <td>划转目标账户。eg.1、现货 3、永续合约账户</td>
+                    <td>NO</td>
+                    <td>每页展示数量</td>
                 </tr>
                 <tr>
-                    <td>qty</td>
-                    <td>BigDecimal</td>
-                    <td>YES</td>
+                    <td>startTime</td>
+                    <td>Long</td>
+                    <td>NO</td>
                     <td>划转数量，划转数量必须大于零.</td>
+                <tr>
+                    <td>endTime</td>
+                    <td>LONG</td>
+                    <td>NO</td>
+                    <td></td>
+                </tr>
                 <tr>
                     <td>recvWindow</td>
                     <td>LONG</td>
