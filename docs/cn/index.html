@@ -388,9 +388,9 @@
                 <!--    <li>
                         <a href="#k-4" class="toc-h2 toc-link" data-title="标记价格K线数据">标记价格K线数据</a>
                     </li>-->
-                    <li>
+                   <!--   <li>
                         <a href="#24hr" class="toc-h2 toc-link" data-title="24hr价格变动情况">24hr价格变动情况</a>
-                    </li>
+                    </li>-->
                     <li>
                         <a href="#8ff46b58de" class="toc-h2 toc-link" data-title="最新价格">最新价格</a>
                     </li>
@@ -2155,85 +2155,6 @@ GET /dapi/v1/markPriceKlines
                     </ul>
                 </li>
             </ul>-->
-            <h2 id='24hr'>24hr价格变动情况</h2>
-            <blockquote>
-                <p><strong>响应:</strong></p>
-            </blockquote>
-            <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
-<!--
-        <span class="s2">"pair"</span><span class="p">:</span> <span class="s2">"BTCUSD"</span><span class="p">,</span>
--->
-        <span class="s2">"priceChange"</span><span class="p">:</span> <span class="s2">"136.6"</span><span class="p">,</span>             <span class="c1">//24小时价格变动</span>
-<!--
-        <span class="s2">"priceChangePercent"</span><span class="p">:</span> <span class="s2">"1.436"</span><span class="p">,</span>  <span class="c1">//24小时价格变动百分比</span>
--->
-<!--
-        <span class="s2">"weightedAvgPrice"</span><span class="p">:</span> <span class="s2">"9547.3"</span><span class="p">,</span>       <span class="c1">//24小时加权平均价</span>
--->
-        <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"9651.6"</span><span class="p">,</span>              <span class="c1">//最近一次成交价</span>
-        <span class="s2">"lastQty"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>                     <span class="c1">//最近一次成交量</span>
-<!--
-        <span class="s2">"openPrice"</span><span class="p">:</span> <span class="s2">"9515.0"</span><span class="p">,</span>              <span class="c1">//24小时内第一次成交的价格</span>
--->
-        <span class="s2">"high"</span><span class="p">:</span> <span class="s2">"21521.0"</span><span class="p">,</span>              <span class="c1">//24小时最高价</span>
-        <span class="s2">"low"</span><span class="p">:</span> <span class="s2">"20520.5"</span><span class="p">,</span>               <span class="c1">//24小时最低价</span>
-        <span class="s2">"volume"</span><span class="p">:</span> <span class="s2">"20500"</span><span class="p"></span>                 <span class="c1">//24小时成交量</span>
-        <span class="s2">"quoteVolume"</span><span class="p">:</span> <span class="s2">"1137674198581"</span><span class="p"></span>                 <span class="c1">//24小时成交金额</span>
-<!--
-        <span class="s2">"baseVolume"</span><span class="p">:</span> <span class="s2">"5192.94797687"</span><span class="p">,</span>  <span class="c1">//24小时成交额(标的数量)</span>
--->
-<!--
-        <span class="s2">"openTime"</span><span class="p">:</span> <span class="mi">1591170300000</span><span class="p">,</span>          <span class="c1">//24小时内,第一笔交易的发生时间</span>
--->
-<!--
-        <span class="s2">"closeTime"</span><span class="p">:</span> <span class="mi">1591256718418</span><span class="p">,</span>     <span class="c1">//24小时内,最后一笔交易的发生时间</span>
--->
-<!--
-        <span class="s2">"firstId"</span><span class="p">:</span> <span class="mi">600507</span><span class="p">,</span>                  <span class="c1">// 首笔成交id</span>
--->
-<!--
-        <span class="s2">"lastId"</span><span class="p">:</span> <span class="mi">697803</span><span class="p">,</span>                   <span class="c1">// 末笔成交id</span>
--->
-<!--
-        <span class="s2">"count"</span><span class="p">:</span> <span class="mi">97297</span>                      <span class="c1">// 成交笔数     </span>
--->
-    <span class="p">}</span>
-<span class="p">]</span>
-</code></pre>
-            <p><code>
-GET /dapi/market/v1/ticker/24hr
-</code></p>
-
-         <!--   <p>请注意,不携带symbol参数会返回全部交易对数据,不仅数据庞大,而且权重极高</p>-->
-
-            <p><strong>权重:</strong></p>
-
-            <ul>
-                <li><code>1</code></li>
-            </ul>
-
-            <p><strong>参数:</strong></p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>名称</th>
-                        <th>类型</th>
-                        <th>是否必需</th>
-                        <th>描述</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>symbol</td>
-                        <td>STRING</td>
-                        <td>YES</td>
-                        <td>交易对</td>
-                    </tr>
-                </tbody>
-            </table>
 
 
             <h2 id='8ff46b58de'>最新价格</h2>
