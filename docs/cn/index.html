@@ -2309,7 +2309,7 @@ GET /dapi/market/v1/openInterest
 <span class="p">]</span>
 </code></pre>
             <p><code>
-GET fapi/market/v1/futures/data/openInterestHist
+GET dapi/market/v1/futures/data/openInterestHist
 </code></p>
 
             <p><strong>权重:</strong> 1</p>
@@ -2386,7 +2386,7 @@ GET fapi/market/v1/futures/data/openInterestHist
 <span class="p">]</span>
 </code></pre>
             <p><code>
-GET fapi/market/v1/futures/data/topLongShortAccountRatio
+GET dapi/market/v1/futures/data/topLongShortAccountRatio
 </code></p>
 
             <p><strong>权重:</strong> 1</p>
@@ -2463,7 +2463,7 @@ GET fapi/market/v1/futures/data/topLongShortAccountRatio
 <span class="p">]</span>
 </code></pre>
             <p><code>
-GET fapi/market/v1/futures/data/topLongShortPositionRatio
+GET dapi/market/v1/futures/data/topLongShortPositionRatio
 </code></p>
 
             <p><strong>权重:</strong> 1</p>
@@ -2539,7 +2539,7 @@ GET fapi/market/v1/futures/data/topLongShortPositionRatio
 <span class="p">]</span>
 </code></pre>
             <p><code>
-GET fapi/market/v1/futures/data/globalLongShortAccountRatio
+GET dapi/market/v1/futures/data/globalLongShortAccountRatio
 </code></p>
 
             <p><strong>权重:</strong> 1</p>
@@ -2618,7 +2618,7 @@ GET fapi/market/v1/futures/data/globalLongShortAccountRatio
 <span class="p">]</span>
 </code></pre>
             <p><code>
-GET fapi/market/v1/futures/data/takerlongshortRatio
+GET dapi/market/v1/futures/data/takerlongshortRatio
 </code></p>
 
             <p><strong>权重:</strong> 1</p>
@@ -3572,7 +3572,7 @@ POST /dapi/v1/batchOrders  (HMAC SHA256)
 
             <p><strong>其中<code>batchOrders</code>应以list of JSON格式填写订单参数</strong></p>
             <ul>
-                <li><strong>例子:</strong> /fapi/v1/batchOrders?batchOrders=[{"type":"LIMIT",<br>
+                <li><strong>例子:</strong> /dapi/v1/batchOrders?batchOrders=[{"type":"LIMIT",<br>
                     "symbol":"BTC-USDT","side":"BUY","price":"20001","quantity":"0.001"}]</li>
             </ul>
 
