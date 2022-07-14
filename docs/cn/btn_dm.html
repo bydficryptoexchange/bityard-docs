@@ -6546,14 +6546,14 @@ GET /fapi/v1/adlQuantile
     const LG = document.getElementById('LG');
     const lang_btn = document.getElementById('lang_box');
     const btn_spot = document.getElementById('btn_spot');
-    const btn_fd = document.getElementById('btn_fd');
+    const btn_fd = document.getElementById('btn_dm');
     const v1_url = document.getElementById('v1_url');
     //const v2_url = document.getElementById('v2_url');
     const url = GetUrlRelativePath();
     if (url.indexOf('cn') != -1) {
         // for the Chinese Language env.
         lang_btn.innerHTML = 'English';
-        btn_fd.innerHTML = 'U本位合约';
+        btn_fd.innerHTML = '币本位合约';
         btn_spot.innerHTML = '现货';
         LG.href = "https://www.bityard.com/cn/";
         lang_btn.href = url.replace('cn/', 'en/');
