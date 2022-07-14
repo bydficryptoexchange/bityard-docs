@@ -3365,6 +3365,14 @@ POST /dapi/v1/order  (HMAC SHA256)
                         </td>
                     </tr>
                     <tr>
+                        <td>timeInForce</td>
+                        <td>STRING</td>
+                        <td>NO</td>
+                        <td>有效方法,  <code>GTC 成交为止</code>,  <code>IOC 无法立即成交的部分就部分撤销</code> 
+                        <code>FOK 无法全部立即成交就撤销</code> ,  <code> GTX 无法成为挂单方就撤销</code> 
+                        </td>
+                    </tr>
+                    <tr>
                         <td>closePosition</td>
                         <td>STRING</td>
                         <td>NO</td>
@@ -3612,6 +3620,14 @@ POST /dapi/v1/batchOrders  (HMAC SHA256)
                         <td>YES</td>
                         <td>订单类型 <code>LIMIT</code>, <code>MARKET</code>, <code>STOP_MARKET</code>,
                              <code>TRAILING_STOP_MARKET</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>timeInForce</td>
+                        <td>STRING</td>
+                        <td>NO</td>
+                        <td>有效方法,  <code>GTC 成交为止</code>,  <code>IOC 无法立即成交的部分就部分撤销</code> 
+                     <code>FOK 无法全部立即成交就撤销</code> ,  <code> GTX 无法成为挂单方就撤销</code> 
                         </td>
                     </tr>
                     <tr>
