@@ -3048,13 +3048,15 @@ GET /futures/data/basis
                         <td>from</td>
                         <td>Integer</td>
                         <td>YES</td>
-                        <td>划转起始账户。eg.eg.1、现货、 2、简单合约、 3、永续合约账户</td>
+                        <td>划转起始账户。eg.<code>1、现货、</code> <code> 2、简单合约、</code>
+                        <code> 3、U本位合约账户、</code> <code>4、币本位合约账户 </code></td>
                     </tr>
                     <tr>
                         <td>to</td>
                         <td>Integer</td>
                         <td>YES</td>
-                        <td>划转目标账户。eg.1、现货、 2、简单合约、 3、永续合约账户</td>
+                        <td>划转目标账户。eg.<code>1、现货、</code> <code> 2、简单合约、</code>
+                        <code> 3、U本位合约账户、</code> <code>4、币本位合约账户 </code></td>
                     </tr>
                     <tr>
                         <td>qty</td>
@@ -3076,6 +3078,9 @@ GET /futures/data/basis
                     </tr>
                 </tbody>
             </table>
+            <p>备注：简易合约和币本位合约只支持USDT账户之间的划转,U本位不支持USDT的划转. U本位账户和币本位账户之间不支持相互划转。</p>
+
+
 
             <h2 id='87a7130ac5'>获取划转历史(USER)</h2>
 
