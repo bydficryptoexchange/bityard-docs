@@ -388,10 +388,10 @@
                 <!--    <li>
                         <a href="#k-4" class="toc-h2 toc-link" data-title="标记价格K线数据">标记价格K线数据</a>
                     </li>-->
-              <!--   <li>
-                    <a href="#24hr" class="toc-h2 toc-link" data-title="24hr价格变动情况">24hr价格变动情况</a>
-                </li>
-                -->
+                <!--   <li>
+                      <a href="#24hr" class="toc-h2 toc-link" data-title="24hr价格变动情况">24hr价格变动情况</a>
+                  </li>
+                  -->
                 <li>
                     <a href="#8ff46b58de" class="toc-h2 toc-link" data-title="最新价格">最新价格</a>
                 </li>
@@ -480,13 +480,13 @@
                 <li>
                     <a href="#87a7130ac5" class="toc-h2 toc-link" data-title="获取划转历史">获取划转历史</a>
                 </li>
-        <!--        <li>
-                    <a href="#trade" class="toc-h2 toc-link" data-title="更改持仓模式(TRADE)">更改持仓模式(TRADE)</a>
-                </li>-->
-   <!--             <li>
-                    <a href="#user_data" class="toc-h2 toc-link"
-                       data-title="查询持仓模式(USER_DATA)">查询持仓模式(USER_DATA)</a>
-                </li>-->
+                <!--        <li>
+                            <a href="#trade" class="toc-h2 toc-link" data-title="更改持仓模式(TRADE)">更改持仓模式(TRADE)</a>
+                        </li>-->
+                <!--             <li>
+                                 <a href="#user_data" class="toc-h2 toc-link"
+                                    data-title="查询持仓模式(USER_DATA)">查询持仓模式(USER_DATA)</a>
+                             </li>-->
                 <li>
                     <a href="#trade-2" class="toc-h2 toc-link" data-title="下单 (TRADE)">下单 (TRADE)</a>
                 </li>
@@ -711,7 +711,7 @@
         <h2 id='12907e94be'>访问限制</h2>
         <ul>
             <li>在
-                <code>/fapi/v1/exchangeInfo</code>接口中<code>rateLimits</code>数组里包含有REST接口(不限于本篇的REST接口)的访问限制。包括带权重的访问频次限制、下单速率限制。本篇<code>枚举定义</code>章节有限制类型的进一步说明。
+                <code>/api/fapi/v1/exchangeInfo</code>接口中<code>rateLimits</code>数组里包含有REST接口(不限于本篇的REST接口)的访问限制。包括带权重的访问频次限制、下单速率限制。本篇<code>枚举定义</code>章节有限制类型的进一步说明。
             </li>
             <li>违反上述任何一个访问限制都会收到HTTP 429,这是一个警告.</li>
         </ul>
@@ -805,7 +805,7 @@
         <aside class="notice">
             不推荐使用5秒以上的recvWindow
         </aside>
-        <h3 id='post-fapi-v1-order'>POST /fapi/v1/order 的示例</h3>
+        <h3 id='post-fapi-v1-order'>POST /api/fapi/v1/order 的示例</h3>
         <p>以下是在linux bash环境下使用 echo openssl 和curl工具实现的一个调用接口下单的示例
             apikey、secret仅供示范</p>
 
@@ -838,7 +838,7 @@
             <tbody>
             <tr>
                 <td>symbol</td>
-                <td>BTC-USD</td>
+                <td>BTC-USDT</td>
             </tr>
             <tr>
                 <td>side</td>
@@ -872,20 +872,20 @@
 
             <p><strong>HMAC SHA256 签名:</strong></p>
         </blockquote>
-        <pre class="highlight shell tab-shell"><code>    <span class="nv">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTC-USD&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;timeInForce=GTC&amp;recvWindow=5000&amp;timestamp=1591702613943"</span> | openssl dgst -sha256 -hmac <span class="s2">"2b5eb11e18796d12d88f13dc27dbbd02c2cc51ff7059765ed9821957d82bb4d9"</span>
+        <pre class="highlight shell tab-shell"><code>    <span class="nv">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTC-USDT&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;timeInForce=GTC&amp;recvWindow=5000&amp;timestamp=1591702613943"</span> | openssl dgst -sha256 -hmac <span class="s2">"2b5eb11e18796d12d88f13dc27dbbd02c2cc51ff7059765ed9821957d82bb4d9"</span>
     <span class="o">(</span>stdin<span class="o">)=</span> 21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a
 </code></pre>
         <blockquote>
             <p><strong>curl 调用:</strong></p>
         </blockquote>
         <pre class="highlight shell tab-shell"><code>    <span class="o">(</span>HMAC SHA256<span class="o">)</span>
-    <span class="nv">$ </span>curl -H <span class="s2">"X-BITYARD-APIKEY: dbefbc809e3e83c283a984c3a1459732ea7db1360ca80c5c2c8867408d28cc83"</span> -X POST <span class="s1">'https://test-ws.bydtms.com/openapi/fapi/v1/order?symbol=BTC-USD&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;recvWindow=5000&amp;timestamp=1591702613943&amp;sign= 21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a'</span>
+    <span class="nv">$ </span>curl -H <span class="s2">"X-BITYARD-APIKEY: dbefbc809e3e83c283a984c3a1459732ea7db1360ca80c5c2c8867408d28cc83"</span> -X POST <span class="s1">'https://test-ws.bydtms.com/openapi/api/fapi/v1/order?symbol=BTC-USDT&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;recvWindow=5000&amp;timestamp=1591702613943&amp;sign= 21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a'</span>
 </code></pre>
         <ul>
             <li>
                 <p><strong>queryString:</strong> </p>
 
-                <p>symbol=BTC-USD<br>
+                <p>symbol=BTC-USDT<br>
                     &amp;side=BUY<br>
                     &amp;type=LIMIT<br>
                     &amp;timeInForce=GTC<br>
@@ -901,20 +901,20 @@
 
             <p><strong>HMAC SHA256 签名:</strong></p>
         </blockquote>
-        <pre class="highlight shell tab-shell"><code>    <span class="nv">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTC-USD&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;recvWindow=5000&amp;timestamp=1591702613943"</span> | openssl dgst -sha256 -hmac <span class="s2">"2b5eb11e18796d12d88f13dc27dbbd02c2cc51ff7059765ed9821957d82bb4d9"</span>
+        <pre class="highlight shell tab-shell"><code>    <span class="nv">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTC-USDT&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;recvWindow=5000&amp;timestamp=1591702613943"</span> | openssl dgst -sha256 -hmac <span class="s2">"2b5eb11e18796d12d88f13dc27dbbd02c2cc51ff7059765ed9821957d82bb4d9"</span>
     <span class="o">(</span>stdin<span class="o">)=</span> 21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a
 </code></pre>
         <blockquote>
             <p><strong>curl 调用:</strong></p>
         </blockquote>
         <pre class="highlight shell tab-shell"><code>    <span class="o">(</span>HMAC SHA256<span class="o">)</span>
-    <span class="nv">$ </span>curl -H <span class="s2">"X-BITYARD-APIKEY: dbefbc809e3e83c283a984c3a1459732ea7db1360ca80c5c2c8867408d28cc83"</span> -X POST <span class="s1">'https://fapi.api.com/fapi/v1/order'</span> -d <span class="s1">'symbol=BTC-USD&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;timeInForce=GTC&amp;recvWindow=5000&amp;timestamp=1591702613943&amp;sign= 21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a'</span>
+    <span class="nv">$ </span>curl -H <span class="s2">"X-BITYARD-APIKEY: dbefbc809e3e83c283a984c3a1459732ea7db1360ca80c5c2c8867408d28cc83"</span> -X POST <span class="s1">'https://fapi.api.com/api/fapi/v1/order'</span> -d <span class="s1">'symbol=BTC-USDT&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;timeInForce=GTC&amp;recvWindow=5000&amp;timestamp=1591702613943&amp;sign= 21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a'</span>
 </code></pre>
         <ul>
             <li>
                 <p><strong>requestBody:</strong> </p>
 
-                <p>symbol=BTC-USD<br>
+                <p>symbol=BTC-USDT<br>
                     &amp;side=BUY<br>
                     &amp;type=LIMIT<br>
                     &amp;quantity=1<br>
@@ -929,17 +929,17 @@
 
             <p><strong>HMAC SHA256 签名:</strong></p>
         </blockquote>
-        <pre class="highlight shell tab-shell"><code>    <span class="nv">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTC-USD&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp&amp;recvWindow=5000&amp;timestamp=1591702613943"</span> | openssl dgst -sha256 -hmac <span class="s2">"2b5eb11e18796d12d88f13dc27dbbd02c2cc51ff7059765ed9821957d82bb4d9"</span>
+        <pre class="highlight shell tab-shell"><code>    <span class="nv">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTC-USDT&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp&amp;recvWindow=5000&amp;timestamp=1591702613943"</span> | openssl dgst -sha256 -hmac <span class="s2">"2b5eb11e18796d12d88f13dc27dbbd02c2cc51ff7059765ed9821957d82bb4d9"</span>
     <span class="o">(</span>stdin<span class="o">)=</span> 21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a
 </code></pre>
         <blockquote>
             <p><strong>curl 调用:</strong></p>
         </blockquote>
         <pre class="highlight shell tab-shell"><code>    <span class="o">(</span>HMAC SHA256<span class="o">)</span>
-    <span class="nv">$ </span>curl -H <span class="s2">"X-BITYARD-APIKEY: dbefbc809e3e83c283a984c3a1459732ea7db1360ca80c5c2c8867408d28cc83"</span> -X POST <span class="s1">'https://test-ws.bydtms.com/openapi/fapi/v1/order?symbol=BTC-USD&amp;side=BUY&amp;type=LIMIT'</span> -d <span class="s1">'quantity=1&amp;price=9000&amp;recvWindow=5000&amp;timestamp=1591702613943&amp;sign=21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a'</span>
+    <span class="nv">$ </span>curl -H <span class="s2">"X-BITYARD-APIKEY: dbefbc809e3e83c283a984c3a1459732ea7db1360ca80c5c2c8867408d28cc83"</span> -X POST <span class="s1">'https://test-ws.bydtms.com/openapi/api/fapi/v1/order?symbol=BTC-USDT&amp;side=BUY&amp;type=LIMIT'</span> -d <span class="s1">'quantity=1&amp;price=9000&amp;recvWindow=5000&amp;timestamp=1591702613943&amp;sign=21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a'</span>
 </code></pre>
         <ul>
-            <li><strong>queryString:</strong> symbol=BTC-USD&amp;side=BUY&amp;type=LIMIT&amp;timeInForce=GTC
+            <li><strong>queryString:</strong> symbol=BTC-USDT&amp;side=BUY&amp;type=LIMIT&amp;timeInForce=GTC
             </li>
             <li><strong>requestBody:</strong> quantity=1&amp;price=9000&amp;recvWindow=5000&amp;timestamp=
                 1591702613943</li>
@@ -1161,7 +1161,7 @@
         <h1 id='ed913b7357'>行情接口</h1>
         <h2 id='ping'>测试服务器连通性 PING</h2>
         <p><code>
-            GET /fapi/market/v1/ping
+            GET /api/fapi/market/v1/ping
         </code></p>
 
         <blockquote>
@@ -1185,7 +1185,7 @@
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            GET /fapi/market/v1/time
+            GET /api/fapi/market/v1/time
         </code></p>
 
         <p>获取服务器时间</p>
@@ -1218,11 +1218,11 @@
             <span class="p">}</span>
         <span class="p">],</span>
             <!--
-        <span class="s2">"serverTime"</span><span class="p">:</span> <span class="mi">1565613908500</span><span class="p">,</span> <span class="c1">// 请忽略。如果需要获取系统时间，请查询接口 “GET /fapi/v1/time”</span>
+        <span class="s2">"serverTime"</span><span class="p">:</span> <span class="mi">1565613908500</span><span class="p">,</span> <span class="c1">// 请忽略。如果需要获取系统时间，请查询接口 “GET /api/fapi/v1/time”</span>
     -->
         <span class="s2">"symbols"</span><span class="p">:</span> <span class="p">[</span> <span class="c1">// 交易对信息</span>
             <span class="p">{</span>
-                <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">BTC-USD"</span><span class="p">,</span>   <span class="c1">// 交易对</span>
+                <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">BTC-USDT"</span><span class="p">,</span>   <span class="c1">// 交易对</span>
                 <span class="s2">"baseSymbol"</span><span class="p">:</span> <span class="s2">"BTC"</span><span class="p">,</span>  <span class="c1">//基础货币符号 </span>
                 <span class="s2">"quoteSymbol"</span><span class="p">:</span> <span class="s2">"USDT"</span><span class="p">,</span> <span class="c1">// 计价币种，大写如BTC</span>
                 <span class="s2">"settleCoin"</span><span class="p">:</span> <span class="s2">"USDT"</span><span class="p">,</span>   <span class="c1">//结算币种，大写如USDT </span>
@@ -1260,7 +1260,7 @@
 
 </code></pre>
         <p><code>
-            GET /fapi/market/v1/exchangeInfo
+            GET /api/fapi/market/v1/exchangeInfo
         </code></p>
 
         <p>获取交易规则和交易对</p>
@@ -1276,7 +1276,7 @@
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
   <span class="s2">"lastUpdateId"</span><span class="p">:</span> <span class="mi">103614</span><span class="p">,</span>
-  <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span> <span class="c1">// 交易对</span>
+  <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span> <span class="c1">// 交易对</span>
   <span class="s2">"e"</span><span class="p">:</span> <span class="mi">1656397424733</span><span class="p">,</span>   <span class="c1">// 消息时间</span>
   <span class="s2">"T"</span><span class="p">:</span> <span class="mi">1591250106368</span><span class="p">,</span>   <span class="c1">// 撮合时间</span>
   <span class="s2">"bids"</span><span class="p">:</span> <span class="p">[</span>              <span class="c1">// 买单</span>
@@ -1294,7 +1294,7 @@
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            GET /fapi/market/v1/depth
+            GET /api/fapi/market/v1/depth
         </code></p>
 
         <p><strong>权重:</strong></p>
@@ -1359,7 +1359,7 @@
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
   <span class="p">{</span>
     <span class="s2">"id"</span><span class="p">:</span> <span class="mi">28457</span><span class="p">,</span>                <span class="c1">// 成交ID</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>          <span class="c1">// 交易对</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>          <span class="c1">// 交易对</span>
     <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"20380"</span><span class="p">,</span>                 <span class="c1">// 成交价格</span>
     <span class="s2">"qty"</span><span class="p">:</span> <span class="s2">"0.01037883"</span><span class="p">,</span>    <span class="c1">// 成交量</span>
     <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1591250192508</span><span class="p">,</span>      <span class="c1">// 时间</span>
@@ -1368,7 +1368,7 @@
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/market/v1/trades
+            GET /api/fapi/market/v1/trades
         </code></p>
 
         <p>获取近期订单簿成交</p>
@@ -1413,7 +1413,7 @@
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
   <span class="p">{</span>
     <span class="s2">"id"</span><span class="p">:</span> <span class="mi">28457</span><span class="p">,</span>                <span class="c1">// 成交ID</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>          <span class="c1">// 交易对</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>          <span class="c1">// 交易对</span>
     <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"20380"</span><span class="p">,</span>                 <span class="c1">// 成交价格</span>
     <span class="s2">"qty"</span><span class="p">:</span> <span class="s2">"0.01037883"</span><span class="p">,</span>    <span class="c1">// 成交量</span>
     <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1591250192508</span><span class="p">,</span>      <span class="c1">// 时间</span>
@@ -1422,7 +1422,7 @@
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/market/v1/historicalTrades
+            GET /api/fapi/market/v1/historicalTrades
         </code></p>
 
         <p>查询订单簿历史成交</p>
@@ -1483,7 +1483,7 @@
 <span class="p">]</span>
 </code></pre>
             <p><code>
-GET /fapi/v1/aggTrades
+GET /api/fapi/v1/aggTrades
 </code></p>
 
             <p>归集交易与逐笔交易的区别在于,同一价格、同一方向、同一时间(100ms计算)的订单簿trade会被聚合为一条</p>
@@ -1546,7 +1546,7 @@ GET /fapi/v1/aggTrades
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>    <span class="c1">// 交易对</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>    <span class="c1">// 交易对</span>
         <span class="s2">"markPrice"</span><span class="p">:</span> <span class="s2">"11029.69574559"</span><span class="p">,</span>  <span class="c1">// 标记价格</span>
         <span class="s2">"indexPrice"</span><span class="p">:</span> <span class="s2">"10979.14437500"</span><span class="p">,</span> <span class="c1">// 指数价格</span>
         <span class="s2">"estimatedSettlePrice"</span><span class="p">:</span> <span class="s2">"10981.74168236"</span><span class="p">,</span>  <span class="c1">// 预估结算价,仅在交割开始前最后一小时有意义</span>
@@ -1556,7 +1556,7 @@ GET /fapi/v1/aggTrades
         <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1596094042000</span>   <span class="c1">// 更新时间</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
         <span class="s2">"markPrice"</span><span class="p">:</span> <span class="s2">"12077.01343750"</span><span class="p">,</span>
         <span class="s2">"indexPrice"</span><span class="p">:</span> <span class="s2">"10979.10312500"</span><span class="p">,</span>
         <span class="s2">"estimatedSettlePrice"</span><span class="p">:</span> <span class="s2">"10981.74168236"</span><span class="p">,</span>
@@ -1568,7 +1568,7 @@ GET /fapi/v1/aggTrades
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/market/v1/premiumIndex
+            GET /api/fapi/market/v1/premiumIndex
         </code></p>
 
         <p><strong>权重:</strong>
@@ -1600,19 +1600,19 @@ GET /fapi/v1/aggTrades
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>    <span class="c1">// 交易对</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>    <span class="c1">// 交易对</span>
         <span class="s2">"fundingTime"</span><span class="p">:</span> <span class="mi">1655078400000</span><span class="p">,</span>   <span class="c1">// 资金费时间</span>
         <span class="s2">"fundingRate"</span><span class="p">:</span> <span class="s2">"0.0037500000000000"</span>    <span class="c1">// 资金费率</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
         <span class="s2">"fundingTime"</span><span class="p">:</span> <span class="mi">1655136000000</span><span class="p">,</span>
         <span class="s2">"fundingRate"</span><span class="p">:</span> <span class="s2">"-0.0037500000000000"</span>
     <span class="p">}</span>
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/market/v1/fundingRate
+            GET /api/fapi/market/v1/fundingRate
         </code></p>
 
         <p><strong>权重:</strong>
@@ -1676,7 +1676,7 @@ GET /fapi/v1/aggTrades
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/market/v1/klines
+            GET /api/fapi/market/v1/klines
         </code>
             每根K线的开盘时间可视为唯一ID</p>
 
@@ -1810,7 +1810,7 @@ GET /fapi/v1/aggTrades
 <span class="p">]</span>
 </code></pre>
             <p><code>
-GET /fapi/v1/continuousKlines
+GET /api/fapi/v1/continuousKlines
 </code>
                 每根K线的开盘时间可视为唯一ID</p>
 
@@ -1937,7 +1937,7 @@ GET /fapi/v1/continuousKlines
   <span class="p">]</span>
   </code></pre>
               <p><code>
-  GET /fapi/v1/indexPriceKlines
+  GET /api/fapi/v1/indexPriceKlines
   </code></p>
 
               <p>每根K线的开盘时间可视为唯一ID</p>
@@ -2049,7 +2049,7 @@ GET /fapi/v1/continuousKlines
 <span class="p">]</span>
 </code></pre>
             <p><code>
-GET /fapi/v1/markPriceKlines
+GET /api/fapi/v1/markPriceKlines
 </code>
                 每根K线的开盘时间可视为唯一ID</p>
 
@@ -2138,21 +2138,21 @@ GET /fapi/v1/markPriceKlines
                     </ul>
                 </li>
             </ul>-->
-    
+
         <h2 id='8ff46b58de'>最新价格</h2>
         <blockquote>
             <p><strong>响应:</strong></p>
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>  <span class="c1">// 交易对</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>  <span class="c1">// 交易对</span>
         <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"9647.8"</span><span class="p">,</span>          <span class="c1">// 价格</span>
         <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1591257246176</span>       <span class="c1">// 时间</span>
     <span class="p">}</span>
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/market/v1/ticker/price
+            GET /api/fapi/market/v1/ticker/price
         </code></p>
 
         <p>返回最近价格</p>
@@ -2192,7 +2192,7 @@ GET /fapi/v1/markPriceKlines
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>  <span class="c1">// 交易对</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>  <span class="c1">// 交易对</span>
         <span class="s2">"bidPrice"</span><span class="p">:</span> <span class="s2">"21000.1"</span><span class="p">,</span>       <span class="c1">//最优买单价</span>
         <span class="s2">"bidQty"</span><span class="p">:</span> <span class="s2">"15"</span><span class="p">,</span>             <span class="c1">//最优买单挂单量</span>
         <span class="s2">"askPrice"</span><span class="p">:</span> <span class="s2">"21000.3"</span><span class="p">,</span>       <span class="c1">//最优卖单价</span>
@@ -2202,7 +2202,7 @@ GET /fapi/v1/markPriceKlines
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/market/v1/ticker/bookTicker
+            GET /api/fapi/market/v1/ticker/bookTicker
         </code></p>
 
         <p>返回当前最优的挂单(最高买单,最低卖单)</p>
@@ -2239,14 +2239,14 @@ GET /fapi/v1/markPriceKlines
             <p><strong>响应:</strong></p>
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
     <span class="s2">"openInterest"</span><span class="p">:</span> <span class="s2">"20000"</span><span class="p">,</span>
     <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1591261042378</span>
 <span class="p">}</span>
 
 </code></pre>
         <p><code>
-            GET /fapi/market/v1/ticker/openInterest
+            GET /api/fapi/market/v1/ticker/openInterest
         </code></p>
 
         <p><strong>权重:</strong> 1</p>
@@ -2277,7 +2277,7 @@ GET /fapi/v1/markPriceKlines
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
    <span class="p">{</span>
-      <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+      <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
       <span class="s2">"sumOpenInterest"</span><span class="p">:</span> <span class="s2">"20403"</span><span class="p">,</span>  <span class="c1">//unit: cont</span>
       <span class="s2">"sumOpenInterestValue"</span><span class="p">:</span> <span class="s2">"176196512.23400000"</span><span class="p">,</span> <span class="c1">//unit: base asset</span>
       <span class="s2">"timestamp"</span><span class="p">:</span> <span class="mi">1591261042378</span>
@@ -2352,14 +2352,14 @@ GET /fapi/v1/markPriceKlines
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
    <span class="p">{</span>
-      <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+      <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
       <span class="s2">"longShortRatio"</span><span class="p">:</span> <span class="s2">"0.9231"</span><span class="p">,</span>
       <span class="s2">"longAccount"</span><span class="p">:</span> <span class="s2">"12.00000000"</span><span class="p">,</span>  <span class="c1">//64.42%</span>
       <span class="s2">"shortAccount"</span><span class="p">:</span> <span class="s2">"13.00000000"</span><span class="p">,</span>  <span class="c1">//35.58%</span>
       <span class="s2">"timestamp"</span><span class="p">:</span> <span class="mi">1655261100000</span>
    <span class="p">},</span>
    <span class="p">{</span>
-     <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+     <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
       <span class="s2">"longShortRatio"</span><span class="p">:</span> <span class="s2">"1.1110"</span><span class="p">,</span>
       <span class="s2">"longAccount"</span><span class="p">:</span> <span class="s2">"0.5263"</span><span class="p">,</span>
       <span class="s2">"shortAccount"</span><span class="p">:</span> <span class="s2">"0.4737"</span><span class="p">,</span>
@@ -2389,7 +2389,7 @@ GET /fapi/v1/markPriceKlines
                 <td>symbol</td>
                 <td>STRING</td>
                 <td>YES</td>
-                <td> 交易对 eg.BTC-USD</td>
+                <td> 交易对 eg.BTC-USDT</td>
             </tr>
             <tr>
                 <td>period</td>
@@ -2429,14 +2429,14 @@ GET /fapi/v1/markPriceKlines
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
    <span class="p">{</span>
-      <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+      <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
       <span class="s2">"longShortRatio"</span><span class="p">:</span> <span class="s2">"0.7869"</span><span class="p">,</span>
       <span class="s2">"longPosition"</span><span class="p">:</span> <span class="s2">"0.6442"</span><span class="p">,</span>  <span class="c1">//64.42%</span>
       <span class="s2">"shortPosition"</span><span class="p">:</span> <span class="s2">"0.4404"</span><span class="p">,</span>  <span class="c1">//44.04%</span>
       <span class="s2">"timestamp"</span><span class="p">:</span> <span class="mi">1592870400000</span>
    <span class="p">},</span>
    <span class="p">{</span>
-     <span class="s2">"pair"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+     <span class="s2">"pair"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
       <span class="s2">"longShortRatio"</span><span class="p">:</span> <span class="s2">"1.1231"</span><span class="p">,</span>
       <span class="s2">"longPosition"</span><span class="p">:</span> <span class="s2">"0.2363"</span><span class="p">,</span>
       <span class="s2">"shortPosition"</span><span class="p">:</span> <span class="s2">"0.4537"</span><span class="p">,</span>
@@ -2466,7 +2466,7 @@ GET /fapi/v1/markPriceKlines
                 <td>symbol</td>
                 <td>STRING</td>
                 <td>YES</td>
-                <td>交易对 eg.BTC-USD</td>
+                <td>交易对 eg.BTC-USDT</td>
             </tr>
             <tr>
                 <td>period</td>
@@ -2543,7 +2543,7 @@ GET /fapi/v1/markPriceKlines
                 <td>symbol</td>
                 <td>STRING</td>
                 <td>YES</td>
-                <td>交易对 eg.BTC-USD</td>
+                <td>交易对 eg.BTC-USDT</td>
             </tr>
             <tr>
                 <td>period</td>
@@ -2583,7 +2583,7 @@ GET /fapi/v1/markPriceKlines
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
    <span class="p">{</span>
-      <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+      <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
       <span class="s2">"takerBuyVol"</span><span class="p">:</span> <span class="s2">"387"</span><span class="p">,</span>  <span class="c1">//unit: cont</span>
       <span class="s2">"takerSellVol"</span><span class="p">:</span> <span class="s2">"248"</span><span class="p">,</span>  <span class="c1">//unit: cont</span>
       <span class="s2">"takerBuyVolValue"</span><span class="p">:</span> <span class="s2">"2342.1220"</span><span class="p">,</span> <span class="c1">//unit: base asset</span>
@@ -2591,7 +2591,7 @@ GET /fapi/v1/markPriceKlines
       <span class="s2">"timestamp"</span><span class="p">:</span> <span class="mi">1591261042378</span>
    <span class="p">},</span>
    <span class="p">{</span>
-     <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+     <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
       <span class="s2">"takerBuyVol"</span><span class="p">:</span> <span class="s2">"234"</span><span class="p">,</span>  <span class="c1">//unit: cont</span>
       <span class="s2">"takerSellVol"</span><span class="p">:</span> <span class="s2">"121"</span><span class="p">,</span>  <span class="c1">//unit: cont</span>
       <span class="s2">"takerBuyVolValue"</span><span class="p">:</span> <span class="s2">"4563.1320"</span><span class="p">,</span> <span class="c1">//unit: base asset</span>
@@ -2622,7 +2622,7 @@ GET /fapi/v1/markPriceKlines
                 <td>pair</td>
                 <td>STRING</td>
                 <td>YES</td>
-                <td>交易对 eg.BTC-USD</td>
+                <td>交易对 eg.BTC-USDT</td>
             </tr>
             <tr>
                 <td>period</td>
@@ -2776,25 +2776,22 @@ GET /futures/data/basis
                 <p><strong>请求</strong></p>
 
                 <p>{<br>
-                    "time":"1646795010776"&quot;,<br>
-                    &quot;channel&quot;: &quot;swap.depth&quot;,<br>
-                    "event": "SUBSCRIBE"&quot;,<br>
-                    &quot;payLoad&quot;:[<br>
-                    &quot;BTC-USD&quot;,<br>
-                    &quot;ETH-USD&quot;<br>
+                    "id":"1646795010776&quot;,<br>
+                    &quot;method&quot;: &quot;SUBSCRIBE&quot;,<br>
+                    &quot;params&quot;:[<br>
+                        &quot;BTC-USDT@depth&quot;,<br>
+                        &quot;ETH-USDT@ticker&quot;<br>
                     ]
                     }</p>
             </li>
         </ul>
 
         <p>{<br>
-            "time":"1646795010776"&quot;,<br>
-            &quot;channel&quot;: &quot;swap.depth&quot;,<br>
-            "event": "UNSUBSCRIBE"&quot;,<br>
-            &quot;payLoad&quot;:[<br>
-
-            &quot;BTC-USD&quot;,<br>
-            &quot;ETH-USD&quot;<br>
+            &quot;id&quot;:"1646795010776&quot;,<br>
+            &quot;method&quot;: &quot;UNSUBSCRIBE&quot;,<br>
+            &quot;params&quot;:[<br>
+                    &quot;BTC-USDT@depth&quot;,<br>
+                    &quot;ETH-USDT@ticker&quot;<br>
             ]
             }</p>
 
@@ -2806,7 +2803,7 @@ GET /futures/data/basis
         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
                <span class="s2">"e"</span><span class="p">:</span><span class="mi">swap.trade</span><span class="p">,</span>     <span class="c1">// 事件名称</span>
                <span class="s2">"E"</span><span class="p">:</span><span class="mi">1646796690500</span><span class="p">,</span>     <span class="c1">// 事件时间</span>
-               <span class="s2">"s"</span><span class="p">:</span><span class="mi">BTC-USD</span><span class="p">,</span>     <span class="c1">// 币种</span>
+               <span class="s2">"s"</span><span class="p">:</span><span class="mi">BTC-USDT</span><span class="p">,</span>     <span class="c1">// 币种</span>
                <span class="s2">"p"</span><span class="p">:</span><span class="mi">36362.3</span><span class="p">,</span>     <span class="c1">// 成交价格</span>
                <span class="s2">"q"</span><span class="p">:</span><span class="mi">12.0</span><span class="p">,</span>     <span class="c1">// 成交量</span>
                <span class="s2">"T"</span><span class="p">:</span><span class="mi">1646796690500</span><span class="p">,</span>     <span class="c1">// 成交时间</span>
@@ -2816,7 +2813,7 @@ GET /futures/data/basis
         <p>同一价格、同一方向、同一时间(100ms计算)的trade会被聚合为一条.推送间隔100毫秒。</p>
 
         <p><strong>event Name:</strong><br>
-            <code>swap.trade</code>
+            <code>&lt;symbol&gt;@aggTrade</code>
         </p>
 
         <p><strong>Update Speed:</strong> 100ms</p>
@@ -2845,7 +2842,7 @@ GET /futures/data/basis
         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
     <span class="s2">"e"</span><span class="p">:</span> <span class="mi">swap.kline_1m</span><span class="p">,</span> <span class="c1">// 事件名称</span>
     <span class="s2">"E"</span><span class="p">:</span> <span class="mi">1646795729284</span><span class="p">,</span> <span class="c1">// 这根K发送时间</span>
-    <span class="s2">"s"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>  <span class="c1">// 交易对</span>
+    <span class="s2">"s"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>  <span class="c1">// 交易对</span>
     <span class="s2">"t"</span><span class="p">:</span> <span class="s2">"1646795160000"</span><span class="p">,</span>      <span class="c1">// K线开始时间</span>
     <span class="s2">"T"</span><span class="p">:</span> <span class="mi">1646795729284</span><span class="p">,</span>       <span class="c1">// k线结束时间</span>
     <span class="s2">"i"</span><span class="p">:</span> <span class="mi">"1m"</span><span class="p">,</span>       <span class="c1">// K线间隔</span>
@@ -2858,7 +2855,7 @@ GET /futures/data/basis
 </code></pre>
         <p>K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。</p>
 
-        <p><strong>event name:</strong> <code>spot.kline_间隔参数</code> </p>
+        <p><code>&lt;symbol&gt;@kline_&lt;interval&gt;</code></p>
 
         <p><strong>Update Speed:</strong> 2000ms</p>
 
@@ -2880,7 +2877,7 @@ GET /futures/data/basis
         <pre class="highlight javascript tab-javascript"><code>  <span class="p">{</span>
     <span class="s2">"e"</span><span class="p">:</span> <span class="s2">"swap.ticker"</span><span class="p">,</span>  <span class="c1">// 事件类型</span>
     <span class="s2">"E"</span><span class="p">:</span> <span class="mi">1646796690500</span><span class="p">,</span>         <span class="c1">// 事件时间</span>
-    <span class="s2">"s"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>          <span class="c1">// 交易对</span>
+    <span class="s2">"s"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>          <span class="c1">// 交易对</span>
     <span class="s2">"P"</span><span class="p">:</span> <span class="s2">"4.4760298773"</span><span class="p">,</span>          <span class="c1">// 24小时价格变化</span>
     <span class="s2">"o"</span><span class="p">:</span> <span class="s2">"38623.29"</span><span class="p">,</span>          <span class="c1">// 24小时前开始第一笔成交价格</span>
     <span class="s2">"h"</span><span class="p">:</span> <span class="s2">"40436.22"</span><span class="p">,</span>          <span class="c1">// 24小时内最高成交价</span>
@@ -2892,7 +2889,7 @@ GET /futures/data/basis
         <p>按Symbol实时推送指定交易ticke信息</p>
 
         <p><strong>event Name:</strong><br>
-            `<code>swap.ticker</code></p>
+            <code>&lt;symbol&gt;@ticker</code></p>
 
         <p><strong>Update Speed:</strong> 500ms</p>
 
@@ -2904,7 +2901,7 @@ GET /futures/data/basis
         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
   <span class="s2">"e"</span><span class="p">:</span> <span class="mi">swap.depth</span><span class="p">,</span>  <span class="c1">// 事件名称</span>
   <span class="s2">"E"</span><span class="p">:</span> <span class="mi">1646796690500</span><span class="p">,</span>  <span class="c1">// 事件时间</span>
-  <span class="s2">"s"</span><span Dclass="p">:</span> <span class="mi">BTC-USD</span><span class="p">,</span>  <span class="c1">// 币种</span>
+  <span class="s2">"s"</span><span Dclass="p">:</span> <span class="mi">BTC-USDT</span><span class="p">,</span>  <span class="c1">// 币种</span>
   <span class="s2">"v"</span><span Dclass="p">:</span> <span class="mi">1646796690502</span><span class="p">,</span>  <span class="c1">// 版本号</span>
   <span class="s2">"b"</span><span class="p">:</span> <span class="p">[</span>             <span class="c1">// Bids </span>
     <span class="p">[</span>
@@ -2922,10 +2919,10 @@ GET /futures/data/basis
 
 <span class="p">}</span>
 </code></pre>
-        <p>每秒或每100毫秒推送有限档深度信息。每次推送买卖20档</p>
+        <p>每秒或每100毫秒推送有限档深度信息。每次推送买卖5/10/20档</p>
 
         <p><strong>Stream Names:</strong>
-            <code>swap.depth</code> 或
+            <code>&lt;symbol&gt;@depth&lt;levels&gt;</code>
         </p>
 
         <p><strong>Update Speed:</strong> 250ms 或 500ms 或 100ms</p>
@@ -2937,7 +2934,7 @@ GET /futures/data/basis
         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
   <span class="s2">"e"</span><span class="p">:</span> <span class="mi">swap.depth_up</span><span class="p">,</span>  <span class="c1">// 事件名称</span>
   <span class="s2">"E"</span><span class="p">:</span> <span class="mi">1646796690500</span><span class="p">,</span>  <span class="c1">// 事件时间</span>
-  <span class="s2">"s"</span><span Dclass="p">:</span> <span class="mi">BTC-USD</span><span class="p">,</span>  <span class="c1">// 币种</span>
+  <span class="s2">"s"</span><span Dclass="p">:</span> <span class="mi">BTC-USDT</span><span class="p">,</span>  <span class="c1">// 币种</span>
   <span class="s2">"v"</span><span Dclass="p">:</span> <span class="mi">1646796690502</span><span class="p">,</span>  <span class="c1">// 版本号</span>
   <span class="s2">"b"</span><span class="p">:</span> <span class="p">[</span>             <span class="c1">// Bids </span>
     <span class="p">[</span>
@@ -2959,16 +2956,16 @@ GET /futures/data/basis
         <p>orderbook的变化部分,推送间隔250毫秒,500毫秒,100毫秒(如有刷新)</p>
 
         <p><strong>event name:</strong><br>
-            <code>swap.depth_up</code>
+            <code>&lt;symbol&gt;@depth</code>
         </p>
 
         <p><strong>Update Speed:</strong> 250ms 或 500ms 或 100ms</p>
         <h2 id='orderbook'>如何正确在本地维护一个orderbook副本</h2>
         <ol>
-            <li>订阅 <strong>wss://dstream.api.com/stream?streams=BTC-USD@depth</strong></li>
+            <li>订阅 <strong>wss://dstream.api.com/stream?streams=BTC-USDT@depth</strong></li>
             <li>开始缓存收到的更新。同一个价位,后收到的更新覆盖前面的。</li>
             <li>访问Rest接口
-                <strong>https://bityard.com/fapi/v1/depth?symbol=BTC-USD&amp;limit=1000</strong>获得一个1000档的深度快照
+                <strong>https://bityard.com/api/fapi/v1/depth?symbol=BTC-USDT&amp;limit=1000</strong>获得一个1000档的深度快照
             </li>
             <li>将目前缓存到的信息中<code>u</code>&lt; 步骤3中获取到的快照中的<code>lastUpdateId</code>的部分丢弃(丢弃更早的信息,已经过期)。</li>
             <li>将深度快照中的内容更新到本地orderbook副本中,并从websocket接收到的第一个<code>U</code> &lt;= <code>lastUpdateId</code>
@@ -3032,14 +3029,14 @@ GET /futures/data/basis
                 <td>Integer</td>
                 <td>YES</td>
                 <td>划转起始账户。eg.<code>1、现货、</code> <code> 2、简单合约、</code>
-                <code> 3、U本位合约账户、</code> <code>4、币本位合约账户 </code></td>
+                    <code> 3、U本位合约账户、</code> <code>4、币本位合约账户 </code></td>
             </tr>
             <tr>
                 <td>to</td>
                 <td>Integer</td>
                 <td>YES</td>
                 <td>划转目标账户。eg.<code>1、现货、</code> <code> 2、简单合约、</code>
-                <code> 3、U本位合约账户、</code> <code>4、币本位合约账户 </code></td>
+                    <code> 3、U本位合约账户、</code> <code>4、币本位合约账户 </code></td>
             </tr>
             <tr>
                 <td>qty</td>
@@ -3061,8 +3058,8 @@ GET /futures/data/basis
             </tr>
             </tbody>
         </table>
-            <p>备注：简易合约和币本位合约只支持USDT账户之间的划转,U本位不支持USDT的划转. U本位账户和币本位账户之间不支持相互划转。</p>
-            
+        <p>备注：简易合约和币本位合约只支持USDT账户之间的划转,U本位不支持USDT的划转. U本位账户和币本位账户之间不支持相互划转。</p>
+
         <h2 id='87a7130ac5'>获取划转历史(USER)</h2>
 
 
@@ -3155,100 +3152,100 @@ GET /futures/data/basis
         </table>
         <p>只能查询最近90天的划转记录。即当前时间减去90的划转记录。</p>
 
-       <!-- <h2 id='trade'>更改持仓模式(TRADE)</h2>
-        <blockquote>
-            <p><strong>响应:</strong></p>
-        </blockquote>
-        <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-    <span class="s2">"code"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-    <span class="s2">"msg"</span><span class="p">:</span> <span class="s2">"success"</span>
-    <span class="s2">"data"</span><span class="p">:</span> <span class="s2">null</span>
-<span class="p">}</span>
-</code></pre>
-        <p><code>
-            POST /fapi/v1/positionSide/dual (HMAC SHA256)
-        </code></p>
+        <!-- <h2 id='trade'>更改持仓模式(TRADE)</h2>
+         <blockquote>
+             <p><strong>响应:</strong></p>
+         </blockquote>
+         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+     <span class="s2">"code"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+     <span class="s2">"msg"</span><span class="p">:</span> <span class="s2">"success"</span>
+     <span class="s2">"data"</span><span class="p">:</span> <span class="s2">null</span>
+ <span class="p">}</span>
+ </code></pre>
+         <p><code>
+             POST /api/fapi/v1/positionSide/dual (HMAC SHA256)
+         </code></p>
 
-        <p>变换用户在 <strong><em>所有symbol</em></strong> 合约上的持仓模式：双向持仓或单向持仓。 </p>
+         <p>变换用户在 <strong><em>所有symbol</em></strong> 合约上的持仓模式：双向持仓或单向持仓。 </p>
 
-        <p><strong>权重:</strong>
-            1</p>
+         <p><strong>权重:</strong>
+             1</p>
 
-        <p><strong>参数:</strong></p>
+         <p><strong>参数:</strong></p>
 
-        <table>
-            <thead>
-            <tr>
-                <th>名称</th>
-                <th>类型</th>
-                <th>是否必需</th>
-                <th>描述</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>dualSidePosition</td>
-                <td>STRING</td>
-                <td>YES</td>
-                <td>&quot;true&quot;: 双向持仓模式；&quot;false&quot;: 单向持仓模式</td>
-            </tr>
-            <tr>
-                <td>recvWindow</td>
-                <td>LONG</td>
-                <td>NO</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>timestamp</td>
-                <td>LONG</td>
-                <td>YES</td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
-        <h2 id='user_data'>查询持仓模式(USER_DATA)</h2>
-        <blockquote>
-            <p><strong>响应:</strong></p>
-        </blockquote>
-        <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-    <span class="s2">"dualSidePosition"</span><span class="p">:</span> <span class="kc">true</span> <span class="c1">// "true": 双向持仓模式；"false": 单向持仓模式</span>
-<span class="p">}</span>
-</code></pre>
-        <p><code>
-            GET /fapi/v1/positionSide/dual (HMAC SHA256)
-        </code></p>
+         <table>
+             <thead>
+             <tr>
+                 <th>名称</th>
+                 <th>类型</th>
+                 <th>是否必需</th>
+                 <th>描述</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr>
+                 <td>dualSidePosition</td>
+                 <td>STRING</td>
+                 <td>YES</td>
+                 <td>&quot;true&quot;: 双向持仓模式；&quot;false&quot;: 单向持仓模式</td>
+             </tr>
+             <tr>
+                 <td>recvWindow</td>
+                 <td>LONG</td>
+                 <td>NO</td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td>timestamp</td>
+                 <td>LONG</td>
+                 <td>YES</td>
+                 <td></td>
+             </tr>
+             </tbody>
+         </table>
+         <h2 id='user_data'>查询持仓模式(USER_DATA)</h2>
+         <blockquote>
+             <p><strong>响应:</strong></p>
+         </blockquote>
+         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+     <span class="s2">"dualSidePosition"</span><span class="p">:</span> <span class="kc">true</span> <span class="c1">// "true": 双向持仓模式；"false": 单向持仓模式</span>
+ <span class="p">}</span>
+ </code></pre>
+         <p><code>
+             GET /api/fapi/v1/positionSide/dual (HMAC SHA256)
+         </code></p>
 
-        <p>查询用户目前在 <strong><em>所有symbol</em></strong> 合约上的持仓模式：双向持仓或单向持仓。 </p>
+         <p>查询用户目前在 <strong><em>所有symbol</em></strong> 合约上的持仓模式：双向持仓或单向持仓。 </p>
 
-        <p><strong>权重:</strong>
-            30</p>
+         <p><strong>权重:</strong>
+             30</p>
 
-        <p><strong>参数:</strong></p>
+         <p><strong>参数:</strong></p>
 
-        <table>
-            <thead>
-            <tr>
-                <th>名称</th>
-                <th>类型</th>
-                <th>是否必需</th>
-                <th>描述</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>recvWindow</td>
-                <td>LONG</td>
-                <td>NO</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>timestamp</td>
-                <td>LONG</td>
-                <td>YES</td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>-->
+         <table>
+             <thead>
+             <tr>
+                 <th>名称</th>
+                 <th>类型</th>
+                 <th>是否必需</th>
+                 <th>描述</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr>
+                 <td>recvWindow</td>
+                 <td>LONG</td>
+                 <td>NO</td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td>timestamp</td>
+                 <td>LONG</td>
+                 <td>YES</td>
+                 <td></td>
+             </tr>
+             </tbody>
+         </table>-->
 
         <h2 id='trade-2'>下单 (TRADE)</h2>
         <blockquote>
@@ -3269,7 +3266,7 @@ GET /futures/data/basis
     <span class="s2">"positionSide"</span><span class="p">:</span> <span class="s2">"SHORT"</span><span class="p">,</span> <span class="c1">// 持仓方向</span>
     <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"NEW"</span><span class="p">,</span> <span class="c1">// 订单状态</span>
     <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// 触发价,对`TRAILING_STOP_MARKET`无效</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span> <span class="c1">// 交易对</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span> <span class="c1">// 交易对</span>
     <span class="s2">"pair"</span><span class="p">:</span> <span class="s2">"BTCUSD"</span><span class="p">,</span>   <span class="c1">// 标的交易对</span>
     <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span> <span class="c1">// 有效方法</span>
     <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span> <span class="c1">// 订单类型</span>
@@ -3282,7 +3279,7 @@ GET /futures/data/basis
  <span class="p">}</span>
 </code></pre>
         <p><code>
-            POST /fapi/v1/order  (HMAC SHA256)
+            POST /api/fapi/v1/order  (HMAC SHA256)
         </code></p>
 
         <p><strong>权重:</strong>
@@ -3356,8 +3353,8 @@ GET /futures/data/basis
                 <td>timeInForce</td>
                 <td>STRING</td>
                 <td>NO</td>
-                <td>有效方法,  <code>GTC 成交为止</code>,  <code>IOC 无法立即成交的部分就部分撤销</code> 
-                     <code>FOK 无法全部立即成交就撤销</code> ,  <code> GTX 无法成为挂单方就撤销</code> 
+                <td>有效方法,  <code>GTC 成交为止</code>,  <code>IOC 无法立即成交的部分就部分撤销</code>
+                    <code>FOK 无法全部立即成交就撤销</code> ,  <code> GTX 无法成为挂单方就撤销</code>
                 </td>
             </tr>
             <tr>
@@ -3481,7 +3478,7 @@ GET /futures/data/basis
             <pre class="highlight javascript tab-javascript"><code><span class="p">{}</span>
 </code></pre>
             <p><code>
-POST /fapi/v1/order/test (HMAC SHA256)
+POST /api/fapi/v1/order/test (HMAC SHA256)
 </code></p>
 
             <p>用于测试订单请求,但不会提交到撮合引擎</p>
@@ -3491,7 +3488,7 @@ POST /fapi/v1/order/test (HMAC SHA256)
 
             <p><strong>参数:</strong></p>
 
-            <p>参考 <code>POST /fapi/v1/order</code></p>-->
+            <p>参考 <code>POST /api/fapi/v1/order</code></p>-->
 
         <h2 id='trade-4'>批量下单 (TRADE)</h2>
         <blockquote>
@@ -3513,7 +3510,7 @@ POST /fapi/v1/order/test (HMAC SHA256)
         <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"NEW"</span><span class="p">,</span> <span class="c1">// 订单状态</span>
         <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// 触发价,对`TRAILING_STOP_MARKET`无效</span>
         <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span> <span class="c1">// 交易对</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span> <span class="c1">// 交易对</span>
         <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span> <span class="c1">// 有效方法</span>
         <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span> <span class="c1">// 订单类型</span>
         <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span>  <span class="c1">// 触发前订单类型</span>
@@ -3526,7 +3523,7 @@ POST /fapi/v1/order/test (HMAC SHA256)
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            POST /fapi/v1/batchOrders  (HMAC SHA256)
+            POST /api/fapi/v1/batchOrders  (HMAC SHA256)
         </code></p>
 
         <p><strong>权重:</strong>
@@ -3568,8 +3565,8 @@ POST /fapi/v1/order/test (HMAC SHA256)
 
         <p><strong>其中<code>batchOrders</code>应以list of JSON格式填写订单参数</strong></p>
         <ul>
-            <li><strong>例子:</strong> /fapi/v1/batchOrders?batchOrders=[{"type":"LIMIT",<br>
-                "symbol":"BTC-USD","side":"BUY","price":"20001","quantity":"0.001"}]</li>
+            <li><strong>例子:</strong> /api/fapi/v1/batchOrders?batchOrders=[{"type":"LIMIT",<br>
+                "symbol":"BTC-USDT","side":"BUY","price":"20001","quantity":"0.001"}]</li>
         </ul>
 
         <table>
@@ -3639,8 +3636,8 @@ POST /fapi/v1/order/test (HMAC SHA256)
                 <td>timeInForce</td>
                 <td>STRING</td>
                 <td>NO</td>
-                <td>有效方法,  <code>GTC 成交为止</code>,  <code>IOC 无法立即成交的部分就部分撤销</code> 
-                     <code>FOK 无法全部立即成交就撤销</code> ,  <code> GTX 无法成为挂单方就撤销</code> 
+                <td>有效方法,  <code>GTC 成交为止</code>,  <code>IOC 无法立即成交的部分就部分撤销</code>
+                    <code>FOK 无法全部立即成交就撤销</code> ,  <code> GTX 无法成为挂单方就撤销</code>
                 </td>
             </tr>
             <tr>
@@ -3679,7 +3676,7 @@ POST /fapi/v1/order/test (HMAC SHA256)
     <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"NEW"</span><span class="p">,</span>                    <span class="c1">// 订单状态</span>
     <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span>                    <span class="c1">// 触发价,对`TRAILING_STOP_MARKET`无效</span>
     <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>              <span class="c1">// 交易对</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>              <span class="c1">// 交易对</span>
     <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1579276756075</span><span class="p">,</span>              <span class="c1">// 订单时间</span>
     <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span>               <span class="c1">// 有效方法</span>
     <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span>     <span class="c1">// 订单类型</span>
@@ -3691,7 +3688,7 @@ POST /fapi/v1/order/test (HMAC SHA256)
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            GET /fapi/v1/order (HMAC SHA256)
+            GET /api/fapi/v1/order (HMAC SHA256)
         </code></p>
 
         <p>查询订单状态</p>
@@ -3768,7 +3765,7 @@ POST /fapi/v1/order/test (HMAC SHA256)
     <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"CANCELED"</span><span class="p">,</span> <span class="c1">// 订单状态</span>
     <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span> <span class="c1">// 触发价,对`TRAILING_STOP_MARKET`无效</span>
     <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span> <span class="c1">// 交易对</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span> <span class="c1">// 交易对</span>
     <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span> <span class="c1">// 有效方法 (保留字段，暂时不可用)</span>
     <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span> <span class="c1">// 触发前订单类型</span>
     <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span> <span class="c1">// 订单类型</span>
@@ -3780,7 +3777,7 @@ POST /fapi/v1/order/test (HMAC SHA256)
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            DELETE /fapi/v1/order  (HMAC SHA256)
+            DELETE /api/fapi/v1/order  (HMAC SHA256)
         </code></p>
 
         <p><strong>权重:</strong>
@@ -3842,7 +3839,7 @@ POST /fapi/v1/order/test (HMAC SHA256)
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            DELETE /fapi/v1/allOpenOrders  (HMAC SHA256)
+            DELETE /api/fapi/v1/allOpenOrders  (HMAC SHA256)
         </code></p>
 
         <p><strong>权重:</strong>
@@ -3900,7 +3897,7 @@ POST /fapi/v1/order/test (HMAC SHA256)
         <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"CANCELED"</span><span class="p">,</span> <span class="c1">// 订单状态</span>
         <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span> <span class="c1">// 触发价</span>
         <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span> <span class="c1">// 交易对</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span> <span class="c1">// 交易对</span>
         <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span> <span class="c1">// 有效方法 (保留字段，暂时不可用)</span>
         <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span> <span class="c1">// 触发前订单类型</span>
         <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span> <span class="c1">// 订单类型</span>
@@ -3913,7 +3910,7 @@ POST /fapi/v1/order/test (HMAC SHA256)
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            DELETE /fapi/v1/batchOrders  (HMAC SHA256)
+            DELETE /api/fapi/v1/batchOrders  (HMAC SHA256)
         </code></p>
 
         <p><strong>权重:</strong>
@@ -3976,7 +3973,7 @@ POST /fapi/v1/order/test (HMAC SHA256)
 <span class="p">}</span>
 </code></pre>
             <p><code>
-POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
+POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
 </code></p>
 
             <p><strong>权重:</strong>
@@ -4055,7 +4052,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
     <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"NEW"</span><span class="p">,</span>                    <span class="c1">// 订单状态</span>
     <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span>                    <span class="c1">// 触发价</span>
     <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>              <span class="c1">// 交易对</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>              <span class="c1">// 交易对</span>
     <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1579276756075</span><span class="p">,</span>              <span class="c1">// 订单时间</span>
     <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span>               <span class="c1">// 有效方法(保留字段，暂时不可用)</span>
     <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span>     <span class="c1">// 订单类型</span>
@@ -4067,7 +4064,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            GET /fapi/v1/openOrder  (HMAC SHA256)
+            GET /api/fapi/v1/openOrder  (HMAC SHA256)
         </code></p>
 
         <p>请小心使用不带symbol参数的调用</p>
@@ -4143,7 +4140,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
     <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"NEW"</span><span class="p">,</span>                    <span class="c1">// 订单状态</span>
     <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span>                    <span class="c1">// 触发价</span>
     <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>              <span class="c1">// 交易对</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>              <span class="c1">// 交易对</span>
     <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1579276756075</span><span class="p">,</span>              <span class="c1">// 订单时间</span>
     <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span>               <span class="c1">// 有效方法(保留字段，暂时不可用）</span>
     <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span>     <span class="c1">// 订单类型</span>
@@ -4156,7 +4153,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/v1/openOrders  (HMAC SHA256)
+            GET /api/fapi/v1/openOrders  (HMAC SHA256)
         </code></p>
 
         <p>请小心使用不带symbol参数的调用</p>
@@ -4219,7 +4216,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
     <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"NEW"</span><span class="p">,</span>                    <span class="c1">// 订单状态</span>
     <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span>                    <span class="c1">// 触发价</span>
     <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>              <span class="c1">// 交易对</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>              <span class="c1">// 交易对</span>
     <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1579276756075</span><span class="p">,</span>              <span class="c1">// 订单时间</span>
     <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span>               <span class="c1">// 有效方法</span>
     <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">,</span>     <span class="c1">// 订单类型</span>
@@ -4231,7 +4228,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/v1/allOrders (HMAC SHA256)
+            GET /api/fapi/v1/allOrders (HMAC SHA256)
         </code></p>
 
         <p><strong>权重:</strong><br>
@@ -4305,7 +4302,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
         <span class="s2">"accountAlias"</span><span class="p">:</span> <span class="s2">"608657393345511424"</span><span class="p">,</span>    <span class="c1">// 账户唯一识别码</span>
         <span class="s2">"asset"</span><span class="p">:</span> <span class="s2">"USD"</span><span class="p">,</span>     <span class="c1">// 资产</span>
         <span class="s2">"balance"</span><span class="p">:</span> <span class="s2">"0.00250000"</span><span class="p">,</span>    <span class="c1">// 账户余额</span>
-        <span class="s2">"withdrawAvailable"</span><span class="p">:</span> <span class="s2">"0.00250000"</span><span class="p">,</span> <span class="c1">// 最大可提款金额,同`GET /fapi/account`中"maxWithdrawAmount"</span>
+        <span class="s2">"withdrawAvailable"</span><span class="p">:</span> <span class="s2">"0.00250000"</span><span class="p">,</span> <span class="c1">// 最大可提款金额,同`GET /api/fapi/account`中"maxWithdrawAmount"</span>
         <span class="s2">"crossWalletBalance"</span><span class="p">:</span> <span class="s2">"0.00241969"</span><span class="p">,</span> <span class="c1">// 全仓账户余额</span>
         <span class="s2">"crossUnPnl"</span><span class="p">:</span> <span class="s2">"0.00000000"</span><span class="p">,</span> <span class="c1">// 全仓持仓未实现盈亏</span>
         <span class="s2">"availableBalance"</span><span class="p">:</span> <span class="s2">"0.00241969"</span><span class="p">,</span>    <span class="c1">// 可用下单余额</span>
@@ -4314,7 +4311,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/v1/balance (HMAC SHA256)
+            GET /api/fapi/v1/balance (HMAC SHA256)
         </code></p>
 
         <p><strong>Weight:</strong>
@@ -4370,7 +4367,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
      <span class="p">],</span>
      <span class="s2">"positions"</span><span class="p">:</span> <span class="p">[</span> <span class="c1">// 头寸</span>
          <span class="p">{</span>
-            <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>  <span class="c1">// 交易对 </span>
+            <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>  <span class="c1">// 交易对 </span>
             <span class="s2">"positionAmt"</span> <span class="s2">"0"</span><span class="p">,</span>  <span class="c1">// 持仓数量</span>
             <span class="s2">"initialMargin"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>   <span class="c1">// 当前所需起始保证金(按最新标标记价格)</span>
             <span class="s2">"maintMargin"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// 持仓维持保证金</span>
@@ -4385,7 +4382,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
             <span class="s2">"maxQty"</span><span class="p">:</span> <span class="s2">"50"</span>  <span class="c1">// 当前杠杆下最大可开仓数(标的数量)</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+            <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
             <span class="s2">"positionAmt"</span> <span class="s2">"0"</span><span class="p">,</span>
             <span class="s2">"initialMargin"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
             <span class="s2">"maintMargin"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
@@ -4400,7 +4397,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
             <span class="s2">"updateTime"</span><span class="p">:</span><span class="mi">0</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+            <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
             <span class="s2">"positionAmt"</span> <span class="s2">"0"</span><span class="p">,</span>
             <span class="s2">"initialMargin"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
             <span class="s2">"maintMargin"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
@@ -4424,7 +4421,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
 
 </code></pre>
         <p><code>
-            GET /fapi/v1/account (HMAC SHA256)
+            GET /api/fapi/v1/account (HMAC SHA256)
         </code></p>
 
         <p><strong>权重:</strong>
@@ -4468,11 +4465,11 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
     <span class="s2">"leverage"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="c1">// 杠杆倍数</span>
     <span class="s2">"maxQty"</span><span class="p">:</span> <span class="s2">"1000"</span><span class="p">,</span> <span class="c1">// 当前杠杆倍数下允许的最大base asset数量</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span>   <span class="c1">// 交易对</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span>   <span class="c1">// 交易对</span>
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            POST /fapi/v1/leverage (HMAC SHA256)
+            POST /api/fapi/v1/leverage (HMAC SHA256)
         </code></p>
 
         <p>调整用户在指定symbol合约的开仓杠杆。不同持仓方向上使用相同杠杆倍数,共享允许的最大交易标的资产数量。</p>
@@ -4529,7 +4526,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            POST /fapi/v1/marginType (HMAC SHA256)
+            POST /api/fapi/v1/marginType (HMAC SHA256)
         </code></p>
 
         <p>变换用户在指定symbol合约上的保证金模式：逐仓或全仓。<br>
@@ -4588,7 +4585,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            POST /fapi/v1/positionMargin (HMAC SHA256)
+            POST /api/fapi/v1/positionMargin (HMAC SHA256)
         </code></p>
 
         <p>针对逐仓模式下的仓位,调整其逐仓保证金资金。</p>
@@ -4660,7 +4657,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
     <span class="p">{</span>
         <span class="s2">"amount"</span><span class="p">:</span> <span class="s2">"23.36332311"</span><span class="p">,</span> <span class="c1">// 数量</span>
         <span class="s2">"asset"</span><span class="p">:</span> <span class="s2">"BTC"</span><span class="p">,</span> <span class="c1">// 资产</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span> <span class="c1">// 交易对</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span> <span class="c1">// 交易对</span>
         <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1578047897183</span><span class="p">,</span> <span class="c1">// 时间</span>
         <span class="s2">"type"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1">// 调整方向</span>
         <span class="s2">"positionSide"</span><span class="p">:</span> <span class="s2">"BOTH"</span>  <span class="c1">// 持仓方向</span>
@@ -4668,7 +4665,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
     <span class="p">{</span>
         <span class="s2">"amount"</span><span class="p">:</span> <span class="s2">"100"</span><span class="p">,</span>
         <span class="s2">"asset"</span><span class="p">:</span> <span class="s2">"BTC"</span><span class="p">,</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
         <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1578047900425</span><span class="p">,</span>
         <span class="s2">"type"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="s2">"positionSide"</span><span class="p">:</span> <span class="s2">"LONG"</span>
@@ -4676,7 +4673,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/v1/positionMargin/history (HMAC SHA256)
+            GET /api/fapi/v1/positionMargin/history (HMAC SHA256)
         </code></p>
 
         <p><strong>权重:</strong>
@@ -4744,7 +4741,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>  <span class="c1">// 交易对</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>  <span class="c1">// 交易对</span>
         <span class="s2">"positionAmt"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// 头寸数量,符号代表多空方向, 正数为多,负数为空</span>
         <span class="s2">"entryPrice"</span><span class="p">:</span> <span class="s2">"0.0"</span><span class="p">,</span>    <span class="c1">// 开仓均价</span>
         <span class="s2">"markPrice"</span><span class="p">:</span> <span class="s2">"0.00000000"</span><span class="p">,</span>  <span class="c1">// 当前标记价格</span>
@@ -4759,7 +4756,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
         <span class="s2">"updateTime"</span><span class="p">:</span><span class="mi">0</span>  <span class="c1">// 最新更新时间</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
         <span class="s2">"positionAmt"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
         <span class="s2">"entryPrice"</span><span class="p">:</span> <span class="s2">"11707.70000003"</span><span class="p">,</span>
         <span class="s2">"markPrice"</span><span class="p">:</span> <span class="s2">"11788.66626667"</span><span class="p">,</span>
@@ -4776,7 +4773,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/v1/positionRisk (HMAC SHA256)
+            GET /api/fapi/v1/positionRisk (HMAC SHA256)
         </code></p>
 
         <p><strong>权重:</strong>
@@ -4828,7 +4825,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
     <span class="p">{</span>
-        <span class="s1">'symbol'</span><span class="p">:</span> <span class="s1">'BTC-USD'</span><span class="p">,</span>      <span class="c1">// 交易对</span>
+        <span class="s1">'symbol'</span><span class="p">:</span> <span class="s1">'BTC-USDT'</span><span class="p">,</span>      <span class="c1">// 交易对</span>
         <span class="s1">'id'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>                        <span class="c1">// 交易ID</span>
         <span class="s1">'orderId'</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span>                  <span class="c1">// 订单ID</span>
         <span class="s1">'side'</span><span class="p">:</span> <span class="s1">'SELL'</span><span class="p">,</span>                 <span class="c1">// 买卖方向</span>
@@ -4847,7 +4844,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/v1/userTrades  (HMAC SHA256)
+            GET /api/fapi/v1/userTrades  (HMAC SHA256)
         </code></p>
 
         <p>获取成交历史</p>
@@ -4920,7 +4917,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span> <span class="c1">// 交易对,仅针对涉及交易对的资金流</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span> <span class="c1">// 交易对,仅针对涉及交易对的资金流</span>
         <span class="s2">"income"</span><span class="p">:</span> <span class="s2">"-0.37500000"</span><span class="p">,</span> <span class="c1">// 资金流数量,正数代表流入,负数代表流出</span>
         <span class="s2">"asset"</span><span class="p">:</span> <span class="s2">"BTC"</span><span class="p">,</span> <span class="c1">// 资产内容</span>
         <span class="s2">"info"</span><span class="p">:</span><span class="s2">"WITHDRAW"</span><span class="p">,</span> <span class="c1">// 备注信息,取决于流水类型</span>
@@ -4929,7 +4926,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
         <span class="s2">"tradeId"</span><span class="p">:</span><span class="s2">""</span>                    <span class="c1">// 引起流水产生的原始交易ID</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
         <span class="s2">"income"</span><span class="p">:</span> <span class="s2">"-0.01000000"</span><span class="p">,</span>
         <span class="s2">"asset"</span><span class="p">:</span> <span class="s2">"BTC"</span><span class="p">,</span>
         <span class="s2">"info"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span>
@@ -4940,7 +4937,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/v1/income (HMAC SHA256)
+            GET /api/fapi/v1/income (HMAC SHA256)
         </code></p>
 
         <p><strong>权重:</strong>
@@ -4964,17 +4961,17 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
                 <td>NO</td>
                 <td>交易对</td>
             </tr>
-            tr>    
-                <td>incomeType</td>
-                <td>LONG</td>
-                <td>NO</td>
-                <td>收益类型 "TRANSFER"划转，"WELCOME_BONUS"体验金，
-                        "REALIZED_PNL"已实现盈亏，
-                        "FUNDING_FEE"资金费用，"COMMISSION"手续费，
-                        "INSURANCE_CLEAR"爆仓清算，"REFERRAL_KICKBACK"推荐人返佣,
-                        "COMMISSION_REBATE"被推荐人返现，"DELIVERED_SETTELMENT"下架结算,
-                        "COIN_SWAP_DEPOSIT"资产转换转入, "COIN_SWAP_WITHDRAW" 资产转换转出
-                 </td>
+            tr>
+            <td>incomeType</td>
+            <td>LONG</td>
+            <td>NO</td>
+            <td>收益类型 "TRANSFER"划转，"WELCOME_BONUS"体验金，
+                "REALIZED_PNL"已实现盈亏，
+                "FUNDING_FEE"资金费用，"COMMISSION"手续费，
+                "INSURANCE_CLEAR"爆仓清算，"REFERRAL_KICKBACK"推荐人返佣,
+                "COMMISSION_REBATE"被推荐人返现，"DELIVERED_SETTELMENT"下架结算,
+                "COIN_SWAP_DEPOSIT"资产转换转入, "COIN_SWAP_WITHDRAW" 资产转换转出
+            </td>
             </tr>
             <tr>
                 <td>startTime</td>
@@ -5039,7 +5036,7 @@ POST /fapi/v1/countdownCancelAll  (HMAC SHA256)
             <p>获取标的交易对默认的杠杆分层标准</p>
 
             <p><code>
-GET /fapi/v1/leverageBracket
+GET /api/fapi/v1/leverageBracket
 </code></p>
 
             <p><strong>权重:</strong> 1</p>
@@ -5082,7 +5079,7 @@ GET /fapi/v1/leverageBracket
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
         <span class="s2">"brackets"</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span>
                 <span class="s2">"bracket"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>   <span class="c1">// 层级</span>
@@ -5099,7 +5096,7 @@ GET /fapi/v1/leverageBracket
         <p>获取交易对的杠杆分层标准</p>
 
         <p><code>
-            GET /fapi/v1/leverageBracket
+            GET /api/fapi/v1/leverageBracket
         </code></p>
 
         <p><strong>权重:</strong> 1</p>
@@ -5143,7 +5140,7 @@ GET /fapi/v1/leverageBracket
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
   <span class="p">{</span>
     <span class="s2">"orderId"</span><span class="p">:</span> <span class="mi">165123080</span><span class="p">,</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
     <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"FILLED"</span><span class="p">,</span>
     <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"1-1596542005017000006"</span><span class="p">,</span>
     <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"11326.9"</span><span class="p">,</span>
@@ -5166,7 +5163,7 @@ GET /fapi/v1/leverageBracket
   <span class="p">},</span>
   <span class="p">{</span>
     <span class="s2">"orderId"</span><span class="p">:</span> <span class="mi">207251986</span><span class="p">,</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
     <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"FILLED"</span><span class="p">,</span>
     <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"t-1597307316020000006"</span><span class="p">,</span>
     <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"11619.4"</span><span class="p">,</span>
@@ -5190,7 +5187,7 @@ GET /fapi/v1/leverageBracket
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /fapi/v1/forceOrders
+            GET /api/fapi/v1/forceOrders
         </code></p>
 
         <p><strong>权重:</strong> 带symbol 20</p>
@@ -5277,7 +5274,7 @@ GET /fapi/v1/leverageBracket
  <span class="p">]</span>
 </code></pre>
             <p><code>
-GET /fapi/v1/adlQuantile
+GET /api/fapi/v1/adlQuantile
 </code></p>
 
             <p><strong>权重:</strong> 5</p>
@@ -5336,13 +5333,13 @@ GET /fapi/v1/adlQuantile
             <p><strong>响应:</strong></p>
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>
+    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
     <span class="s2">"makerCommissionRate"</span><span class="p">:</span> <span class="s2">"0.00015"</span><span class="p">,</span>  <span class="c1">// 0.015%</span>
     <span class="s2">"takerCommissionRate"</span><span class="p">:</span> <span class="s2">"0.00040"</span>   <span class="c1">// 0.040%</span>
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            GET /fapi/v1/commissionRate (HMAC SHA256)
+            GET /api/fapi/v1/commissionRate (HMAC SHA256)
         </code></p>
 
         <p><strong>权重:</strong>
@@ -5402,7 +5399,7 @@ GET /fapi/v1/adlQuantile
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            POST /fapi/v1/listenKey
+            POST /api/v1/listenKey
         </code></p>
 
         <p>创建一个新的user data
@@ -5422,7 +5419,7 @@ GET /fapi/v1/adlQuantile
         <pre class="highlight javascript tab-javascript"><code><span class="p">{}</span>
 </code></pre>
         <p><code>
-            PUT /fapi/v1/listenKey
+            PUT /api/v1/listenKey
         </code></p>
 
         <p>有效期延长至本次调用后60分钟</p>
@@ -5440,7 +5437,7 @@ GET /fapi/v1/adlQuantile
         <pre class="highlight javascript tab-javascript"><code><span class="p">{}</span>
 </code></pre>
         <p><code>
-            DELETE /fapi/v1/listenKey
+            DELETE /api/v1/listenKey
         </code></p>
 
         <p>关闭某账户数据流</p>
@@ -5462,7 +5459,7 @@ GET /fapi/v1/adlQuantile
     <span class="s2">"cw"</span><span class="p">:</span><span class="s2">"3.16812045"</span><span class="p">,</span>      <span class="c1">// 除去逐仓仓位保证金的钱包余额, 仅在全仓 margin call 情况下推送此字段</span>
     <span class="s2">"p"</span><span class="p">:[</span>                   <span class="c1">// 涉及持仓</span>
       <span class="p">{</span>
-        <span class="s2">"s"</span><span class="p">:</span><span class="s2">"BTC-USD"</span><span class="p">,</span>        <span class="c1">// symbol</span>
+        <span class="s2">"s"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="p">,</span>        <span class="c1">// symbol</span>
         <span class="s2">"ps"</span><span class="p">:</span><span class="s2">"LONG"</span><span class="p">,</span>        <span class="c1">// 持仓方向</span>
         <span class="s2">"pa"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span>           <span class="c1">// 仓位</span>
         <span class="s2">"mt"</span><span class="p">:</span><span class="s2">"CROSSED"</span><span class="p">,</span>     <span class="c1">// 保证金模式</span>
@@ -5508,7 +5505,7 @@ GET /fapi/v1/adlQuantile
       <span class="p">],</span>
       <span class="s2">"P"</span><span class="p">:[</span>
        <span class="p">{</span>
-          <span class="s2">"s"</span><span class="p">:</span><span class="s2">"BTC-USD"</span><span class="p">,</span>              <span class="c1">// 交易对</span>
+          <span class="s2">"s"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="p">,</span>              <span class="c1">// 交易对</span>
           <span class="s2">"pa"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span>                 <span class="c1">// 仓位</span>
           <span class="s2">"ep"</span><span class="p">:</span><span class="s2">"0.0"</span><span class="p">,</span>            <span class="c1">// 入仓价格</span>
           <span class="s2">"cr"</span><span class="p">:</span><span class="s2">"200"</span><span class="p">,</span>               <span class="c1">// (费前)累计实现损益</span>
@@ -5518,7 +5515,7 @@ GET /fapi/v1/adlQuantile
           <span class="s2">"ps"</span><span class="p">:</span><span class="s2">"BOTH"</span>                   <span class="c1">// 持仓方向</span>
        <span class="p">},</span>
        <span class="p">{</span>
-            <span class="s2">"s"</span><span class="p">:</span><span class="s2">"BTC-USD"</span><span class="p">,</span>
+            <span class="s2">"s"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="p">,</span>
             <span class="s2">"pa"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span>
             <span class="s2">"ep"</span><span class="p">:</span><span class="s2">"6563.6"</span><span class="p">,</span>
             <span class="s2">"cr"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span>
@@ -5528,7 +5525,7 @@ GET /fapi/v1/adlQuantile
             <span class="s2">"ps"</span><span class="p">:</span><span class="s2">"LONG"</span>
          <span class="p">},</span>
        <span class="p">{</span>
-            <span class="s2">"s"</span><span class="p">:</span><span class="s2">"BTC-USD"</span><span class="p">,</span>
+            <span class="s2">"s"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="p">,</span>
             <span class="s2">"pa"</span><span class="p">:</span><span class="s2">"-10"</span><span class="p">,</span>
             <span class="s2">"ep"</span><span class="p">:</span><span class="s2">"6563.8"</span><span class="p">,</span>
             <span class="s2">"cr"</span><span class="p">:</span><span class="s2">"-45.04000000"</span><span class="p">,</span>
@@ -5580,7 +5577,7 @@ GET /fapi/v1/adlQuantile
   <span class="s2">"T"</span><span class="p">:</span><span class="mi">1568879465650</span><span class="p">,</span>                <span class="c1">// 撮合时间</span>
   <span class="s2">"i"</span><span class="p">:</span> <span class="s2">"SfsR"</span><span class="p">,</span>                          <span class="c1">// 账户唯一识别码 accountAlias</span>
   <span class="s2">"o"</span><span class="p">:{</span>
-    <span class="s2">"s"</span><span class="p">:</span><span class="s2">"BTC-USD"</span><span class="p">,</span>                    <span class="c1">// 交易对</span>
+    <span class="s2">"s"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="p">,</span>                    <span class="c1">// 交易对</span>
     <span class="s2">"c"</span><span class="p">:</span><span class="s2">"TEST"</span><span class="p">,</span>                     <span class="c1">// 客户端自定订单ID</span>
       <span class="c1">// 特殊的自定义订单ID:</span>
       <span class="c1">// "autoclose-"开头的字符串: 系统强平订单</span>
@@ -5788,7 +5785,7 @@ GET /fapi/v1/adlQuantile
             <span class="s2">"markPrice"</span><span class="p">:</span><span class="s2">"12046.06021667"</span><span class="p">,</span>  <span class="c1">// 当前标记价格</span>
             <span class="s2">"maxQty"</span><span class="p">:</span><span class="s2">"50"</span><span class="p">,</span>       <span class="c1">// 当前杠杆倍数允许的数量上限(标的数量)</span>
             <span class="s2">"positionAmt"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span>  <span class="c1">// 持仓数量</span>
-            <span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTC-USD"</span><span class="p">,</span>   <span class="c1">// 交易对</span>
+            <span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="p">,</span>   <span class="c1">// 交易对</span>
             <span class="s2">"unRealizedProfit"</span><span class="p">:</span><span class="s2">"0.00000079"</span><span class="p">,</span>  <span class="c1">// 持仓未实现盈亏</span>
             <span class="s2">"positionSide"</span><span class="p">:</span><span class="s2">"LONG"</span>       <span class="c1">// 持仓方向</span>
           <span class="p">},</span>
@@ -5802,7 +5799,7 @@ GET /fapi/v1/adlQuantile
             <span class="s2">"markPrice"</span><span class="p">:</span><span class="s2">"12046.06021667"</span><span class="p">,</span>
             <span class="s2">"maxQty"</span><span class="p">:</span><span class="s2">"50"</span><span class="p">,</span>
             <span class="s2">"positionAmt"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span>
-            <span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTC-USD"</span><span class="p">,</span>
+            <span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="p">,</span>
             <span class="s2">"unRealizedProfit"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span>
             <span class="s2">"positionSide"</span><span class="p">:</span><span class="s2">"SHORT"</span>
           <span class="p">}</span>
