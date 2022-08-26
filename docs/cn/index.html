@@ -379,15 +379,15 @@
                 <li>
                     <a href="#k" class="toc-h2 toc-link" data-title="K线数据">K线数据</a>
                 </li>
-                <!--      <li>
-                        <a href="#k-2" class="toc-h2 toc-link" data-title="连续合约K线数据">连续合约K线数据</a>
-                    </li>-->
+                      <li>
+                        <a href="#k-2" class="toc-h2 toc-link" data-title="价格指数K线数据">价格指数K线数据</a>
+                    </li>
                 <!--             <li>
                         <a href="#k-3" class="toc-h2 toc-link" data-title="价格指数K线数据">价格指数K线数据</a>
                     </li>-->
-                <!--    <li>
+                    <li>
                         <a href="#k-4" class="toc-h2 toc-link" data-title="标记价格K线数据">标记价格K线数据</a>
-                    </li>-->
+                    </li>
                 <!--   <li>
                         <a href="#24hr" class="toc-h2 toc-link" data-title="24hr价格变动情况">24hr价格变动情况</a>
                     </li>-->
@@ -448,12 +448,12 @@
                 <!--        <li>
                         <a href="#k-6" class="toc-h2 toc-link" data-title="连续合约K线">连续合约K线</a>
                     </li>-->
-                <!--     <li>
+                     <li>
                         <a href="#k-7" class="toc-h2 toc-link" data-title="价格指数K线">价格指数K线</a>
-                    </li>-->
-                <!--       <li>
+                    </li>
+                       <li>
                         <a href="#k-8" class="toc-h2 toc-link" data-title="标记价格K线">标记价格K线</a>
-                    </li>-->
+                    </li>
                 <li>
                     <a href="#symbol-ticker" class="toc-h2 toc-link"
                        data-title="ticker 信息">ticker 信息</a>
@@ -1177,7 +1177,7 @@
         <h1 id='ed913b7357'>行情接口</h1>
         <h2 id='ping'>测试服务器连通性 PING</h2>
         <p><code>
-            GET /api/dapi/market/v1/ping
+            GET /dapi/market/v1/ping
         </code></p>
 
         <blockquote>
@@ -1201,7 +1201,7 @@
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            GET /api/dapi/v1/time
+            GET /dapi/v1/time
         </code></p>
 
         <p>获取服务器时间</p>
@@ -1277,7 +1277,7 @@
 
 </code></pre>
         <p><code>
-            GET /api/dapi/v1/exchangeInfo
+            GET /dapi/v1/exchangeInfo
         </code></p>
 
         <p>获取交易规则和交易对</p>
@@ -1311,7 +1311,7 @@
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            GET /api/dapi/market/v1/depth
+            GET /dapi/market/v1/depth
         </code></p>
 
         <p><strong>权重:</strong></p>
@@ -1439,7 +1439,7 @@
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /api/dapi/market/v1/historicalTrades
+            GET /dapi/market/v1/historicalTrades
         </code></p>
 
         <p>查询订单簿历史成交</p>
@@ -1585,7 +1585,7 @@ GET /api/dapi/v1/aggTrades
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /api/dapi/market/v1/premiumIndex
+            GET /dapi/market/v1/premiumIndex
         </code></p>
 
         <p><strong>权重:</strong>
@@ -1629,7 +1629,7 @@ GET /api/dapi/v1/aggTrades
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /api/dapi/market/v1/fundingRate
+            GET /dapi/market/v1/fundingRate
         </code></p>
 
         <p><strong>权重:</strong>
@@ -1693,7 +1693,7 @@ GET /api/dapi/v1/aggTrades
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /api/dapi/market/v1/klines
+            GET /dapi/market/v1/klines
         </code>
             每根K线的开盘时间可视为唯一ID</p>
 
@@ -1792,19 +1792,239 @@ GET /api/dapi/v1/aggTrades
                     <li>5m</li>
                     <li>15m</li>
                     <li>30m</li>
-                    <li>1h</li>
-                    <li>2h</li>
-                    <li>4h</li>
-                    <li>6h</li>
-                    <li>8h</li>
-                    <li>12h</li>
+                    <li>60m</li>
                     <li>1d</li>
-                    <li>3d</li>
-                    <li>1w</li>
-                    <li>1M</li>
                 </ul>
             </li>
         </ul>
+
+        <h2 id='k-2'>价格指数K线数据</h2>
+        <blockquote>
+            <p><strong>响应:</strong></p>
+        </blockquote>
+        <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
+  <span class="p">[</span>
+     <span class="s2">"c"</span><span class="p">:</span><span class="mi">21111</span><span class="p">,</span>      <span
+                    class="c1">// 收盘价格 (当前K线未结束的即为最新价)</span>
+     <span class="s2">"t"</span><span class="p">:</span><span class="s2">"1656178980"</span><span class="p">,</span>           <span
+                    class="c1">// 时间</span>
+     <span class="s2">"v"</span><span class="p">:</span><span class="s2">"3"</span><span
+                    class="p">,</span>           <span class="c1">// 数量</span>
+     <span class="s2">"h"</span><span class="p">:</span><span class="s2">"21111"</span><span class="p">,</span>           <span
+                    class="c1">// 最高价</span>
+     <span class="s2">"l"</span><span class="p">:</span><span class="s2">"21110.5"</span><span class="p">,</span>           <span
+                    class="c1">// 最低价</span>
+     <span class="s2">"o"</span><span class="p">:</span><span class="s2">"21110.5"</span><span class="p"></span>              <span
+                    class="c1">// 开盘价</span>
+  <span class="p">]</span>
+<span class="p">]</span>
+</code></pre>
+
+
+        <p><code>
+            GET /dapi/v1/indexPriceKlines
+        </code></p>
+        <p>每根K线的开盘时间可视为唯一ID</p>
+
+        <p><strong>权重:</strong> 取决于请求中的LIMIT参数</p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>LIMIT参数</th>
+                <th>权重</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>[1,100)</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>[100, 500)</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>[500, 1000]</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>&gt; 1000</td>
+                <td>10</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p><strong>参数:</strong></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>名称</th>
+                <th>类型</th>
+                <th>是否必需</th>
+                <th>描述</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>symbol</td>
+                <td>STRING</td>
+                <td>YES</td>
+                <td>标的交易对</td>
+            </tr>
+            <tr>
+                <td>interval</td>
+                <td>ENUM</td>
+                <td>YES</td>
+                <td>时间间隔</td>
+            </tr>
+            <tr>
+                <td>startTime</td>
+                <td>LONG</td>
+                <td>NO</td>
+                <td>起始时间</td>
+            </tr>
+            <tr>
+                <td>endTime</td>
+                <td>LONG</td>
+                <td>NO</td>
+                <td>结束时间</td>
+            </tr>
+            <tr>
+                <td>limit</td>
+                <td>INT</td>
+                <td>NO</td>
+                <td>默认值:500 最大值:1500</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li>startTime 与 endTime 之间最多只可以相差200天</li>
+            <li>默认返回 startTime 与 endTime 之间最接近 endTime的 limit 条数据:
+
+                <ul>
+                    <li>startTime, endTime 均未提供的, 将会使用当前时间为 endTime, 200天前为 startTime</li>
+                    <li>仅提供 startTime 的, 将会使用 startTime 之后200天作为默认 endTime (至多为当前时间)</li>
+                    <li>仅提供 endTime 的, 将会使用endTime 之前200天作为默认 startTime</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2 id='k-4'>标记价格K线数据</h2>
+        <blockquote>
+            <p><strong>响应:</strong></p>
+        </blockquote>
+        <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
+  <span class="p">[</span>
+     <span class="s2">"c"</span><span class="p">:</span><span class="mi">21111</span><span class="p">,</span>      <span
+                    class="c1">// 收盘价格 (当前K线未结束的即为最新价)</span>
+     <span class="s2">"t"</span><span class="p">:</span><span class="s2">"1656178980"</span><span class="p">,</span>           <span
+                    class="c1">// 时间</span>
+     <span class="s2">"v"</span><span class="p">:</span><span class="s2">"3"</span><span
+                    class="p">,</span>           <span class="c1">// 数量</span>
+     <span class="s2">"h"</span><span class="p">:</span><span class="s2">"21111"</span><span class="p">,</span>           <span
+                    class="c1">// 最高价</span>
+     <span class="s2">"l"</span><span class="p">:</span><span class="s2">"21110.5"</span><span class="p">,</span>           <span
+                    class="c1">// 最低价</span>
+     <span class="s2">"o"</span><span class="p">:</span><span class="s2">"21110.5"</span><span class="p"></span>              <span
+                    class="c1">// 开盘价</span>
+  <span class="p">]</span>
+<span class="p">]</span>
+</code></pre>
+        <p><code>
+            GET /dapi/v1/markPriceKlines
+        </code>
+            每根K线的开盘时间可视为唯一ID</p>
+
+        <p><strong>权重:</strong> 取决于请求中的LIMIT参数</p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>LIMIT参数</th>
+                <th>权重</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>[1,100)</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>[100, 500)</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>[500, 1000]</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>&gt; 1000</td>
+                <td>10</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p><strong>参数:</strong></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>名称</th>
+                <th>类型</th>
+                <th>是否必需</th>
+                <th>描述</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>symbol</td>
+                <td>STRING</td>
+                <td>YES</td>
+                <td>交易对</td>
+            </tr>
+            <tr>
+                <td>interval</td>
+                <td>ENUM</td>
+                <td>YES</td>
+                <td>时间间隔</td>
+            </tr>
+            <tr>
+                <td>startTime</td>
+                <td>LONG</td>
+                <td>NO</td>
+                <td>起始时间</td>
+            </tr>
+            <tr>
+                <td>endTime</td>
+                <td>LONG</td>
+                <td>NO</td>
+                <td>结束时间</td>
+            </tr>
+            <tr>
+                <td>limit</td>
+                <td>INT</td>
+                <td>NO</td>
+                <td>默认值:500 最大值:1500</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li>startTime 与 endTime 之间最多只可以相差200天</li>
+            <li>默认返回 startTime 与 endTime 之间最接近 endTime的 limit 条数据:
+
+                <ul>
+                    <li>startTime, endTime 均未提供的, 将会使用当前时间为 endTime, 200天前为 startTime</li>
+                    <li>仅提供 startTime 的, 将会使用 startTime 之后200天作为默认 endTime (至多为当前时间)</li>
+                    <li>仅提供 endTime 的, 将会使用endTime 之前200天作为默认 startTime</li>
+                </ul>
+            </li>
+        </ul>
+
+
         <!--  <h2 id='k-2'>连续合约K线数据</h2>
             <blockquote>
                 <p><strong>响应:</strong></p>
@@ -2170,7 +2390,7 @@ GET /api/dapi/v1/markPriceKlines
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /api/dapi/market/v1/ticker/price
+            GET /dapi/market/v1/ticker/price
         </code></p>
 
         <p>返回最近价格</p>
@@ -2220,7 +2440,7 @@ GET /api/dapi/v1/markPriceKlines
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /api/dapi/market/v1/ticker/bookTicker
+            GET /dapi/market/v1/ticker/bookTicker
         </code></p>
 
         <p>返回当前最优的挂单(最高买单,最低卖单)</p>
@@ -2309,7 +2529,7 @@ GET /api/dapi/v1/markPriceKlines
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET dapi/market/v1/futures/data/openInterestHist
+            GET /dapi/market/v1/futures/data/openInterestHist
         </code></p>
 
         <p><strong>权重:</strong> 1</p>
@@ -2386,7 +2606,7 @@ GET /api/dapi/v1/markPriceKlines
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET dapi/market/v1/futures/data/topLongShortAccountRatio
+            GET /dapi/market/v1/futures/data/topLongShortAccountRatio
         </code></p>
 
         <p><strong>权重:</strong> 1</p>
@@ -2463,7 +2683,7 @@ GET /api/dapi/v1/markPriceKlines
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET dapi/market/v1/futures/data/topLongShortPositionRatio
+            GET /dapi/market/v1/futures/data/topLongShortPositionRatio
         </code></p>
 
         <p><strong>权重:</strong> 1</p>
@@ -2539,7 +2759,7 @@ GET /api/dapi/v1/markPriceKlines
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET dapi/market/v1/futures/data/globalLongShortAccountRatio
+            GET /dapi/market/v1/futures/data/globalLongShortAccountRatio
         </code></p>
 
         <p><strong>权重:</strong> 1</p>
@@ -2618,7 +2838,7 @@ GET /api/dapi/v1/markPriceKlines
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET dapi/market/v1/futures/data/takerlongshortRatio
+            GET /dapi/market/v1/futures/data/takerlongshortRatio
         </code></p>
 
         <p><strong>权重:</strong> 1</p>
@@ -2818,7 +3038,7 @@ GET /futures/data/basis
             <p><strong>Payload:</strong></p>
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-               <span class="s2">"e"</span><span class="p">:</span><span class="mi">swap.trade</span><span class="p">,</span>     <span class="c1">// 事件名称</span>
+               <span class="s2">"e"</span><span class="p">:</span><span class="mi">aggTrade</span><span class="p">,</span>     <span class="c1">// 事件名称</span>
                <span class="s2">"E"</span><span class="p">:</span><span class="mi">1646796690500</span><span class="p">,</span>     <span class="c1">// 事件时间</span>
                <span class="s2">"s"</span><span class="p">:</span><span class="mi">BTC-USD</span><span class="p">,</span>     <span class="c1">// 币种</span>
                <span class="s2">"p"</span><span class="p">:</span><span class="mi">36362.3</span><span class="p">,</span>     <span class="c1">// 成交价格</span>
@@ -2887,12 +3107,108 @@ GET /futures/data/basis
             <li>1d</li>
         </ul>
 
+        <h2 id='k-7'>价格指数K线</h2>
+        <blockquote>
+            <p><strong>Payload:</strong></p>
+        </blockquote>
+        <p>K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。</p>
+        <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"e"</span><span class="p">:</span> <span class="mi">indexprice_kline</span><span
+                    class="p">,</span> <span class="c1">// 事件名称</span>
+    <span class="s2">"E"</span><span class="p">:</span> <span class="mi">1646795729284</span><span
+                    class="p">,</span> <span class="c1">// 这根K发送时间</span>
+    <span class="s2">"s"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span
+                    class="p">,</span>  <span class="c1">// 交易对</span>
+    <span class="s2">"t"</span><span class="p">:</span> <span class="s2">"1646795160000"</span><span class="p">,</span>      <span
+                    class="c1">// K线开始时间</span>
+    <span class="s2">"T"</span><span class="p">:</span> <span class="mi">1646795729284</span><span class="p">,</span>       <span
+                    class="c1">// k线结束时间</span>
+    <span class="s2">"i"</span><span class="p">:</span> <span class="mi">"1m"</span><span class="p">,</span>       <span
+                    class="c1">// K线间隔</span>
+    <span class="s2">"o"</span><span class="p">:</span> <span class="s2">"9405.34"</span><span class="p">,</span>  <span
+                    class="c1">// 这根K线期间第一笔成交价</span>
+    <span class="s2">"c"</span><span class="p">:</span> <span class="s2">"39491.52"</span><span
+                    class="p">,</span>  <span class="c1">// 这根K线期间末一笔成交价</span>
+    <span class="s2">"h"</span><span class="p">:</span> <span class="s2">"39491.52"</span><span
+                    class="p">,</span>  <span class="c1">// 这根K线期间最高成交价</span>
+    <span class="s2">"l"</span><span class="p">:</span> <span class="s2">"39405.34"</span><span
+                    class="p">,</span>  <span class="c1">// 这根K线期间最低成交价</span>
+    <span class="s2">"v"</span><span class="p">:</span> <span class="s2">"23.77883"</span><span
+                    class="p">,</span>    <span class="c1">// 这根K线期间成交量</span>
+<span class="p">}</span>
+</code></pre>
+        <p>K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。</p>
+
+        <p><code>&lt;symbol&gt;@indexPriceKline_&lt;interval&gt;</code></p>
+
+        <p><strong>Update Speed:</strong> 2000ms</p>
+
+        <p><strong>K线图间隔参数:</strong></p>
+        <ul>
+            <li>1m</li>
+            <li>3m</li>
+            <li>5m</li>
+            <li>15m</li>
+            <li>30m</li>
+            <li>60m</li>
+            <li>1d</li>
+        </ul>
+
+        <h2 id='k-8'>价格指数K线</h2>
+        <blockquote>
+            <p><strong>Payload:</strong></p>
+        </blockquote>
+        <p>K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。</p>
+        <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"e"</span><span class="p">:</span> <span class="mi">markPrice_kline</span><span
+                    class="p">,</span> <span class="c1">// 事件名称</span>
+    <span class="s2">"E"</span><span class="p">:</span> <span class="mi">1646795729284</span><span
+                    class="p">,</span> <span class="c1">// 这根K发送时间</span>
+    <span class="s2">"s"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span
+                    class="p">,</span>  <span class="c1">// 交易对</span>
+    <span class="s2">"t"</span><span class="p">:</span> <span class="s2">"1646795160000"</span><span class="p">,</span>      <span
+                    class="c1">// K线开始时间</span>
+    <span class="s2">"T"</span><span class="p">:</span> <span class="mi">1646795729284</span><span class="p">,</span>       <span
+                    class="c1">// k线结束时间</span>
+    <span class="s2">"i"</span><span class="p">:</span> <span class="mi">"1m"</span><span class="p">,</span>       <span
+                    class="c1">// K线间隔</span>
+    <span class="s2">"o"</span><span class="p">:</span> <span class="s2">"9405.34"</span><span class="p">,</span>  <span
+                    class="c1">// 这根K线期间第一笔成交价</span>
+    <span class="s2">"c"</span><span class="p">:</span> <span class="s2">"39491.52"</span><span
+                    class="p">,</span>  <span class="c1">// 这根K线期间末一笔成交价</span>
+    <span class="s2">"h"</span><span class="p">:</span> <span class="s2">"39491.52"</span><span
+                    class="p">,</span>  <span class="c1">// 这根K线期间最高成交价</span>
+    <span class="s2">"l"</span><span class="p">:</span> <span class="s2">"39405.34"</span><span
+                    class="p">,</span>  <span class="c1">// 这根K线期间最低成交价</span>
+    <span class="s2">"v"</span><span class="p">:</span> <span class="s2">"23.77883"</span><span
+                    class="p">,</span>    <span class="c1">// 这根K线期间成交量</span>
+<span class="p">}</span>
+</code></pre>
+        <p>K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。</p>
+
+        <p><code>&lt;symbol&gt;@markPriceKline_&lt;interval&gt;</code></p>
+
+        <p><strong>Update Speed:</strong> 2000ms</p>
+
+        <p><strong>K线图间隔参数:</strong></p>
+        <ul>
+            <li>1m</li>
+            <li>3m</li>
+            <li>5m</li>
+            <li>15m</li>
+            <li>30m</li>
+            <li>60m</li>
+            <li>1d</li>
+        </ul>
+
+
+
         <h2 id='symbol-ticker'>ticker 信息</h2>
         <blockquote>
             <p><strong>Payload:</strong></p>
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code>  <span class="p">{</span>
-    <span class="s2">"e"</span><span class="p">:</span> <span class="s2">"swap.ticker"</span><span class="p">,</span>  <span class="c1">// 事件类型</span>
+    <span class="s2">"e"</span><span class="p">:</span> <span class="s2">"ticker"</span><span class="p">,</span>  <span class="c1">// 事件类型</span>
     <span class="s2">"E"</span><span class="p">:</span> <span class="mi">1646796690500</span><span class="p">,</span>         <span class="c1">// 事件时间</span>
     <span class="s2">"s"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span>          <span class="c1">// 交易对</span>
     <span class="s2">"P"</span><span class="p">:</span> <span class="s2">"4.4760298773"</span><span class="p">,</span>          <span class="c1">// 24小时价格变化</span>
@@ -2916,7 +3232,7 @@ GET /futures/data/basis
             <p><strong>Payload:</strong></p>
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-  <span class="s2">"e"</span><span class="p">:</span> <span class="mi">swap.depth</span><span class="p">,</span>  <span class="c1">// 事件名称</span>
+  <span class="s2">"e"</span><span class="p">:</span> <span class="mi">depth</span><span class="p">,</span>  <span class="c1">// 事件名称</span>
   <span class="s2">"E"</span><span class="p">:</span> <span class="mi">1646796690500</span><span class="p">,</span>  <span class="c1">// 事件时间</span>
   <span class="s2">"s"</span><span Dclass="p">:</span> <span class="mi">BTC-USD</span><span class="p">,</span>  <span class="c1">// 币种</span>
   <span class="s2">"v"</span><span Dclass="p">:</span> <span class="mi">1646796690502</span><span class="p">,</span>  <span class="c1">// 版本号</span>
@@ -2936,7 +3252,7 @@ GET /futures/data/basis
 
 <span class="p">}</span>
 </code></pre>
-        <p>每秒或每100毫秒推送有限档深度信息。每次推送买卖20档</p>
+        <p>每秒或每100毫秒推送有限档深度信息。每次推送买卖5/10/20档</p>
 
         <p><strong>Stream Names:</strong>
             <code>&lt;symbol&gt;@depth&lt;levels&gt;</code>
@@ -2949,7 +3265,7 @@ GET /futures/data/basis
             <p><strong>Payload:</strong></p>
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-  <span class="s2">"e"</span><span class="p">:</span> <span class="mi">swap.depth_up</span><span class="p">,</span>  <span class="c1">// 事件名称</span>
+  <span class="s2">"e"</span><span class="p">:</span> <span class="mi">depth</span><span class="p">,</span>  <span class="c1">// 事件名称</span>
   <span class="s2">"E"</span><span class="p">:</span> <span class="mi">1646796690500</span><span class="p">,</span>  <span class="c1">// 事件时间</span>
   <span class="s2">"s"</span><span Dclass="p">:</span> <span class="mi">BTC-USD</span><span class="p">,</span>  <span class="c1">// 币种</span>
   <span class="s2">"v"</span><span Dclass="p">:</span> <span class="mi">1646796690502</span><span class="p">,</span>  <span class="c1">// 版本号</span>
