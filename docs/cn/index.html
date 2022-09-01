@@ -299,10 +299,10 @@
                     <a href="./second.html" id="btn_spot">现货</a>
                 </span>
             <span class="nav_cell nav_tab">
-                    <a href="./index.html" id="btn_fp">U本位合约</a>
+                    <a href="./index.html" id="btn_fp">币本位合约</a>
                 </span>
             <span class="nav_cell nav_tab">
-                    <a href="./btn_dm.html" id="btn_dm">币本位合约</a>
+                    <a href="./btn_dm.html" id="btn_dm">U本位合约</a>
                 </span>
         </div>
     </div>
@@ -339,9 +339,9 @@
                 <li>
                     <a href="#api" class="toc-h2 toc-link" data-title="公开API参数">公开API参数</a>
                 </li>
-                <li>
+ <!--               <li>
                     <a href="#cc81fff589" class="toc-h2 toc-link" data-title="过滤器">过滤器</a>
-                </li>
+                </li>-->
             </ul>
         </li>
         <li>
@@ -627,12 +627,12 @@
                         Request issues</a>
                 </li>
                 <li>
-                    <a href="#20xx-processing-issues" class="toc-h2 toc-link"
-                       data-title="20xx - Processing Issues">20xx - Processing Issues</a>
+                    <a href="#100xx-processing-issues" class="toc-h2 toc-link"
+                       data-title="100xx - Processing Issues">100xx - Processing Issues</a>
                 </li>
                 <li>
-                    <a href="#40xx-filters-and-other-issues" class="toc-h2 toc-link"
-                       data-title="40xx - Filters and other Issues">40xx - Filters and other Issues</a>
+                    <a href="#800xx-filters-and-other-issues" class="toc-h2 toc-link"
+                       data-title="800xx - Filters and other Issues">200xx-800x - Filters and other Issues</a>
                 </li>
             </ul>
         </li>
@@ -702,11 +702,9 @@
         <ul>
             <li><code>GET</code>方法的接口, 参数必须在<code>query string</code>中发送.</li>
             <li><code>POST</code>, <code>PUT</code>, 和 <code>DELETE</code> 方法的接口, 参数可以在
-                <code>query string</code>中发送,也可以在 <code>request body</code>中发送(content type
-                <code>application/x-www-form-urlencoded</code>)。允许混合这两种方式发送参数。但如果同一个参数名在query string和request
-                body中都有,query string中的会被优先采用。
+                <code>query string</code>中发送。
             </li>
-            <li>对参数的顺序不做要求。</li>
+            <li>请求参数的顺序需要升序。</li>
         </ul>
         <h2 id='12907e94be'>访问限制</h2>
         <ul>
@@ -789,7 +787,9 @@
             <li>签名使用<code>HMAC SHA256</code>算法. API-KEY所对应的API-Secret作为 <code>HMAC SHA256</code>
                 的密钥,其他所有参数作为<code>HMAC SHA256</code>的操作对象,得到的输出即为签名。</li>
             <li>签名大小写不敏感。</li>
+<!--
             <li>当同时使用query string和request body时,<code>HMAC SHA256</code>的输入query string在前,request body在后</li>
+-->
         </ul>
         <h3 id='a3d140c825'>时间同步安全</h3>
         <ul>
@@ -828,11 +828,11 @@
             <tbody>
             <tr>
                 <td>apiKey</td>
-                <td>dbefbc809e3e83c283a984c3a1459732ea7db1360ca80c5c2c8867408d28cc83</td>
+                <td>ae16f4fc1575d152c7e3c09e4dc142ab401f41f637798dc53dc45b87712318d0</td>
             </tr>
             <tr>
                 <td>secretKey</td>
-                <td>2b5eb11e18796d12d88f13dc27dbbd02c2cc51ff7059765ed9821957d82bb4d9</td>
+                <td>c9b323efcae5b4ecba23853ebe9a8773d859794193cd26b15ca27c7bcb5c48c6</td>
             </tr>
             </tbody>
         </table>
@@ -847,11 +847,11 @@
             <tbody>
             <tr>
                 <td>symbol</td>
-                <td>BTCUSD_200925</td>
+                <td>BTC-USD</td>
             </tr>
             <tr>
                 <td>side</td>
-                <td>BUY</td>
+                <td>SELL</td>
             </tr>
             <tr>
                 <td>type</td>
@@ -863,15 +863,23 @@
             </tr>
             <tr>
                 <td>price</td>
-                <td>9000</td>
+                <td>20000</td>
+            </tr>
+            <tr>
+                <td>positionSide</td>
+                <td>SHORT</td>
+            </tr>
+            <tr>
+                <td>closePosition</td>
+                <td>true</td>
             </tr>
             <tr>
                 <td>recvWindow</td>
-                <td>5000</td>
+                <td>60000</td>
             </tr>
             <tr>
                 <td>timestamp</td>
-                <td>1591702613943</td>
+                <td>1662016365208</td>
             </tr>
             </tbody>
         </table>
@@ -881,79 +889,31 @@
 
             <p><strong>HMAC SHA256 签名:</strong></p>
         </blockquote>
-        <pre class="highlight shell tab-shell"><code>    <span class="nv">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTCUSD_200925&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;timeInForce=GTC&amp;recvWindow=5000&amp;timestamp=1591702613943"</span> | openssl dgst -sha256 -hmac <span class="s2">"2b5eb11e18796d12d88f13dc27dbbd02c2cc51ff7059765ed9821957d82bb4d9"</span>
-    <span class="o">(</span>stdin<span class="o">)=</span> 21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a
+        <pre class="highlight shell tab-shell"><code>    <span class="nv">$ </span><span class="nb">echo</span> -n <span class="s2">"closePosition=true&amp;positionSide=SHORT&amp;price=20000&quantity=1&amp;recvWindow=60000&side=SELL&amp;symbol=BTC-USD&amp;timestamp=1662016365208&amp;type=LIMIT"</span> | openssl dgst -sha256 -hmac <span class="s2">"c9b323efcae5b4ecba23853ebe9a8773d859794193cd26b15ca27c7bcb5c48c6"</span>
+    <span class="o">(</span>stdin<span class="o">)=</span> 7dfcc06660bd89b6f465a801c2e45fa355469d8c9c20bcfbb904c6c3f94949b3
 </code></pre>
         <blockquote>
             <p><strong>curl 调用:</strong></p>
         </blockquote>
         <pre class="highlight shell tab-shell"><code>    <span class="o">(</span>HMAC SHA256<span class="o">)</span>
-    <span class="nv">$ </span>curl -H <span class="s2">"X-BITYARD-APIKEY: dbefbc809e3e83c283a984c3a1459732ea7db1360ca80c5c2c8867408d28cc83"</span> -X POST <span class="s1">'https://test-ws.bydtms.com/openapi/api/dapi/v1/order?symbol=BTCUSD_200925&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;timeInForce=GTC&amp;recvWindow=5000&amp;timestamp=1591702613943&amp;sign= 21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a'</span>
+    <span class="nv">$ </span>curl -H <span class="s2">"X-BITYARD-APIKEY: ae16f4fc1575d152c7e3c09e4dc142ab401f41f637798dc53dc45b87712318d0"</span> -X POST <span class="s1">'https://test-ws.bydtms.com/openapi/api/dapi/v1/order?closePosition=true&amp;positionSide=SHORT&amp;price=20000&quantity=1&amp;recvWindow=60000&amp;side=SELL&amp;symbol=BTC-USD&amp;timestamp=1662016365208&amp;type=LIMIT&amp;sign=7dfcc06660bd89b6f465a801c2e45fa355469d8c9c20bcfbb904c6c3f94949b3'</span>
 </code></pre>
         <ul>
             <li>
                 <p><strong>queryString:</strong> </p>
 
-                <p>symbol=BTC-USD<br>
-                    &amp;side=BUY<br>
-                    &amp;type=LIMIT<br>
+
+                <p>closePosition=true<br>
+                    &amp;positionSide=SHORT<br>
+                    &amp;price=20000<br>
                     &amp;quantity=1<br>
-                    &amp;price=0.1<br>
-                    &amp;recvWindow=5000<br>
-                    &amp;timestamp=1499827319559</p>
+                    &amp;recvWindow=60000<br>
+                    &amp;side=SELL<br>
+                    &amp;symbol=BTC-USD<br>
+                    &amp;timestamp=1662016365208<br>
+                    &amp;type=LIMIT </p>
             </li>
         </ul>
-        <h3 id='2-request-body'>示例 2: 所有参数通过 request body 发送</h3>
-        <blockquote>
-            <p><strong>示例2:</strong></p>
-
-            <p><strong>HMAC SHA256 签名:</strong></p>
-        </blockquote>
-        <pre class="highlight shell tab-shell"><code>    <span class="nv">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTC-USD&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;recvWindow=5000&amp;timestamp=1591702613943"</span> | openssl dgst -sha256 -hmac <span class="s2">"2b5eb11e18796d12d88f13dc27dbbd02c2cc51ff7059765ed9821957d82bb4d9"</span>
-    <span class="o">(</span>stdin<span class="o">)=</span> 21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a
-</code></pre>
-        <blockquote>
-            <p><strong>curl 调用:</strong></p>
-        </blockquote>
-        <pre class="highlight shell tab-shell"><code>    <span class="o">(</span>HMAC SHA256<span class="o">)</span>
-    <span class="nv">$ </span>curl -H <span class="s2">"X-BITYARD-APIKEY: dbefbc809e3e83c283a984c3a1459732ea7db1360ca80c5c2c8867408d28cc83"</span> -X POST <span class="s1">'https://test-ws.bydtms.com/openapi/api/dapi/v1/order'</span> -d <span class="s1">'symbol=BTC-USD&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;timeInForce=GTC&amp;recvWindow=5000&amp;timestamp=1591702613943&amp;sign=21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a'</span>
-</code></pre>
-        <ul>
-            <li>
-                <p><strong>requestBody:</strong> </p>
-
-                <p>symbol=BTC-USD<br>
-                    &amp;side=BUY<br>
-                    &amp;type=LIMIT<br>
-                    &amp;quantity=1<br>
-                    &amp;price=9000<br>
-                    &amp;recvWindow=5000<br>
-                    &amp;timestamp=1591702613943</p>
-            </li>
-        </ul>
-        <h3 id='3-query-string-request-body'>示例 3: 混合使用 query string 与 request body</h3>
-        <blockquote>
-            <p><strong>示例3:</strong></p>
-
-            <p><strong>HMAC SHA256 签名:</strong></p>
-        </blockquote>
-        <pre class="highlight shell tab-shell"><code>    <span class="nv">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTC-USD&amp;side=BUY&amp;type=LIMIT&amp;quantity=1&amp;price=9000&amp;recvWindow=5000&amp;timestamp=1591702613943"</span> | openssl dgst -sha256 -hmac <span class="s2">"2b5eb11e18796d12d88f13dc27dbbd02c2cc51ff7059765ed9821957d82bb4d9"</span>
-    <span class="o">(</span>stdin<span class="o">)=</span> 21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a
-</code></pre>
-        <blockquote>
-            <p><strong>curl 调用:</strong></p>
-        </blockquote>
-        <pre class="highlight shell tab-shell"><code>    <span class="o">(</span>HMAC SHA256<span class="o">)</span>
-    <span class="nv">$ </span>curl -H <span class="s2">"X-BITYARD-APIKEY: dbefbc809e3e83c283a984c3a1459732ea7db1360ca80c5c2c8867408d28cc83"</span> -X POST <span class="s1">'https://test-ws.bydtms.com/openapi/api/dapi/v1/order?symbol=BTCUSD_200925&amp;side=BUY&amp;type=LIMIT'</span> -d <span class="s1">'quantity=1&amp;price=9000&amp;recvWindow=5000&amp;timestamp=1591702613943&amp;signature=21fd819734bf0e5c68740eed892909414d693635c5f7fffab1313925ae13556a'</span>
-</code></pre>
-        <ul>
-            <li><strong>queryString:</strong> symbol=BTC-USD&amp;side=BUY&amp;type=LIMIT
-            </li>
-            <li><strong>requestBody:</strong> quantity=1&amp;price=9000&amp;recvWindow=5000&amp;timestamp=
-                1591702613943</li>
-        </ul>
-
-        <!--            <p>请注意，示例3中的签名有些许不同，在&quot;GTC&quot;和&quot;quantity=1&quot;之间<strong>没有</strong>&quot;&amp;&quot;字符。</p>-->
         <h2 id='api'>公开API参数</h2>
         <h3 id='6db415da2a'>术语解释</h3>
         <ul>
@@ -964,16 +924,6 @@
         </ul>
         <h3 id='8c6d51826c'>枚举定义</h3>
 
-
-        <p><strong>合约状态 (contractStatus, status):</strong></p>
-
-        <ul>
-            <li>PENDING_TRADING 待上市</li>
-            <li>TRADING 交易中</li>
-            <li>PRE_DELIVERING 预结算</li>
-            <li>DELIVERING 交割中</li>
-            <li>DELIVERED 已交割</li>
-        </ul>
 
         <p><strong>订单状态 (status):</strong></p>
 
@@ -990,7 +940,9 @@
         <ul>
             <li>LIMIT 限价单</li>
             <li>MARKET 市价单</li>
+            <li>STOP 止损限价单</li>
             <li>STOP_MARKET 止损市价单</li>
+            <li>TAKE_PROFIT 止盈限价单</li>
             <li>TAKE_PROFIT_MARKET 止盈市价单</li>
         </ul>
 
@@ -1027,7 +979,7 @@
 
         <p><strong>K线间隔:</strong></p>
 
-        <p>m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
+        <p>m -&gt; 分钟;  d -&gt; 天;</p>
 
         <ul>
             <li>1m</li>
@@ -1035,16 +987,8 @@
             <li>5m</li>
             <li>15m</li>
             <li>30m</li>
-            <li>1h</li>
-            <li>2h</li>
-            <li>4h</li>
-            <li>6h</li>
-            <li>8h</li>
-            <li>12h</li>
+            <li>60m</li>
             <li>1d</li>
-            <li>3d</li>
-            <li>1w</li>
-            <li>1M</li>
         </ul>
 
         <p><strong>限制种类 (rateLimitType)</strong></p>
@@ -1083,7 +1027,7 @@
         <ul>
             <li>MINUTE</li>
         </ul>
-        <h2 id='cc81fff589'>过滤器</h2>
+<!--        <h2 id='cc81fff589'>过滤器</h2>
         <p>过滤器,即Filter,定义了一系列交易规则。
             共有两类,分别是针对交易对的过滤器<code>symbol filters</code>,和针对整个交易所的过滤器<code>exchange filters</code>(暂不支持)</p>
         <h3 id='3967223109'>交易对过滤器</h3>
@@ -1173,7 +1117,7 @@
         <ul>
             <li>买单: <code>price</code> &lt;= <code>markPrice</code> * <code>multiplierUp</code></li>
             <li>卖单: <code>price</code> &gt;= <code>markPrice</code> * <code>multiplierDown</code></li>
-        </ul>
+        </ul>-->
         <h1 id='ed913b7357'>行情接口</h1>
         <h2 id='ping'>测试服务器连通性 PING</h2>
         <p><code>
@@ -1201,7 +1145,7 @@
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            GET /dapi/v1/time
+            GET /dapi/market/v1/time
         </code></p>
 
         <p>获取服务器时间</p>
@@ -1277,7 +1221,7 @@
 
 </code></pre>
         <p><code>
-            GET /dapi/v1/exchangeInfo
+            GET /dapi/market/v1/exchangeInfo
         </code></p>
 
         <p>获取交易规则和交易对</p>
@@ -1421,7 +1365,7 @@
         </table>
 
         <ul>
-            <li>仅返回订单簿成交，即不会返回保险基金和自动减仓(ADL)成交</li>
+            <li>默认只能查询最近3天的成交</li>
         </ul>
         <h2 id='market_data'>查询历史成交 (MARKET_DATA)</h2>
         <blockquote>
@@ -1480,9 +1424,9 @@
             </tbody>
         </table>
 
-        <!--     <ul>
-                <li>仅返回订单簿成交，即不会返回保险基金和自动减仓(ADL)成交</li>
-            </ul>-->
+             <ul>
+                <li>默认只能查询最近3天的成交</li>
+            </ul>
         <!--     <h2 id='c59e471e81'>近期成交(归集)</h2>
             <blockquote>
                 <p><strong>响应:</strong></p>
@@ -1822,7 +1766,7 @@ GET /api/dapi/v1/aggTrades
 
 
         <p><code>
-            GET /dapi/v1/indexPriceKlines
+            GET /dapi/market/v1/indexPriceKlines
         </code></p>
         <p>每根K线的开盘时间可视为唯一ID</p>
 
@@ -1934,7 +1878,7 @@ GET /api/dapi/v1/aggTrades
 <span class="p">]</span>
 </code></pre>
         <p><code>
-            GET /dapi/v1/markPriceKlines
+            GET /dapi/market/v1/markPriceKlines
         </code>
             每根K线的开盘时间可视为唯一ID</p>
 
@@ -2992,7 +2936,7 @@ GET /futures/data/basis
                  </li>-->
             <li>payLoad名称中所有交易对均为 <strong>大写</strong></li>
             <li>每个到 <strong>bityard webscoket</strong> 的链接有效期不超过24小时，请妥善处理断线重连。</li>
-            <li>每3分钟，服务端会发送ping帧，客户端应当在10分钟内回复pong帧，否则服务端会主动断开链接。允许客户端发送不成对的pong帧(即客户端可以以高于10分钟每次的频率发送pong帧保持链接)。
+            <li>每30分钟，客户端需要发送ping帧，服务端会立即回复pong帧，否则服务端会主动断开链接。允许客户端发送不成对的ping帧(即客户端不低于30分钟每次的频率发送ping帧保持链接)。
             </li>
         </ul>
         <h2 id='3c863d56da'>实时订阅/取消数</h2>
@@ -3268,7 +3212,8 @@ GET /futures/data/basis
   <span class="s2">"e"</span><span class="p">:</span> <span class="mi">depth</span><span class="p">,</span>  <span class="c1">// 事件名称</span>
   <span class="s2">"E"</span><span class="p">:</span> <span class="mi">1646796690500</span><span class="p">,</span>  <span class="c1">// 事件时间</span>
   <span class="s2">"s"</span><span Dclass="p">:</span> <span class="mi">BTC-USD</span><span class="p">,</span>  <span class="c1">// 币种</span>
-  <span class="s2">"v"</span><span Dclass="p">:</span> <span class="mi">1646796690502</span><span class="p">,</span>  <span class="c1">// 版本号</span>
+  <span class="s2">"u"</span><span Dclass="p">:</span> <span class="mi">1646796690502</span><span class="p">,</span>  <span class="c1">// 版本号</span>
+  <span class="s2">"pu"</span><span Dclass="p">:</span> <span class="mi">1646796690501</span><span class="p">,</span>  <span class="c1">// 版本号</span>
   <span class="s2">"b"</span><span class="p">:</span> <span class="p">[</span>             <span class="c1">// Bids </span>
     <span class="p">[</span>
       <span class="s2">"0.0024"</span><span class="p">,</span>         <span class="c1">// Price </span>
@@ -3301,8 +3246,12 @@ GET /futures/data/basis
                 <strong>https://test-ws.bydtms.com/openapi/api/dapi/v1/depth?symbol=BTC-USD&amp;limit=1000</strong>获得一个1000档的深度快照
             </li>
             <li>将目前缓存到的信息中<code>u</code>&lt; 步骤3中获取到的快照中的<code>lastUpdateId</code>的部分丢弃(丢弃更早的信息,已经过期)。</li>
-            <li>将深度快照中的内容更新到本地orderbook副本中,并从websocket接收到的第一个<code>U</code> &lt;= <code>lastUpdateId</code>
+            <li>将深度快照中的内容更新到本地orderbook副本中,并从websocket接收到的第一个<code>u</code> &lt;= <code>lastUpdateId</code>
                 <strong>且</strong> <code>u</code> &gt;= <code>lastUpdateId</code> 的event开始继续更新本地副本。
+            </li>
+            <li>将目前缓存到的信息中<code>u</code>&lt; 步骤3中获取到的快照中的<code>lastUpdateId</code>的部分丢弃(丢弃更早的信息,已经过期)。</li>
+            <li>将深度快照中的内容更新到本地orderbook副本中,并从websocket接收到的第一个<code>u</code> &gt;= <code>lastUpdateId</code>
+                的event开始继续更新本地副本。
             </li>
             <li>每一个新event的<code>pu</code>应该等于上一个event的<code>u</code>,否则可能出现了丢包,请从step3重新进行初始化。</li>
             <li>每一个event中的挂单量代表这个价格目前的挂单量<strong>绝对值</strong>,而不是相对变化。</li>
@@ -3410,7 +3359,7 @@ GET /futures/data/basis
         <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC"</span><span class="p">,</span>  <span class="c1">// 币种</span>
         <span class="s2">"from"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1">// 现货</span>
         <span class="s2">"fromStr"</span><span class="p">:</span> <span class="s2">"CH"</span><span class="p">,</span>  <span class="c1">// 现货</span>
-        <span class="s2">"to"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>  <span class="c1">// 永续账户</span>
+        <span class="s2">"to"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>  <span class="c1">// 币本位永续账户</span>
         <span class="s2">"toStr"</span><span class="p">:</span> <span class="s2">"PERPETUAL"</span><span class="p">,</span>  <span class="c1">// 永续账户</span>
         <span class="s2">"qty"</span><span class="p">:</span> <span class="mi">50.0</span><span class="p">,</span>  <span class="c1">// 划账数量</span>
         <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"SUCCESS"</span><span class="p">,</span>  <span class="c1">// 状态</span>
@@ -3673,7 +3622,7 @@ GET /futures/data/basis
                 <td>newClientOrderId</td>
                 <td>STRING</td>
                 <td>NO</td>
-                <td>用户自定义的订单号,（暂时不知处该参数，默认不传或者传null）</td>
+                <td>用户自定义的订单号</td>
             </tr>
             <tr>
                 <td>stopPrice</td>
@@ -3743,7 +3692,7 @@ GET /futures/data/basis
             <tr>
             <tr>
                 <td><code>STOP_MARKET</code>, <code>TAKE_PROFIT_MARKET</code></td>
-                <td><code>stopPrice</code></td>
+                <td><code>stopPrice</code>,<code>workingType</code></td>
             </tr>
             </tbody>
         </table>
@@ -3964,7 +3913,7 @@ POST /api/dapi/v1/order/test (HMAC SHA256)
                 <td>newClientOrderId</td>
                 <td>STRING</td>
                 <td>NO</td>
-                <td>用户自定义的订单号（暂时不知处该参数，默认不传或者传null）</code></td>
+                <td>用户自定义的订单号</code></td>
             </tr>
             <tr>
                 <td>stopPrice</td>
@@ -4057,7 +4006,7 @@ POST /api/dapi/v1/order/test (HMAC SHA256)
                 <td>origClientOrderId</td>
                 <td>STRING</td>
                 <td>NO</td>
-                <td>用户自定义的订单号（暂时不知处该参数，默认不传或者传null）</td>
+                <td>用户自定义的订单号</td>
             </tr>
             <tr>
                 <td>recvWindow</td>
@@ -4074,39 +4023,23 @@ POST /api/dapi/v1/order/test (HMAC SHA256)
             </tbody>
         </table>
 
-        <!--       <p>注意:</p>-->
+               <p>注意:</p>
 
-        <!--            <ul>
+            <ul>
                 <li>至少需要发送 <code>orderId</code> 与 <code>origClientOrderId</code>中的一个</li>
-            </ul>-->
+            </ul>
         <h2 id='trade-5'>撤销订单 (TRADE)</h2>
         <blockquote>
             <p><strong>响应:</strong></p>
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-    <span class="s2">"avgPrice"</span><span class="p">:</span> <span class="s2">"0.0"</span><span class="p">,</span>              <span class="c1">// 平均成交价</span>
-    <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"myOrder1"</span><span class="p">,</span> <span class="c1">// 用户自定义的订单号 (保留字段，暂时不可用)</span>
-    <span class="s2">"cumQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
-    <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// 成交金额(标的数量)</span>
-    <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// 成交量(张数)</span>
-    <span class="s2">"orderId"</span><span class="p">:</span> <span class="mi">283194212</span><span class="p">,</span> <span class="c1">// 系统订单号</span>
-    <span class="s2">"origQty"</span><span class="p">:</span> <span class="s2">"11"</span><span class="p">,</span> <span class="c1">// 原始委托数量</span>
-    <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// 委托价格</span>
-    <span class="s2">"reduceOnly"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// 仅减仓</span>
-    <span class="s2">"side"</span><span class="p">:</span> <span class="s2">"BUY"</span><span class="p">,</span> <span class="c1">// 买卖方向</span>
-    <span class="s2">"positionSide"</span><span class="p">:</span> <span class="s2">"SHORT"</span><span class="p">,</span> <span class="c1">// 持仓方向</span>
-    <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"CANCELED"</span><span class="p">,</span> <span class="c1">// 订单状态</span>
-    <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span> <span class="c1">// 触发价,对`TRAILING_STOP_MARKET`无效</span>
-    <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
-    <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span> <span class="c1">// 交易对</span>
-    <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span> <span class="c1">// 有效方法 (保留字段，暂时不可用)</span>
-    <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span> <span class="c1">// 触发前订单类型</span>
-    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span> <span class="c1">// 订单类型</span>
-    <span class="s2">"activatePrice"</span><span class="p">:</span> <span class="s2">"9020"</span><span class="p">,</span> <span class="c1">// 跟踪止损激活价格, (保留字段，暂时不可用)</span>
-    <span class="s2">"priceRate"</span><span class="p">:</span> <span class="s2">"0.3"</span><span class="p">,</span> <span class="c1">// 跟踪止损回调比例,(保留字段，暂时不可用)</span>
-    <span class="s2">"updateTime"</span><span class="p">:</span> <span class="mi">1571110484038</span><span class="p">,</span> <span class="c1">// 更新时间</span>
-    <span class="s2">"workingType"</span><span class="p">:</span> <span class="s2">"CONTRACT_PRICE"</span><span class="p">,</span> <span class="c1">// 条件价格触发类型</span>
-    <span class="s2">"priceProtect"</span><span class="p">:</span> <span class="kc">false</span>            <span class="c1">// 是否开启条件单触发保护 (保留字段，暂时不可用)</span>
+        <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"myOrder1"</span><span class="p">,</span> <span class="c1">// 用户自定义的订单号(保留字段，暂时不可用)</span>
+        <span class="s2">"orderId"</span><span class="p">:</span> <span class="mi">283194212</span><span class="p">,</span> <span class="c1">// 系统订单号</span>
+        <span class="s2">"rejectReason"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// reject reason</span>
+        <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"CANCELED"</span><span class="p">,</span> <span class="c1">// 订单状态</span>
+        <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span> <span class="c1">// 触发价</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p"></span> <span class="c1">// 交易对</span>
+                 <span class="c1">// 是否开启条件单触发保护 (保留字段，暂时不可用)</span>
 <span class="p">}</span>
 </code></pre>
         <p><code>
@@ -4144,7 +4077,7 @@ POST /api/dapi/v1/order/test (HMAC SHA256)
                 <td>origClientOrderId</td>
                 <td>STRING</td>
                 <td>NO</td>
-                <td>用户自定义的订单号（暂时不知处该参数，默认不传或者传null）</td>
+                <td>用户自定义的订单号</td>
             </tr>
             <tr>
                 <td>recvWindow</td>
@@ -4161,15 +4094,21 @@ POST /api/dapi/v1/order/test (HMAC SHA256)
             </tbody>
         </table>
 
-        <!--       <p><code>orderId</code> 与 <code>origClientOrderId</code> 必须至少发送一个</p>-->
+               <p><code>orderId</code> 与 <code>origClientOrderId</code> 必须至少发送一个</p>
         <h2 id='trade-6'>撤销全部订单 (TRADE)</h2>
         <blockquote>
             <p><strong>响应:</strong></p>
         </blockquote>
-        <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-    <span class="s2">"code"</span><span class="p">:</span> <span class="s2">"200"</span><span class="p">,</span>
-    <span class="s2">"msg"</span><span class="p">:</span> <span class="s2">"The operation of cancel all open order is done."</span>
-<span class="p">}</span>
+        <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"myOrder1"</span><span class="p">,</span> <span class="c1">// 用户自定义的订单号(保留字段，暂时不可用)</span>
+        <span class="s2">"orderId"</span><span class="p">:</span> <span class="mi">283194212</span><span class="p">,</span> <span class="c1">// 系统订单号</span>
+        <span class="s2">"rejectReason"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// reject reason</span>
+        <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"CANCELED"</span><span class="p">,</span> <span class="c1">// 订单状态</span>
+        <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span> <span class="c1">// 触发价</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p"></span> <span class="c1">// 交易对</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </code></pre>
         <p><code>
             DELETE /api/dapi/v1/allOpenOrders  (HMAC SHA256)
@@ -4216,29 +4155,12 @@ POST /api/dapi/v1/order/test (HMAC SHA256)
         </blockquote>
         <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">"avgPrice"</span><span class="p">:</span> <span class="s2">"0.0"</span><span class="p">,</span>              <span class="c1">// 平均成交价</span>
         <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"myOrder1"</span><span class="p">,</span> <span class="c1">// 用户自定义的订单号(保留字段，暂时不可用)</span>
-        <span class="s2">"cumQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
-        <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// 成交金额(标的数量)</span>
-        <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// 成交量(张数)</span>
         <span class="s2">"orderId"</span><span class="p">:</span> <span class="mi">283194212</span><span class="p">,</span> <span class="c1">// 系统订单号</span>
-        <span class="s2">"origQty"</span><span class="p">:</span> <span class="s2">"11"</span><span class="p">,</span> <span class="c1">// 原始委托数量</span>
-        <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// 委托价格</span>
-        <span class="s2">"reduceOnly"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// 仅减仓 (保留字段，暂时不可用)</span>
-        <span class="s2">"side"</span><span class="p">:</span> <span class="s2">"BUY"</span><span class="p">,</span> <span class="c1">// 买卖方向</span>
-        <span class="s2">"positionSide"</span><span class="p">:</span> <span class="s2">"SHORT"</span><span class="p">,</span> <span class="c1">// 持仓方向</span>
+        <span class="s2">"rejectReason"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span class="c1">// reject reason</span>
         <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"CANCELED"</span><span class="p">,</span> <span class="c1">// 订单状态</span>
         <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span> <span class="c1">// 触发价</span>
-        <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
-        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span> <span class="c1">// 交易对</span>
-        <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span> <span class="c1">// 有效方法 (保留字段，暂时不可用)</span>
-        <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span> <span class="c1">// 触发前订单类型</span>
-        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span class="p">,</span> <span class="c1">// 订单类型</span>
-        <span class="s2">"activatePrice"</span><span class="p">:</span> <span class="s2">"9020"</span><span class="p">,</span> <span class="c1">// 跟踪止损激活价格,(保留字段，暂时不可用)</span>
-        <span class="s2">"priceRate"</span><span class="p">:</span> <span class="s2">"0.3"</span><span class="p">,</span> <span class="c1">// 跟踪止损回调比例,(保留字段，暂时不可用)</span>
-        <span class="s2">"workingType"</span><span class="p">:</span> <span class="s2">"CONTRACT_PRICE"</span><span class="p">,</span> <span class="c1">// 条件价格触发类型</span>
-        <span class="s2">"priceProtect"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>            <span class="c1">// 是否开启条件单触发保护 (保留字段，暂时不可用)</span>
-        <span class="s2">"updateTime"</span><span class="p">:</span> <span class="mi">1571110484038</span> <span class="c1">// 更新时间</span>
+        <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p"></span> <span class="c1">// 交易对</span>
     <span class="p">}</span>
 <span class="p">]</span>
 </code></pre>
@@ -4278,7 +4200,7 @@ POST /api/dapi/v1/order/test (HMAC SHA256)
                 <td>LIST&lt;STRING&gt;</td>
                 <td>NO</td>
                 <td>用户自定义的订单号, 最多支持10个订单 <br /> 比如<code>[&quot;6618946715212193802&quot;,&quot;6618946715212193802&quot;]</code>
-                    需要encode双引号。逗号后面没有空格。（暂时不知处该参数，默认不传或者传null）</td>
+                    需要encode双引号。逗号后面没有空格。</td>
             </tr>
             <tr>
                 <td>recvWindow</td>
@@ -4432,7 +4354,7 @@ POST /api/dapi/v1/countdownCancelAll  (HMAC SHA256)
                 <td>origClientOrderId</td>
                 <td>STRING</td>
                 <td>NO</td>
-                <td>用户自定义的订单号（暂时不知处该参数，默认不传或者传null）</td>
+                <td>用户自定义的订单号</td>
             </tr>
             <tr>
                 <td>recvWindow</td>
@@ -4450,7 +4372,7 @@ POST /api/dapi/v1/countdownCancelAll  (HMAC SHA256)
         </table>
 
         <ul>
-            <!--           <li><code>orderId</code> 与 <code>origClientOrderId</code> 中的一个为必填参数</li>-->
+            <li><code>orderId</code> 与 <code>origClientOrderId</code> 中的一个为必填参数</li>
             <li>查询的订单如果已经成交或取消,将返回报错&quot;Order does not exist.&quot;</li>
         </ul>
 
@@ -6382,495 +6304,338 @@ GET /api/dapi/v1/adlQuantile
             <li>Invalid newOrderRespType.</li>
             <li>无效的<code>newOrderRespType</code>。</li>
         </ul>
-        <h2 id='20xx-processing-issues'>20xx - Processing Issues</h2>
-        <h3 id='2010-new_order_rejected'>-2010 NEW_ORDER_REJECTED</h3>
+        <h2 id='100xx-processing-issues'>100xx - Processing Issues</h2>
+        <h3 id='100001-new_order_rejected'>-100001 Parameter error</h3>
         <ul>
-            <li>NEW_ORDER_REJECTED</li>
-            <li>新订单被拒绝</li>
+            <li>Parameter error</li>
+            <li>参数错误</li>
         </ul>
-        <h3 id='2011-cancel_rejected'>-2011 CANCEL_REJECTED</h3>
+        <h3 id='100002-cancel_rejected'>-100002 Parameter value error</h3>
         <ul>
-            <li>CANCEL_REJECTED</li>
-            <li>取消订单被拒绝</li>
+            <li>Parameter value error</li>
+            <li>参数值异常</li>
         </ul>
-        <h3 id='2013-no_such_order'>-2013 NO_SUCH_ORDER</h3>
+        <h3 id='100006-no_such_order'>-100006 You have been banned from trading, please contact customer service</h3>
+        <ul>
+            <li>You have been banned from trading, please contact customer service.</li>
+            <li>您已被禁止交易，如有疑问，请联系客服。</li>
+        </ul>
+        <h3 id='100007-bad_api_key_fmt'>-100007 Position is locked</h3>
+        <ul>
+            <li>Position is locked.</li>
+            <li>持仓被锁定。</li>
+        </ul>
+        <h3 id='100008-rejected_mbx_key'>-100008 Order amount exceeds the limit.</h3>
+        <ul>
+            <li>Order amount exceeds the limit.</li>
+            <li>下单数量超出单笔上限。</li>
+        </ul>
+        <h3 id='100009-no_trading_window'>-100009 The maximum number of positions has not been set</h3>
+        <ul>
+            <li>The maximum number of positions has not been set.</li>
+            <li>最大持仓数未配置 。</li>
+        </ul>
+        <h3 id='100010-balance_not_sufficient'>-100010 Failed! Exceeded the maximum position limit!</h3>
+        <ul>
+            <li>Failed! Exceeded the maximum position limit!.</li>
+            <li>委托失败! 超过最大持仓上限！</li>
+        </ul>
+        <h3 id='100013-margin_not_sufficien'>-100012 Order update failed</h3>
+        <ul>
+            <li>Order update failed.</li>
+            <li>订单更新失败</li>
+        </ul>
+        <h3 id='100014-unable_to_fill'>-100014 Order does not exist</h3>
         <ul>
             <li>Order does not exist.</li>
-            <li>订单不存在。</li>
+            <li>订单不存在</li>
         </ul>
-        <h3 id='2014-bad_api_key_fmt'>-2014 BAD_API_KEY_FMT</h3>
+        <h3 id='100015-order_would_immediately_trigger'>-100015 No selling order, unable to place an order</h3>
         <ul>
-            <li>API-key format invalid.</li>
-            <li>API-key 格式无效。</li>
+            <li>No selling order, unable to place an order.</li>
+            <li>无卖盘，无法下单</li>
         </ul>
-        <h3 id='2015-rejected_mbx_key'>-2015 REJECTED_MBX_KEY</h3>
+        <h3 id='100016-reduce_only_reject'>-100016 User does not exist</h3>
         <ul>
-            <li>Invalid API-key, IP, or permissions for action.</li>
-            <li>无效的API密钥,IP或操作权限。</li>
+            <li>User does not exist.</li>
+            <li>用户不存在</li>
         </ul>
-        <h3 id='2016-no_trading_window'>-2016 NO_TRADING_WINDOW</h3>
+        <h3 id='100017-user_in_liquidation'>-100017 No positions available, cannot be closed</h3>
         <ul>
-            <li>No trading window could be found for the symbol. Try ticker/24hrs instead.</li>
-            <li>找不到该交易对的交易窗口。 尝试改为24小时自动报价。</li>
+            <li>No positions available, cannot be closed.</li>
+            <li>无可用仓位，不能平仓</li>
         </ul>
-        <h3 id='2018-balance_not_sufficient'>-2018 BALANCE_NOT_SUFFICIENT</h3>
+        <h3 id='100018-position_not_sufficient'>-100018 Wrong tick size</h3>
         <ul>
-            <li>Balance is insufficient.</li>
-            <li>余额不足</li>
+            <li>Wrong tick size.</li>
+            <li>价格精度不对</li>
         </ul>
-        <h3 id='2019-margin_not_sufficien'>-2019 MARGIN_NOT_SUFFICIEN</h3>
+        <h3 id='100019-max_open_order_exceeded'>-100019 No Assets</h3>
         <ul>
-            <li>Margin is insufficient.</li>
-            <li>杠杆账户余额不足</li>
+            <li>No Assets.</li>
+            <li>无资产</li>
         </ul>
-        <h3 id='2020-unable_to_fill'>-2020 UNABLE_TO_FILL</h3>
+        <h3 id='100020-reduce_only_order_type_not_supported'>-100020 Invalid order tick size</h3>
         <ul>
-            <li>Unable to fill.</li>
-            <li>无法成交</li>
+            <li>Invalid order tick size.</li>
+            <li>下单精度不合法</li>
         </ul>
-        <h3 id='2021-order_would_immediately_trigger'>-2021 ORDER_WOULD_IMMEDIATELY_TRIGGER</h3>
+        <h3 id='1000200-max_leverage_ratio'>-1000200 Position does not exist</h3>
         <ul>
-            <li>Order would immediately trigger.</li>
-            <li>订单可能被立刻触发</li>
+            <li>Position does not exist.</li>
+            <li>仓位不存在</li>
         </ul>
-        <h3 id='2022-reduce_only_reject'>-2022 REDUCE_ONLY_REJECT</h3>
+        <h3 id='100021-min_leverage_ratio'>-100021 No Dell</h3>
         <ul>
-            <li>ReduceOnly Order is rejected.</li>
-            <li><code>ReduceOnly</code>订单被拒绝</li>
+            <li>No Dell.</li>
+            <li>不处理</li>
         </ul>
-        <h3 id='2023-user_in_liquidation'>-2023 USER_IN_LIQUIDATION</h3>
+        <h3 id='100022-min_leverage_ratio'>-100022 Order price should be greater than 0</h3>
         <ul>
-            <li>User in liquidation mode now.</li>
-            <li>用户正处于被强平模式</li>
-        </ul>
-        <h3 id='2024-position_not_sufficient'>-2024 POSITION_NOT_SUFFICIENT</h3>
-        <ul>
-            <li>Position is not sufficient.</li>
-            <li>持仓不足</li>
-        </ul>
-        <h3 id='2025-max_open_order_exceeded'>-2025 MAX_OPEN_ORDER_EXCEEDED</h3>
-        <ul>
-            <li>Reach max open order limit.</li>
-            <li>挂单量达到上限</li>
-        </ul>
-        <h3 id='2026-reduce_only_order_type_not_supported'>-2026 REDUCE_ONLY_ORDER_TYPE_NOT_SUPPORTED</h3>
-        <ul>
-            <li>This OrderType is not supported when reduceOnly.</li>
-            <li>当前订单类型不支持<code>reduceOnly</code></li>
-        </ul>
-        <h3 id='2027-max_leverage_ratio'>-2027 MAX_LEVERAGE_RATIO</h3>
-        <ul>
-            <li>Exceeded the maximum allowable position at current leverage.</li>
-            <li>挂单或持仓超出当前初始杠杆下的最大值</li>
-        </ul>
-        <h3 id='2028-min_leverage_ratio'>-2028 MIN_LEVERAGE_RATIO</h3>
-        <ul>
-            <li>Leverage is smaller than permitted: insufficient margin balance.</li>
-            <li>调整初始杠杆过低，导致可用余额不足</li>
-        </ul>
-        <h2 id='40xx-filters-and-other-issues'>40xx - Filters and other Issues</h2>
-        <h3 id='4000-invalid_order_status'>-4000 INVALID_ORDER_STATUS</h3>
-        <ul>
-            <li>Invalid order status.</li>
-            <li>订单状态不正确</li>
-        </ul>
-        <h3 id='4001-price_less_than_zero'>-4001 PRICE_LESS_THAN_ZERO</h3>
-        <ul>
-            <li>Price less than 0.</li>
-            <li>价格小于0</li>
-        </ul>
-        <h3 id='4002-price_greater_than_max_price'>-4002 PRICE_GREATER_THAN_MAX_PRICE</h3>
-        <ul>
-            <li>Price greater than max price.</li>
-            <li>价格超过最大值</li>
-        </ul>
-        <h3 id='4003-qty_less_than_zero'>-4003 QTY_LESS_THAN_ZERO</h3>
-        <ul>
-            <li>Quantity less than zero.</li>
-            <li>数量小于0</li>
-        </ul>
-        <h3 id='4004-qty_less_than_min_qty'>-4004 QTY_LESS_THAN_MIN_QTY</h3>
-        <ul>
-            <li>Quantity less than min quantity.</li>
-            <li>数量小于最小值</li>
-        </ul>
-        <h3 id='4005-qty_greater_than_max_qty'>-4005 QTY_GREATER_THAN_MAX_QTY</h3>
-        <ul>
-            <li>Quantity greater than max quantity.</li>
-            <li>数量大于最大值</li>
-        </ul>
-        <h3 id='4006-stop_price_less_than_zero'>-4006 STOP_PRICE_LESS_THAN_ZERO</h3>
-        <ul>
-            <li>Stop price less than zero. </li>
-            <li>触发价小于最小值</li>
-        </ul>
-        <h3 id='4007-stop_price_greater_than_max_price'>-4007 STOP_PRICE_GREATER_THAN_MAX_PRICE</h3>
-        <ul>
-            <li>Stop price greater than max price.</li>
-            <li>触发价大于最大值</li>
-        </ul>
-        <h3 id='4008-tick_size_less_than_zero'>-4008 TICK_SIZE_LESS_THAN_ZERO</h3>
-        <ul>
-            <li>Tick size less than zero.</li>
-            <li>价格精度小于0</li>
-        </ul>
-        <h3 id='4009-max_price_less_than_min_price'>-4009 MAX_PRICE_LESS_THAN_MIN_PRICE</h3>
-        <ul>
-            <li>Max price less than min price.</li>
-            <li>最大价格小于最小价格</li>
-        </ul>
-        <h3 id='4010-max_qty_less_than_min_qty'>-4010 MAX_QTY_LESS_THAN_MIN_QTY</h3>
-        <ul>
-            <li>Max qty less than min qty.</li>
-            <li>最大数量小于最小数量</li>
-        </ul>
-        <h3 id='4011-step_size_less_than_zero'>-4011 STEP_SIZE_LESS_THAN_ZERO</h3>
-        <ul>
-            <li>Step size less than zero.</li>
-            <li>步进值小于0</li>
-        </ul>
-        <h3 id='4012-max_num_orders_less_than_zero'>-4012 MAX_NUM_ORDERS_LESS_THAN_ZERO</h3>
-        <ul>
-            <li>Max num orders less than zero.</li>
-            <li>最大订单量小于0</li>
-        </ul>
-        <h3 id='4013-price_less_than_min_price'>-4013 PRICE_LESS_THAN_MIN_PRICE</h3>
-        <ul>
-            <li>Price less than min price.</li>
-            <li>价格小于最小价格</li>
-        </ul>
-        <h3 id='4014-price_not_increased_by_tick_size'>-4014 PRICE_NOT_INCREASED_BY_TICK_SIZE</h3>
-        <ul>
-            <li>Price not increased by tick size.</li>
-            <li>价格增量不是价格精度的倍数。</li>
-        </ul>
-        <h3 id='4015-invalid_cl_ord_id_len'>-4015 INVALID_CL_ORD_ID_LEN</h3>
-        <ul>
-            <li>Client order id is not valid.</li>
-            <li>客户订单ID有误。</li>
-            <li>Client order id length should not be more than 36 chars</li>
-            <li>客户订单ID长度应该不多于36字符</li>
-        </ul>
-        <h3 id='4016-price_highter_than_multiplier_up'>-4016 PRICE_HIGHTER_THAN_MULTIPLIER_UP</h3>
-        <ul>
-            <li>Price is higher than mark price multiplier cap.</li>
-        </ul>
-        <h3 id='4017-multiplier_up_less_than_zero'>-4017 MULTIPLIER_UP_LESS_THAN_ZERO</h3>
-        <ul>
-            <li>Multiplier up less than zero.</li>
-            <li>价格上限小于0</li>
-        </ul>
-        <h3 id='4018-multiplier_down_less_than_zero'>-4018 MULTIPLIER_DOWN_LESS_THAN_ZERO</h3>
-        <ul>
-            <li>Multiplier down less than zero.</li>
-            <li>价格下限小于0</li>
-        </ul>
-        <h3 id='4019-composite_scale_overflow'>-4019 COMPOSITE_SCALE_OVERFLOW</h3>
-        <ul>
-            <li>Composite scale too large.</li>
-        </ul>
-        <h3 id='4020-target_strategy_invalid'>-4020 TARGET_STRATEGY_INVALID</h3>
-        <ul>
-            <li>Target strategy invalid for orderType &#39;%s&#39;,reduceOnly &#39;%b&#39;.</li>
-            <li>目标策略值不适合<code>%s</code>订单状态, 只减仓<code>%b</code>。</li>
-        </ul>
-        <h3 id='4021-invalid_depth_limit'>-4021 INVALID_DEPTH_LIMIT</h3>
-        <ul>
-            <li>Invalid depth limit.</li>
-            <li>深度信息的<code>limit</code>值不正确。</li>
-            <li>&#39;%s&#39; is not valid depth limit.</li>
-            <li><code>%s</code>不是合理的深度信息的<code>limit</code>值。</li>
-        </ul>
-        <h3 id='4022-wrong_market_status'>-4022 WRONG_MARKET_STATUS</h3>
-        <ul>
-            <li>market status sent is not valid.</li>
-            <li>发送的市场状态不正确。</li>
-        </ul>
-        <h3 id='4023-qty_not_increased_by_step_size'>-4023 QTY_NOT_INCREASED_BY_STEP_SIZE</h3>
-        <ul>
-            <li>Qty not increased by step size.</li>
-            <li>数量的递增值不是步进值的倍数。</li>
-        </ul>
-        <h3 id='4024-price_lower_than_multiplier_down'>-4024 PRICE_LOWER_THAN_MULTIPLIER_DOWN</h3>
-        <ul>
-            <li>Price is lower than mark price multiplier floor.</li>
-        </ul>
-        <h3 id='4025-multiplier_decimal_less_than_zero'>-4025 MULTIPLIER_DECIMAL_LESS_THAN_ZERO</h3>
-        <ul>
-            <li>Multiplier decimal less than zero.</li>
-        </ul>
-        <h3 id='4026-commission_invalid'>-4026 COMMISSION_INVALID</h3>
-        <ul>
-            <li>Commission invalid.</li>
-            <li>收益值不正确</li>
-            <li><code>%s</code> less than zero.</li>
-            <li><code>%s</code>少于0</li>
-            <li><code>%s</code> absolute value greater than <code>%s</code></li>
-            <li><code>%s</code>绝对值大于<code>%s</code></li>
-        </ul>
-        <h3 id='4027-invalid_account_type'>-4027 INVALID_ACCOUNT_TYPE</h3>
-        <ul>
-            <li>Invalid account type.</li>
-            <li>账户类型不正确。</li>
-        </ul>
-        <h3 id='4028-invalid_leverage'>-4028 INVALID_LEVERAGE</h3>
-        <ul>
-            <li>Invalid leverage</li>
-            <li>杠杆倍数不正确</li>
-            <li>Leverage <code>%s</code> is not valid</li>
-            <li>杠杆<code>%s</code>不正确</li>
-            <li>Leverage <code>%s</code> already exist with <code>%s</code></li>
-            <li>杠杆<code>%s</code>已经存在于<code>%s</code></li>
-        </ul>
-        <h3 id='4029-invalid_tick_size_precision'>-4029 INVALID_TICK_SIZE_PRECISION</h3>
-        <ul>
-            <li>Tick size precision is invalid.</li>
-            <li>价格精度小数点位数不正确。</li>
-        </ul>
-        <h3 id='4030-invalid_step_size_precision'>-4030 INVALID_STEP_SIZE_PRECISION</h3>
-        <ul>
-            <li>Step size precision is invalid.</li>
-            <li>步进值小数点位数不正确。</li>
-        </ul>
-        <h3 id='4031-invalid_working_type'>-4031 INVALID_WORKING_TYPE</h3>
-        <ul>
-            <li>Invalid parameter working type</li>
-            <li>不正确的参数类型</li>
-            <li>Invalid parameter working type: <code>%s</code></li>
-            <li>不正确的参数类型: <code>%s</code></li>
-        </ul>
-        <h3 id='4032-exceed_max_cancel_order_size'>-4032 EXCEED_MAX_CANCEL_ORDER_SIZE</h3>
-        <ul>
-            <li>Exceed maximum cancel order size.</li>
-            <li>超过可以取消的最大订单量。</li>
-            <li>Invalid parameter working type: <code>%s</code></li>
-            <li>不正确的参数类型: <code>%s</code></li>
-        </ul>
-        <h3 id='4033-insurance_account_not_found'>-4033 INSURANCE_ACCOUNT_NOT_FOUND</h3>
-        <ul>
-            <li>Insurance account not found.</li>
-            <li>风险保障基金账号没找到。</li>
-        </ul>
-        <h3 id='4044-invalid_balance_type'>-4044 INVALID_BALANCE_TYPE</h3>
-        <ul>
-            <li>Balance Type is invalid.</li>
-            <li>余额类型不正确。</li>
-        </ul>
-        <h3 id='4045-max_stop_order_exceeded'>-4045 MAX_STOP_ORDER_EXCEEDED</h3>
-        <ul>
-            <li>Reach max stop order limit.</li>
-            <li>达到止损单的上限。</li>
-        </ul>
-        <h3 id='4046-no_need_to_change_margin_type'>-4046 NO_NEED_TO_CHANGE_MARGIN_TYPE</h3>
-        <ul>
-            <li>No need to change margin type.</li>
-            <li>不需要切换仓位模式。</li>
-        </ul>
-        <h3 id='4047-there_exists_open_orders'>-4047 THERE_EXISTS_OPEN_ORDERS</h3>
-        <ul>
-            <li>Margin type cannot be changed if there exists open orders.</li>
-            <li>如果有挂单,仓位模式不能切换。</li>
-        </ul>
-        <h3 id='4048-there_exists_quantity'>-4048 THERE_EXISTS_QUANTITY</h3>
-        <ul>
-            <li>Margin type cannot be changed if there exists position.</li>
-            <li>如果有仓位,仓位模式不能切换。</li>
-        </ul>
-        <h3 id='4049-add_isolated_margin_reject'>-4049 ADD_ISOLATED_MARGIN_REJECT</h3>
-        <ul>
-            <li>Add margin only support for isolated position.</li>
-        </ul>
-        <h3 id='4050-cross_balance_insufficient'>-4050 CROSS_BALANCE_INSUFFICIENT</h3>
-        <ul>
-            <li>Cross balance insufficient.</li>
-            <li>全仓余额不足。</li>
-        </ul>
-        <h3 id='4051-isolated_balance_insufficient'>-4051 ISOLATED_BALANCE_INSUFFICIENT</h3>
-        <ul>
-            <li>Isolated balance insufficient.</li>
-            <li>逐仓余额不足。</li>
-        </ul>
-        <h3 id='4052-no_need_to_change_auto_add_margin'>-4052 NO_NEED_TO_CHANGE_AUTO_ADD_MARGIN</h3>
-        <ul>
-            <li>No need to change auto add margin.</li>
-        </ul>
-        <h3 id='4053-auto_add_crossed_margin_reject'>-4053 AUTO_ADD_CROSSED_MARGIN_REJECT</h3>
-        <ul>
-            <li>Auto add margin only support for isolated position.</li>
-            <li>自动增加保证金只适用于逐仓。</li>
-        </ul>
-        <h3 id='4054-add_isolated_margin_no_position_reject'>-4054 ADD_ISOLATED_MARGIN_NO_POSITION_REJECT</h3>
-        <ul>
-            <li>Cannot add position margin: position is 0.</li>
-            <li>不能增加逐仓保证金: 持仓为0</li>
-        </ul>
-        <h3 id='4055-amount_must_be_positive'>-4055 AMOUNT_MUST_BE_POSITIVE</h3>
-        <ul>
-            <li>Amount must be positive.</li>
-            <li>数量必须是正整数</li>
-        </ul>
-        <h3 id='4056-invalid_api_key_type'>-4056 INVALID_API_KEY_TYPE</h3>
-        <ul>
-            <li>Invalid api key type.</li>
-            <li>API key的类型不正确</li>
-        </ul>
-        <h3 id='4057-invalid_rsa_public_key'>-4057 INVALID_RSA_PUBLIC_KEY</h3>
-        <ul>
-            <li>Invalid api public key</li>
-            <li>API key不正确</li>
-        </ul>
-        <h3 id='4058-max_price_too_large'>-4058 MAX_PRICE_TOO_LARGE</h3>
-        <ul>
-            <li>maxPrice and priceDecimal too large,please check.</li>
-            <li>maxPrice和priceDecimal太大，请检查。</li>
-        </ul>
-        <h3 id='4059-no_need_to_change_position_side'>-4059 NO_NEED_TO_CHANGE_POSITION_SIDE</h3>
-        <ul>
-            <li>No need to change position side.</li>
-            <li>无需变更仓位方向</li>
-        </ul>
-        <h3 id='4060-invalid_position_side'>-4060 INVALID_POSITION_SIDE</h3>
-        <ul>
-            <li>Invalid position side.</li>
-            <li>仓位方向不正确。</li>
-        </ul>
-        <h3 id='4061-position_side_not_match'>-4061 POSITION_SIDE_NOT_MATCH</h3>
-        <ul>
-            <li>Order&#39;s position side does not match user&#39;s setting.</li>
-            <li>订单的持仓方向和用户设置不一致。</li>
-        </ul>
-        <h3 id='4062-reduce_only_conflict'>-4062 REDUCE_ONLY_CONFLICT</h3>
-        <ul>
-            <li>Invalid or improper reduceOnly value.</li>
-            <li>仅减仓的设置不正确。</li>
-        </ul>
-        <h3 id='4067-position_side_change_exists_open_orders'>-4067 POSITION_SIDE_CHANGE_EXISTS_OPEN_ORDERS</h3>
-        <ul>
-            <li>Position side cannot be changed if there exists open orders.</li>
-            <li>如果有挂单，无法修改仓位方向。</li>
-        </ul>
-        <h3 id='4068-position_side_change_exists_quantity'>-4068 POSITION_SIDE_CHANGE_EXISTS_QUANTITY</h3>
-        <ul>
-            <li>Position side cannot be changed if there exists position.</li>
-            <li>如果有仓位, 无法修改仓位方向。</li>
-        </ul>
-        <h3 id='4082-invalid_batch_place_order_size'>-4082 INVALID_BATCH_PLACE_ORDER_SIZE</h3>
-        <ul>
-            <li>Invalid number of batch place orders.</li>
-            <li>Invalid number of batch place orders: %s</li>
-            <li>批量下单的数量不正确</li>
-        </ul>
-        <h3 id='4083-place_batch_orders_fail'>-4083 PLACE_BATCH_ORDERS_FAIL</h3>
-        <ul>
-            <li>Fail to place batch orders.</li>
-            <li>无法批量下单</li>
-        </ul>
-        <h3 id='4084-upcoming_method'>-4084 UPCOMING_METHOD</h3>
-        <ul>
-            <li>Method is not allowed currently. Upcoming soon.</li>
-            <li>方法不支持。</li>
-        </ul>
-        <h3 id='4086-invalid_price_spread_threshold'>-4086 INVALID_PRICE_SPREAD_THRESHOLD</h3>
-        <ul>
-            <li>Invalid price spread threshold.</li>
-            <li>无效的价差阀值。</li>
-        </ul>
-        <h3 id='4087-invalid_pair'>-4087 INVALID_PAIR</h3>
-        <ul>
-            <li>Invalid pair.</li>
-            <li>无效的币对。</li>
-        </ul>
-        <h3 id='4088-invalid_time_interval'>-4088 INVALID_TIME_INTERVAL</h3>
-        <ul>
-            <li>Invalid time interval.</li>
-            <li>无效的时间间隔。</li>
-            <li>Maximum time interval is %s days.</li>
-            <li>最大时间间隔是<code>％s</code>天。</li>
-        </ul>
-        <h3 id='4089-reduce_only_order_permission'>-4089 REDUCE_ONLY_ORDER_PERMISSION</h3>
-        <ul>
-            <li>User can only place reduce only order.</li>
-            <li>用户只能下仅减仓单。</li>
-        </ul>
-        <h3 id='4090-no_place_order_permission'>-4090 NO_PLACE_ORDER_PERMISSION</h3>
-        <ul>
-            <li>User can not place order currently.</li>
-            <li>用户当前不能下单。</li>
-        </ul>
-        <h3 id='4104-invalid_contract_type'>-4104 INVALID_CONTRACT_TYPE</h3>
-        <ul>
-            <li>Invalid contract type.</li>
-            <li>无效的合约类型。</li>
-        </ul>
-        <h3 id='4110-invalid_client_tran_id_len'>-4110 INVALID_CLIENT_TRAN_ID_LEN</h3>
-        <ul>
-            <li>clientTranId is not valid.</li>
-            <li><code>clientTranId</code>不正确。</li>
-            <li>Client tran id length should be less than 64 chars.</li>
-            <li>客户的<code>tranId</code>长度应该小于64个字符。</li>
-        </ul>
-        <h3 id='4111-duplicated_client_tran_id'>-4111 DUPLICATED_CLIENT_TRAN_ID</h3>
-        <ul>
-            <li>clientTranId is duplicated.</li>
-            <li><code>clientTranId</code>重复。</li>
-            <li>Client tran id should be unique within 7 days.</li>
-            <li>客户的<code>tranId</code>应该在7天内唯一。</li>
-        </ul>
-        <h3 id='4112-reduce_only_margin_check_failed'>-4112 REDUCE_ONLY_MARGIN_CHECK_FAILED</h3>
-        <ul>
-            <li>ReduceOnly Order Failed. Please check your existing position and open orders.</li>
-            <li>仅减仓订单失败。请检查现有的持仓和挂单。</li>
-        </ul>
-        <h3 id='4113-market_order_reject'>-4113 MARKET_ORDER_REJECT</h3>
-        <ul>
-            <li>The counterparty&#39;s best price does not meet the PERCENT_PRICE filter limit.</li>
-            <li>交易对手的最高价格未达到PERCENT_PRICE过滤器限制。</li>
-        </ul>
-        <h3 id='4135-invalid_activation_price'>-4135 INVALID_ACTIVATION_PRICE</h3>
-        <ul>
-            <li>Invalid activation price.</li>
-            <li>无效的激活价格。</li>
-        </ul>
-        <h3 id='4137-quantity_exists_with_close_position'>-4137 QUANTITY_EXISTS_WITH_CLOSE_POSITION</h3>
-        <ul>
-            <li>Quantity must be zero with closePosition equals true.</li>
-            <li>数量必须为0，当closePosition为true时。</li>
-        </ul>
-        <h3 id='4138-reduce_only_must_be_true'>-4138 REDUCE_ONLY_MUST_BE_TRUE</h3>
-        <ul>
-            <li>Reduce only must be true with closePosition equals true.</li>
-            <li>Reduce only 必须为true，当closePosition为true时。</li>
-        </ul>
-        <h3 id='4139-order_type_cannot_be_mkt'>-4139 ORDER_TYPE_CANNOT_BE_MKT</h3>
-        <ul>
-            <li>Order type can not be market if it&#39;s unable to cancel.</li>
-            <li>订单类型不能为市价单如果不能取消。</li>
-        </ul>
-        <h3 id='4142-strategy_invalid_trigger_price'>-4142 STRATEGY_INVALID_TRIGGER_PRICE</h3>
-        <ul>
-            <li>REJECT: take profit or stop order will be triggered immediately.</li>
-            <li>拒绝：止盈止损单将立即被触发。</li>
-        </ul>
-        <h3 id='4150-isolated_leverage_reject_with_position'>-4150 ISOLATED_LEVERAGE_REJECT_WITH_POSITION</h3>
-        <ul>
-            <li>Leverage reduction is not supported in Isolated Margin Mode with open positions.</li>
-            <li>逐仓仓位模式下无法降低杠杆</li>
-        </ul>
-        <h3 id='4151-price_highter_than_stop_multiplier_up'>-4151 PRICE_HIGHTER_THAN_STOP_MULTIPLIER_UP</h3>
-        <ul>
-            <li>Price is higher than stop price multiplier cap.</li>
-            <li>止盈止损订单价格不应高于触发价与报价乘数上限的乘积</li>
-            <li>Limit price can&#39;t be higher than %s.</li>
-            <li>止盈止损订单价格不应高于 <code>%s</code></li>
-        </ul>
-        <h3 id='4152-price_lower_than_stop_multiplier_down'>-4152 PRICE_LOWER_THAN_STOP_MULTIPLIER_DOWN</h3>
-        <ul>
-            <li>Price is lower than stop price multiplier floor.</li>
-            <li>止盈止损订单价格不应低于触发价与报价乘数下限的乘积</li>
-            <li>Limit price can&#39;t be lower than %s.</li>
-            <li>止盈止损订单价格不应低于 <code>%s</code></li>
+            <li>Order price should be greater than 0.</li>
+            <li>委托价格必须大于零</li>
         </ul>
 
+        <h3 id='1000023-min_leverage_ratio'>-1000023 Same level</h3>
+        <ul>
+            <li>Same level.</li>
+            <li>阶梯等级与原来的相同阶梯等级与原来的相同</li>
+        </ul>
+        <h3 id='1000024-min_leverage_ratio'>-100024 The No. of positions is 0, the closing order cannot be placed</h3>
+        <ul>
+            <li>The No. of positions is 0, the closing order cannot be placed.</li>
+            <li>仓位数量为0，不能下平仓单</li>
+        </ul>
+
+        <h3 id='1000025-min_leverage_ratio'>-100025 Closing order already exists</h3>
+        <ul>
+            <li>Closing order already exists.</li>
+            <li>平仓单已经存在</li>
+        </ul>
+        <h3 id='1000026-min_leverage_ratio'>-1000026 There is a better price order</h3>
+        <ul>
+            <li>There is a better price order.</li>
+            <li>存在更优价格的反向委托单</li>
+        </ul>
+        <h3 id='1000027-min_leverage_ratio'>-100027 The order price is greater than the maximum order price</h3>
+        <ul>
+            <li>The order price is greater than the maximum order price.</li>
+            <li>下单价超过最大下单价格</li>
+        </ul>
+
+        <h3 id='1000028-min_leverage_ratio'>-1000028 The order price is lower than the lowest order price</h3>
+        <ul>
+            <li>The order price is lower than the lowest order price.</li>
+            <li>下单价低于最低下单价格</li>
+        </ul>
+
+        <h3 id='100029-min_leverage_ratio'>-100029 Trigger price should be greater than 0</h3>
+        <ul>
+            <li>Trigger price should be greater than 0.</li>
+            <li>触发价格必须大于零</li>
+        </ul>
+
+        <h3 id='100030-min_leverage_ratio'>-100030 Fixed price should be greater than 0</h3>
+        <ul>
+            <li>Fixed price should be greater than 0.</li>
+            <li>基准价格必须大于零</li>
+        </ul>
+
+
+        <h3 id='100031-min_leverage_ratio'>-100031 Exceeds the maximum number of conditional orders</h3>
+        <ul>
+            <li>Exceeds the maximum number of conditional orders.</li>
+            <li>超过最大可委托条件单数量</li>
+        </ul>
+
+        <h3 id='100032-min_leverage_ratio'>-100032 The order is not in the initial state and cannot be cancelled</h3>
+        <ul>
+            <li>The order is not in the initial state and cannot be cancelled.</li>
+            <li>订单不是初始状态，不能取消</li>
+        </ul>
+
+        <h3 id='100033-min_leverage_ratio'>-100033 The order price is greater than the liquidation price</h3>
+        <ul>
+            <li>The order price is greater than the liquidation price.</li>
+            <li>下单价超过强平价</li>
+        </ul>
+
+        <h3 id='100034-min_leverage_ratio'>-100034 The order price is lower than the liquidation price</h3>
+        <ul>
+            <li>The order price is lower than the liquidation price.</li>
+            <li>下单价低于强平价</li>
+        </ul>
+
+        <h3 id='100035-min_leverage_ratio'>-100035 A position with stop-profit or stop-loss exists</h3>
+        <ul>
+            <li>A position with stop-profit or stop-loss exists.</li>
+            <li>已存在持仓止盈止损</li>
+        </ul>
+
+
+        <h3 id='100036-min_leverage_ratio'>-100036 Position does not exist</h3>
+        <ul>
+            <li>Position does not existe.</li>
+            <li>持仓不存在</li>
+        </ul>
+
+        <h3 id='100037-min_leverage_ratio'>-100037 The order quantity is out of range</h3>
+        <ul>
+            <li>The order quantity is out of range.</li>
+            <li>下单数量超出持仓范围</li>
+        </ul>
+
+        <h3 id='100038-min_leverage_ratio'>-100038 Wrong order side</h3>
+        <ul>
+            <li>Wrong order side.</li>
+            <li>下单方向错误</li>
+        </ul>
+
+        <h3 id='100039-min_leverage_ratio'>-100039 Wrong order price</h3>
+        <ul>
+            <li>Wrong order price.</li>
+            <li>下单价格错误</li>
+        </ul>
+        <h3 id='100040-min_leverage_ratio'>-100040 You are not allowed to downward modificattion of leverage with the current margin mode</h3>
+        <ul>
+            <li>You are not allowed to downward modificattion of leverage with the current margin mode.</li>
+            <li>当前保证金模式不允许向下修改杠杆</li>
+        </ul>
+
+        <h3 id='100041-min_leverage_ratio'>-100041 Wrong amount of margin</h3>
+        <ul>
+            <li>Wrong amount of margin`.</li>
+            <li>保证金金额错误</li>
+        </ul>
+
+
+        <h3 id='100042-min_leverage_ratio'>-100042 The number of positions is 0, the margin cannot be adjusted</h3>
+        <ul>
+            <li>The number of positions is 0, the margin cannot be adjusted`.</li>
+            <li>仓位数量为0，不能调整保证金</li>
+        </ul>
+
+        <h3 id='100043-min_leverage_ratio'>-100043 Add margin is out of range</h3>
+        <ul>
+            <li>Add margin is out of range.</li>
+            <li>添加保证金超出范围</li>
+        </ul>
+
+        <h3 id='100044-min_leverage_ratio'>-100044 Reduce margin is out of range</h3>
+        <ul>
+            <li>Reduce margin is out of range.</li>
+            <li>减少保证金超出范围</li>
+        </ul>
+        <h3 id='100045-min_leverage_ratio'>-100045 Wrong type of margin operation</h3>
+        <ul>
+            <li>Wrong type of margin operation.</li>
+            <li>保证金操作类型错误</li>
+        </ul>
+
+        <h3 id='100046-min_leverage_ratio'>-100046 Exceeded the maximum position limit with the current leverage</h3>
+        <ul>
+            <li>Exceeded the maximum position limit with the current leverage.</li>
+            <li>超出杠杆最大持仓上限</li>
+        </ul>
+
+        <h3 id='100048-min_leverage_ratio'>-100048 Exceeded the maximum number of orders</h3>
+        <ul>
+            <li>Exceeded the maximum number of orders.</li>
+            <li>超出最大委托单数量</li>
+        </ul>
+
+        <h2 id='800xx-filters-and-other-issues'>200xx-800xx - Filters and other Issues</h2>
+
+        <h3 id='200001-invalid_order_status'>-200001 Please agree to the contract agreement</h3>
+        <ul>
+            <li>Please agree to the contract agreement.</li>
+            <li>请同意合约协议</li>
+        </ul>
+
+        <h3 id='200008-invalid_order_status'>-200008 Contract does not exist</h3>
+        <ul>
+            <li>Contract does not exist.</li>
+            <li>合约不存在</li>
+        </ul>
+        <h3 id='200009-invalid_order_status'>-200009 This contract is currently under maintenance</h3>
+        <ul>
+            <li>This contract is currently under maintenance.</li>
+            <li>该合约暂停交易</li>
+        </ul>
+        <h3 id='200010-invalid_order_status'>-200010 The tick size of the amount is greater than the maximum tick size of the crypto</h3>
+        <ul>
+            <li>The tick size of the amount is greater than the maximum tick size of the crypto.</li>
+            <li>金额精度大于币种最大精度</li>
+        </ul>
+
+        <h3 id='200012-invalid_order_status'>-200012 Trading pair does not exist</h3>
+        <ul>
+            <li>Trading pair does not exist.</li>
+            <li>币对不存在</li>
+        </ul>
+        <h3 id='200013-price_less_than_zero'>-200013 Trading pair cannot be empty</h3>
+        <ul>
+            <li>Trading pair cannot be empty.</li>
+            <li>币对不能为空</li>
+        </ul>
+        <h3 id='200014-price_greater_than_max_price'>-200014 The cancel order does not match the user</h3>
+        <ul>
+            <li>The cancel order does not match the user.</li>
+            <li>取消单与用户不匹配</li>
+        </ul>
+
+        <h3 id='200015-price_greater_than_max_price'>-200015 Insufficient assets</h3>
+        <ul>
+            <li>Insufficient assets.</li>
+            <li>用户资产不足</li>
+        </ul>
+
+        <h3 id='200018-qty_less_than_zero'>-200018 Incorrect time range</h3>
+        <ul>
+            <li>Incorrect time range.</li>
+            <li>时间范围不正确</li>
+        </ul>
+        <h3 id='600001-qty_less_than_min_qty'>-600001 Save failed</h3>
+        <ul>
+            <li>Save failed.</li>
+            <li>保存失败</li>
+        </ul>
+        <h3 id='600002-qty_greater_than_max_qty'>-600002 Update failed</h3>
+        <ul>
+            <li>Update failed.</li>
+            <li>更新失败</li>
+        </ul>
+        <h3 id='800003-stop_price_less_than_zero'>-800003 Failed to get depth</h3>
+        <ul>
+            <li>Failed to get depth. </li>
+            <li>深度获取失败</li>
+        </ul>
+        <h3 id='800004-stop_price_greater_than_max_price'>-800004 Wrong position type</h3>
+        <ul>
+            <li>Wrong position type.</li>
+            <li>仓位类型错误</li>
+        </ul>
+        <h3 id='800005-tick_size_less_than_zero'>-800005 Changes are not allowed if there are positions</h3>
+        <ul>
+            <li>Changes are not allowed if there are positions.</li>
+            <li>有持仓不允许更改</li>
+        </ul>
+
+        <h3 id='800006-tick_size_less_than_zero'>-800006 Index price is empty</h3>
+        <ul>
+            <li>Index price is empty.</li>
+            <li>指数价格为空</li>
+        </ul>
+        <h3 id='800007-tick_size_less_than_zero'>-800007 position type not allow change</h3>
+        <ul>
+            <li>position type not allow changeo.</li>
+            <li>position type not allow change</li>
+        </ul>
+        <h3 id='800008-max_price_less_than_min_price'>-800008 Changes are not allowed if there are orders</h3>
+        <ul>
+            <li>Changes are not allowed if there are orders.</li>
+            <li>有委托不允许更改</li>
+        </ul>
     </div>
     <div class="dark-box">
     </div>
@@ -6886,7 +6651,7 @@ GET /api/dapi/v1/adlQuantile
     if (url.indexOf('cn') != -1) {
         // for the Chinese Language env.
         lang_btn.innerHTML = 'English';
-        btn_fp.innerHTML = 'U本位合约';
+        btn_fp.innerHTML = '币本位合约';
         btn_spot.innerHTML = '现货';
         LG.href = "https://www.bityard.com/cn/";
         lang_btn.href = url.replace('cn/', 'en/');
