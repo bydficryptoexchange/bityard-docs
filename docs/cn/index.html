@@ -4100,7 +4100,7 @@ POST /api/dapi/v1/order/test (HMAC SHA256)
     <span class="s2">"msg"</span><span class="p">:</span> <span class="s2">"success"</span>
     <span class="s2">"data"</span><span class="p">:</span> <span class="s2">{</span>
         <span class="s2">"avgPrice"</span><span class="p">:</span> <span class="s2">"0.0"</span><span class="p">,</span>              <span class="c1">// 平均成交价</span>
-        <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"1579276756075"</span><span class="p">,</span>             <span class="c1">// 用户自定义的订单号 (保留字段，暂时不可用)</span>
+        <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"1579276756075"</span><span class="p">,</span>             <span class="c1">// 用户自定义的订单号</span>
         <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                         <span class="c1">// 成交金额(标的数量)</span>
         <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                 <span class="c1">// 成交量(张数)</span>
         <span class="s2">"orderId"</span><span class="p">:</span> <span class="mi">1579276756075</span><span class="p">,</span>              <span class="c1">// 系统订单号</span>
@@ -5360,7 +5360,6 @@ POST /api/dapi/v1/countdownCancelAll  (HMAC SHA256)
             </tr>
             </tbody>
         </table>
-
 
         <h2 id='user_data-9'>获取账户损益资金流水(USER_DATA)</h2>
         <blockquote>
