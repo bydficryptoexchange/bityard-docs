@@ -3872,7 +3872,7 @@ POST /api/fapi/v1/order/test (HMAC SHA256)
         <span class="s2">"avgPrice"</span><span class="p">:</span> <span class="s2">"0.0"</span><span class="p">,</span>              <span
                         class="c1">// 平均成交价</span>
         <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"1579276756075"</span><span
-                        class="p">,</span>             <span class="c1">// 用户自定义的订单号 (保留字段，暂时不可用)</span>
+                        class="p">,</span>             <span class="c1">// 用户自定义的订单号</span>
         <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                         <span
                         class="c1">// 成交金额(标的数量)</span>
         <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                 <span
@@ -3912,9 +3912,7 @@ POST /api/fapi/v1/order/test (HMAC SHA256)
         <span class="s2">"updateTime"</span><span class="p">:</span> <span class="mi">1579276756075</span><span
                         class="p">,</span>        <span class="c1">// 更新时间</span>
         <span class="s2">"workingType"</span><span class="p">:</span> <span class="s2">"CONTRACT_PRICE"</span><span
-                        class="p">,</span>        <span class="c1">// 条件价格触发类型</span>
-        <span class="s2">"priceProtect"</span><span class="p">:</span> <span class="kc">false</span>            <span
-                        class="c1">// 是否开启条件单触发保护  (保留字段，暂时不可用)</span>
+                        class="p"></span>        <span class="c1">// 条件价格触发类型</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
@@ -4306,7 +4304,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
         <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1579276756075</span><span class="p">,</span>              <span
                     class="c1">// 订单时间</span>
         <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span>               <span
-                    class="c1">// 有效方法(保留字段，暂时不可用)</span>
+                    class="c1">// 有效方法</span>
         <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span
                     class="p">,</span>     <span class="c1">// 订单类型</span>
         <span class="s2">"activatePrice"</span><span class="p">:</span> <span class="s2">"9020"</span><span
@@ -4316,9 +4314,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
         <span class="s2">"updateTime"</span><span class="p">:</span> <span class="mi">1579276756075</span><span
                     class="p">,</span>        <span class="c1">// 更新时间</span>
         <span class="s2">"workingType"</span><span class="p">:</span> <span class="s2">"CONTRACT_PRICE"</span><span
-                    class="p">,</span>        <span class="c1">// 条件价格触发类型</span>
-        <span class="s2">"priceProtect"</span><span class="p">:</span> <span class="kc">false</span>           <span
-                    class="c1">// 是否开启条件单触发保护(保留字段，暂时不可用)</span>
+                    class="p"></span>        <span class="c1">// 条件价格触发类型</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
@@ -4391,7 +4387,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
         <span class="s2">"avgPrice"</span><span class="p">:</span> <span class="s2">"0.0"</span><span class="p">,</span>              <span
                         class="c1">// 平均成交价</span>
         <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"abc"</span><span
-                        class="p">,</span>             <span class="c1">// 用户自定义的订单号(保留字段，暂时不可用</span>
+                        class="p">,</span>             <span class="c1">// 用户自定义的订单号</span>
         <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                         <span
                         class="c1">// 成交金额(标的数量)</span>
         <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                 <span
@@ -4419,7 +4415,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
         <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1579276756075</span><span class="p">,</span>              <span
                         class="c1">// 订单时间</span>
         <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span>               <span
-                        class="c1">// 有效方法(保留字段，暂时不可用）</span>
+                        class="c1">// 有效方法</span>
         <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span
                         class="p">,</span>     <span class="c1">// 订单类型</span>
         <span class="s2">"activatePrice"</span><span class="p">:</span> <span class="s2">"9020"</span><span
@@ -4429,9 +4425,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
         <span class="s2">"updateTime"</span><span class="p">:</span> <span class="mi">1579276756075</span><span
                         class="p">,</span>        <span class="c1">// 更新时间</span>
         <span class="s2">"workingType"</span><span class="p">:</span> <span class="s2">"CONTRACT_PRICE"</span><span
-                        class="p">,</span>        <span class="c1">// 条件价格触发类型</span>
-        <span class="s2">"priceProtect"</span><span class="p">:</span> <span class="kc">false</span>            <span
-                        class="c1">// 是否开启条件单触发保护 (保留字段，暂时不可用)</span>
+                        class="p"></span>        <span class="c1">// 条件价格触发类型</span>
       <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -5151,8 +5145,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
             <span class="s2">"isAutoAddMargin"</span><span class="p">:</span> <span class="s2">"false"</span><span
                         class="p">,</span>
             <span class="s2">"positionSide"</span><span class="p">:</span> <span class="s2">"BOTH"</span><span
-                        class="p">,</span>  <span class="c1">// 持仓方向</span>
-            <span class="s2">"updateTime"</span><span class="p">:</span><span class="mi">0</span>  <span class="c1">// 最新更新时间</span>
+                        class="p"></span>  <span class="c1">// 持仓方向</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span
@@ -5177,7 +5170,6 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
                         class="p">,</span>
             <span class="s2">"positionSide"</span><span class="p">:</span> <span class="s2">"LONG"</span><span
                         class="p"></span>
-      <!--      <span class="s2">"updateTime"</span><span class="p">:</span><span class="mi">0</span>-->
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -5349,6 +5341,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
     <span class="s2">"data"</span><span class="p">:</span><span class="p">[</span><span class="p">{</span>
             <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span
                         class="p">,</span> <span class="c1">// 交易对,仅针对涉及交易对的资金流</span>
+            <span class="s2">"incomtType"</span><span class="p">:</span> <span class="s2">"COMMISSION"</span><span class="p">,</span>
             <span class="s2">"income"</span><span class="p">:</span> <span class="s2">"-0.37500000"</span><span
                         class="p">,</span> <span class="c1">// 资金流数量,正数代表流入,负数代表流出</span>
             <span class="s2">"asset"</span><span class="p">:</span> <span class="s2">"BTC"</span><span
@@ -5365,6 +5358,8 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
         <span class="p">{</span>
             <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span
                         class="p">,</span>
+            <span class="s2">"incomtType"</span><span class="p">:</span> <span class="s2">"COMMISSION"</span><span class="p">,</span>
+
             <span class="s2">"income"</span><span class="p">:</span> <span class="s2">"-0.01000000"</span><span
                         class="p">,</span>
             <span class="s2">"asset"</span><span class="p">:</span> <span class="s2">"BTC"</span><span class="p">,</span>
