@@ -924,7 +924,7 @@
         <h3 id='6db415da2a'>术语解释</h3>
         <ul>
             <li><code>symbol</code> 指合约交易对名称</li>
-            <li><code>pair</code> 指合约交易对的标的物交易对</li>
+            <li><code>symbol</code> 指合约交易对的标的物交易对</li>
             <li><code>base asset</code> 指合约交易对的交易对象,即标的物交易对交易对象</li>
             <li><code>quote asset</code> 指合约交易对的定价资产,即标的物交易对的定价资产</li>
             <li><code>margin asset</code> 指合约交易对使用的保证金资产</li>
@@ -2409,7 +2409,7 @@ GET /api/fapi/v1/aggTrades
           <span class="s2">"timestamp"</span><span class="p">:</span> <span class="mi">1592870400000</span>
        <span class="p">},</span>
        <span class="p">{</span>
-         <span class="s2">"pair"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
+         <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
           <span class="s2">"longShortRatio"</span><span class="p">:</span> <span class="s2">"1.1231"</span><span
                         class="p">,</span>
           <span class="s2">"longPosition"</span><span class="p">:</span> <span class="s2">"0.2363"</span><span
@@ -2485,7 +2485,7 @@ GET /api/fapi/v1/aggTrades
       <span class="s2">"code"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
       <span class="s2">"msg"</span><span class="p">:</span> <span class="p">"success"</span><span class="p">,</span>
       <span class="s2">"data"</span><span class="p">:</span> <span class="p">[</span><span class="p">{</span>
-          <span class="s2">"pair"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
+          <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>
           <span class="s2">"longShortRatio"</span><span class="p">:</span> <span class="s2">"0.1960"</span><span
                         class="p">,</span>
           <span class="s2">"longAccount"</span><span class="p">:</span> <span class="s2">"0.6622"</span><span
@@ -2495,7 +2495,7 @@ GET /api/fapi/v1/aggTrades
           <span class="s2">"timestamp"</span><span class="p">:</span> <span class="mi">1583139600000</span>
        <span class="p">},</span>
        <span class="p">{</span>
-         <span class="s2">"pair"</span><span class="p">:</span> <span class="s2">"BTCUSD"</span><span class="p">,</span>
+         <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTCUSD"</span><span class="p">,</span>
           <span class="s2">"longShortRatio"</span><span class="p">:</span> <span class="s2">"1.9559"</span><span
                         class="p">,</span>
           <span class="s2">"longAccount"</span><span class="p">:</span> <span class="s2">"0.6617"</span><span
@@ -2621,7 +2621,7 @@ GET /api/fapi/v1/aggTrades
             </thead>
             <tbody>
             <tr>
-                <td>pair</td>
+                <td>symbol</td>
                 <td>STRING</td>
                 <td>YES</td>
                 <td>交易对 eg.BTC-USDT</td>
@@ -3406,7 +3406,7 @@ GET /futures/data/basis
         <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"6618946715212193799"</span><span
                         class="p">,</span> <span class="c1">// 用户自定义的订单号</span>
         <span class="s2">"cumQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
-        <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span
+        <span class="s2">"cumQuote"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span
                         class="c1">// 成交额(标的数量)</span>
         <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"0"</span><span
                         class="p">,</span> <span class="c1">// 成交量(张数)</span>
@@ -3419,9 +3419,9 @@ GET /futures/data/basis
         <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span
                         class="c1">// 委托价格</span>
         <span class="s2">"reduceOnly"</span><span class="p">:</span> <span class="kc">false</span><span
-                        class="p">,</span> <span class="c1">// 仅减仓</span>
+                        class="p">,</span> <span class="c1">// 仅减仓(保留字段，暂时不可用）</span>
         <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span
-                        class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
+                        class="p">,</span>   <span class="c1">// 是否条件全平仓 </span>
         <span class="s2">"side"</span><span class="p">:</span> <span class="s2">"SELL"</span><span class="p">,</span> <span
                         class="c1">// 买卖方向</span>
         <span class="s2">"positionSide"</span><span class="p">:</span> <span class="s2">"SHORT"</span><span
@@ -3432,18 +3432,16 @@ GET /futures/data/basis
                         class="p">,</span> <span class="c1">// 触发价,对`TRAILING_STOP_MARKET`无效</span>
         <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span> <span
                         class="c1">// 交易对</span>
-        <span class="s2">"pair"</span><span class="p">:</span> <span class="s2">"BTCUSD"</span><span
-                        class="p">,</span>   <span class="c1">// 标的交易对</span>
         <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span> <span
                         class="c1">// 有效方法</span>
         <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span
                         class="p">,</span> <span class="c1">// 订单类型</span>
         <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span
-                        class="p">,</span>  <span class="c1">// 触发前订单类型</span>
+                        class="p">,</span>  <span class="c1">// 触发前订单类型(暂时不支持)</span>
         <span class="s2">"activatePrice"</span><span class="p">:</span> <span class="s2">"9020"</span><span
-                        class="p">,</span> <span class="c1">// 跟踪止损激活价格, 仅`TRAILING_STOP_MARKET` 订单返回此字段</span>
+                        class="p">,</span> <span class="c1">// 跟踪止损激活价格, 仅`TRAILING_STOP_MARKET` 订单返回此字段(暂时不支持)</span>
         <span class="s2">"priceRate"</span><span class="p">:</span> <span class="s2">"0.3"</span><span
-                        class="p">,</span> <span class="c1">// 跟踪止损回调比例, 仅`TRAILING_STOP_MARKET` 订单返回此字段</span>
+                        class="p">,</span> <span class="c1">// 跟踪止损回调比例, 仅`TRAILING_STOP_MARKET` 订单返回此字段 (暂时不支持)</span>
         <span class="s2">"updateTime"</span><span class="p">:</span> <span class="mi">1566818724722</span><span
                         class="p">,</span> <span class="c1">// 更新时间</span>
         <span class="s2">"workingType"</span><span class="p">:</span> <span class="s2">"CONTRACT_PRICE"</span><span
@@ -3641,7 +3639,7 @@ GET /futures/data/basis
                     <li>条件单触发依照上述条件单触发逻辑</li>
                     <li>条件触发后,平掉当时持有所有多头仓位(若为卖单)或当时持有所有空头仓位(若为买单)</li>
                     <li>不支持 <code>quantity</code> 参数</li>
-                    <li>自带只平仓属性,不支持<code>reduceOnly</code>参数</li>
+                  <!--  <li>自带只平仓属性,不支持<code>reduceOnly</code>参数</li>-->
                     <li>双开模式下,<code>LONG</code>方向上不支持<code>BUY</code>; <code>SHORT</code> 方向上不支持<code>SELL</code>
                     </li>
                 </ul>
@@ -3678,7 +3676,7 @@ POST /api/fapi/v1/order/test (HMAC SHA256)
                         class="s2">"6618946715212193802"</span><span class="p">,</span> <span
                         class="c1">// 用户自定义的订单号</span>
             <span class="s2">"cumQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
-            <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0"</span><span
+            <span class="s2">"cumQuote"</span><span class="p">:</span> <span class="s2">"0"</span><span
                         class="p">,</span> <span class="c1">// 成交金额(标的数量)</span>
             <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"0"</span><span
                         class="p">,</span> <span class="c1">// 成交量(张数)</span>
@@ -3691,7 +3689,7 @@ POST /api/fapi/v1/order/test (HMAC SHA256)
             <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"0"</span><span
                         class="p">,</span> <span class="c1">// 委托价格</span>
             <span class="s2">"reduceOnly"</span><span class="p">:</span> <span class="kc">false</span><span
-                        class="p">,</span> <span class="c1">// 仅减仓</span>
+                        class="p">,</span> <span class="c1">// 仅减仓(保留字段，暂时不可用）</span>
             <span class="s2">"side"</span><span class="p">:</span> <span class="s2">"SELL"</span><span
                         class="p">,</span> <span class="c1">// 买卖方向</span>
             <span class="s2">"positionSide"</span><span class="p">:</span> <span class="s2">"SHORT"</span><span
@@ -3701,7 +3699,7 @@ POST /api/fapi/v1/order/test (HMAC SHA256)
             <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span> <span
                         class="c1">// 触发价,对`TRAILING_STOP_MARKET`无效</span>
             <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span
-                        class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
+                        class="p">,</span>   <span class="c1">// 是否条件全平仓 (暂时不支持)</span>
             <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span
                         class="p">,</span> <span class="c1">// 交易对</span>
             <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span
@@ -3709,17 +3707,17 @@ POST /api/fapi/v1/order/test (HMAC SHA256)
             <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span
                         class="p">,</span> <span class="c1">// 订单类型</span>
             <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span
-                        class="p">,</span>  <span class="c1">// 触发前订单类型</span>
+                        class="p">,</span>  <span class="c1">// 触发前订单类型 (暂时不支持)</span>
             <span class="s2">"activatePrice"</span><span class="p">:</span> <span class="s2">"9020"</span><span
-                        class="p">,</span> <span class="c1">// 跟踪止损激活价格</span>
+                        class="p">,</span> <span class="c1">// 跟踪止损激活价格 (暂时不支持)</span>
             <span class="s2">"priceRate"</span><span class="p">:</span> <span class="s2">"0.3"</span><span
-                        class="p">,</span> <span class="c1">// 跟踪止损回调比例</span>
+                        class="p">,</span> <span class="c1">// 跟踪止损回调比例 (暂时不支持)</span>
             <span class="s2">"updateTime"</span><span class="p">:</span> <span class="mi">1566818724722</span><span
                         class="p">,</span> <span class="c1">// 更新时间</span>
             <span class="s2">"workingType"</span><span class="p">:</span> <span class="s2">"CONTRACT_PRICE"</span><span
                         class="p">,</span> <span class="c1">// 条件价格触发类型</span>
             <span class="s2">"priceProtect"</span><span class="p">:</span> <span class="kc">false</span>            <span
-                        class="c1">// 是否开启条件单触发保护(暂时不支持)</span>
+                        class="c1">// 是否开启条件单触发保护(保留字段，暂时不可用）</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -3873,7 +3871,7 @@ POST /api/fapi/v1/order/test (HMAC SHA256)
                         class="c1">// 平均成交价</span>
         <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"1579276756075"</span><span
                         class="p">,</span>             <span class="c1">// 用户自定义的订单号</span>
-        <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                         <span
+        <span class="s2">"cumQuote"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                         <span
                         class="c1">// 成交金额(标的数量)</span>
         <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                 <span
                         class="c1">// 成交量(张数)</span>
@@ -3882,7 +3880,7 @@ POST /api/fapi/v1/order/test (HMAC SHA256)
         <span class="s2">"origQty"</span><span class="p">:</span> <span class="s2">"0.40"</span><span class="p">,</span>                  <span
                         class="c1">// 原始委托数量</span>
         <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span
-                        class="p">,</span> <span class="c1">// 触发前订单类型</span>
+                        class="p">,</span> <span class="c1">// 触发前订单类型 // (保留字段，暂时不可用</span>
         <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                       <span
                         class="c1">// 委托价格</span>
         <span class="s2">"reduceOnly"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>                <span
@@ -3896,7 +3894,7 @@ POST /api/fapi/v1/order/test (HMAC SHA256)
         <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span>                    <span
                         class="c1">// 触发价,对`TRAILING_STOP_MARKET`无效</span>
         <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span
-                        class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
+                        class="p">,</span>   <span class="c1">// 是否条件全平仓 (暂时不支持)</span>
         <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>              <span
                         class="c1">// 交易对</span>
         <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1579276756075</span><span class="p">,</span>              <span
@@ -3912,7 +3910,7 @@ POST /api/fapi/v1/order/test (HMAC SHA256)
         <span class="s2">"updateTime"</span><span class="p">:</span> <span class="mi">1579276756075</span><span
                         class="p">,</span>        <span class="c1">// 更新时间</span>
         <span class="s2">"workingType"</span><span class="p">:</span> <span class="s2">"CONTRACT_PRICE"</span><span
-                        class="p"></span>        <span class="c1">// 条件价格触发类型</span>
+                        class="p"></span>        <span class="c1">// 条件价格触发类型 </span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
@@ -4277,7 +4275,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
                     class="c1">// 平均成交价</span>
         <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"abc"</span><span
                     class="p">,</span>             <span class="c1">// 用户自定义的订单号</span>
-        <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                         <span
+        <span class="s2">"cumQuote"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                         <span
                     class="c1">// 成交金额(标的数量)</span>
         <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                 <span
                     class="c1">// 成交量(张数)</span>
@@ -4286,7 +4284,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
         <span class="s2">"origQty"</span><span class="p">:</span> <span class="s2">"0.40"</span><span class="p">,</span>                  <span
                     class="c1">// 原始委托数量</span>
         <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"TRAILING_STOP_MARKET"</span><span
-                    class="p">,</span> <span class="c1">// 触发前订单类型</span>
+                    class="p">,</span> <span class="c1">// 触发前订单类型 // (保留字段，暂时不可用）</span>
         <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                   <span
                     class="c1">// 委托价格</span>
         <span class="s2">"reduceOnly"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>                <span
@@ -4298,7 +4296,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
         <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span>                    <span
                     class="c1">// 触发价</span>
         <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span
-                    class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
+                    class="p">,</span>   <span class="c1">// 是否条件全平仓 (暂时不支持)</span>
         <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>              <span
                     class="c1">// 交易对</span>
         <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1579276756075</span><span class="p">,</span>              <span
@@ -4388,7 +4386,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
                         class="c1">// 平均成交价</span>
         <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"abc"</span><span
                         class="p">,</span>             <span class="c1">// 用户自定义的订单号</span>
-        <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                         <span
+        <span class="s2">"cumQuote"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                         <span
                         class="c1">// 成交金额(标的数量)</span>
         <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                 <span
                         class="c1">// 成交量(张数)</span>
@@ -4409,7 +4407,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
         <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"9300"</span><span class="p">,</span>                    <span
                         class="c1">// 触发价</span>
         <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span
-                        class="p">,</span>   <span class="c1">// 是否条件全平仓</span>
+                        class="p">,</span>   <span class="c1">// 是否条件全平仓 (保留字段，暂时不可用）)</span>
         <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>              <span
                         class="c1">// 交易对</span>
         <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1579276756075</span><span class="p">,</span>              <span
@@ -4487,7 +4485,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
                         class="c1">// 平均成交价</span>
         <span class="s2">"clientOrderId"</span><span class="p">:</span> <span class="s2">"8787878"</span><span
                         class="p">,</span>             <span class="c1">// 用户自定义的订单号</span>
-        <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                         <span
+        <span class="s2">"cumQuote"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                         <span
                         class="c1">// 成交金额(标的数量)</span>
         <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>                 <span
                         class="c1">// 成交量(张数)</span>
@@ -5597,11 +5595,11 @@ GET /api/fapi/v1/leverageBracket
         <span class="s2">"avgPrice"</span><span class="p">:</span> <span class="s2">"11326.9"</span><span class="p">,</span>
         <span class="s2">"origQty"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
         <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
-        <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0.00882854"</span><span
+        <span class="s2">"cumQuote"</span><span class="p">:</span> <span class="s2">"0.00882854"</span><span
                         class="p">,</span>
         <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"IOC"</span><span class="p">,</span>
         <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">,</span>
-        <span class="s2">"reduceOnly"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">"reduceOnly"</span><span class="p">:</span> <span class="kc">false</span><span class="p">, // (保留字段，暂时不可用）</span>
         <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span
                         class="p">,</span>
         <span class="s2">"side"</span><span class="p">:</span> <span class="s2">"SELL"</span><span class="p">,</span>
@@ -5610,8 +5608,8 @@ GET /api/fapi/v1/leverageBracket
         <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
         <span class="s2">"workingType"</span><span class="p">:</span> <span class="s2">"CONTRACT_PRICE"</span><span
                         class="p">,</span>
-        <span class="s2">"priceProtect"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">,</span>
+        <span class="s2">"priceProtect"</span><span class="p">:</span> <span class="kc">false</span><span class="p">, // (保留字段，暂时不可用）</span>
+        <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">,// (保留字段，暂时不可用</span>
         <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1596542005019</span><span class="p">,</span>
         <span class="s2">"updateTime"</span><span class="p">:</span> <span class="mi">1596542005050</span>
       <span class="p">},</span>
@@ -5625,11 +5623,11 @@ GET /api/fapi/v1/leverageBracket
         <span class="s2">"avgPrice"</span><span class="p">:</span> <span class="s2">"11661.2"</span><span class="p">,</span>
         <span class="s2">"origQty"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
         <span class="s2">"executedQty"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
-        <span class="s2">"cumBase"</span><span class="p">:</span> <span class="s2">"0.00857544"</span><span
+        <span class="s2">"cumQuote"</span><span class="p">:</span> <span class="s2">"0.00857544"</span><span
                         class="p">,</span>
         <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"IOC"</span><span class="p">,</span>
         <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">,</span>
-        <span class="s2">"reduceOnly"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">"reduceOnly"</span><span class="p">:</span> <span class="kc">false</span><span class="p">, // (保留字段，暂时不可用）</span>
         <span class="s2">"closePosition"</span><span class="p">:</span> <span class="kc">false</span><span
                         class="p">,</span>
         <span class="s2">"side"</span><span class="p">:</span> <span class="s2">"SELL"</span><span class="p">,</span>
@@ -5638,8 +5636,8 @@ GET /api/fapi/v1/leverageBracket
         <span class="s2">"stopPrice"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
         <span class="s2">"workingType"</span><span class="p">:</span> <span class="s2">"CONTRACT_PRICE"</span><span
                         class="p">,</span>
-        <span class="s2">"priceProtect"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">,</span>
+        <span class="s2">"priceProtect"</span><span class="p">:</span> <span class="kc">false</span><span class="p">, // (保留字段，暂时不可用）</span>
+        <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">,// (保留字段，暂时不可用</span>
         <span class="s2">"time"</span><span class="p">:</span> <span class="mi">1597307316022</span><span class="p">,</span>
         <span class="s2">"updateTime"</span><span class="p">:</span> <span class="mi">1597307316035</span>
       <span class="p">}</span>
