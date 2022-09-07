@@ -937,10 +937,9 @@
         <ul>
             <li>LIMIT 限价单</li>
             <li>MARKET 市价单</li>
-            <li>STOP 止损限价单</li>
             <li>STOP_MARKET 止损市价单</li>
             <li>TAKE_PROFIT 止盈限价单</li>
-            <li>TAKE_PROFIT_MARKET 止盈市价单</li>
+<!--            <li>TAKE_PROFIT_MARKET 止盈市价单</li>-->
         </ul>
 
         <p><strong>订单方向 (side):</strong></p>
@@ -5885,7 +5884,11 @@ GET /api/dapi/v1/adlQuantile
         <blockquote>
             <p><strong>响应:</strong></p>
         </blockquote>
-        <pre class="highlight javascript tab-javascript"><code><span class="p">{}</span>
+        <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"code"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">"msg"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p"></span>
+    <span class="s2">"data"</span><span class="p">:</span><span class="p">null</span>
+<span class="p">}</span>
 </code></pre>
         <p><code>
             PUT /api/v1/listenKey
@@ -5903,7 +5906,11 @@ GET /api/dapi/v1/adlQuantile
         <blockquote>
             <p><strong>响应:</strong></p>
         </blockquote>
-        <pre class="highlight javascript tab-javascript"><code><span class="p">{}</span>
+        <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="s2">"code"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">"msg"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p"></span>
+    <span class="s2">"data"</span><span class="p">:</span><span class="p">null</span>
+<span class="p">}</span>
 </code></pre>
         <p><code>
             DELETE /api/v1/listenKey
