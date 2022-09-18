@@ -2994,7 +2994,11 @@ GET /futures/data/basis
                     class="c1">// 事件时间</span>
     <span class="s2">"s"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>          <span
                     class="c1">// 交易对</span>
+    <span class="s2">"c"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>          <span
+                    class="c1">// 最新价</span>
     <span class="s2">"P"</span><span class="p">:</span> <span class="s2">"4.4760298773"</span><span class="p">,</span>          <span
+                    class="c1">// 24小时价格变化百分比</span>
+    <span class="s2">"p"</span><span class="p">:</span> <span class="s2">"4.4760298773"</span><span class="p">,</span>          <span
                     class="c1">// 24小时价格变化</span>
     <span class="s2">"o"</span><span class="p">:</span> <span class="s2">"38623.29"</span><span class="p">,</span>          <span
                     class="c1">// 24小时前开始第一笔成交价格</span>
@@ -3526,7 +3530,7 @@ GET /futures/data/basis
                 <td>STRING</td>
                 <td>NO</td>
                 <td>有效方法, <code>GTC 成交为止</code>, <code>IOC 无法立即成交的部分就部分撤销</code>
-                    <code>FOK 无法全部立即成交就撤销</code> , <code> GTX 无法成为挂单方就撤销</code>
+                    <code>FOK 无法全部立即成交就撤销</code> <!--, <code> GTX 无法成为挂单方就撤销</code>-->
                 </td>
             </tr>
             <tr>
@@ -3837,7 +3841,7 @@ POST /api/fapi/v1/order/test (HMAC SHA256)
                 <td>STRING</td>
                 <td>NO</td>
                 <td>有效方法, <code>GTC 成交为止</code>, <code>IOC 无法立即成交的部分就部分撤销</code>
-                    <code>FOK 无法全部立即成交就撤销</code> , <code> GTX 无法成为挂单方就撤销</code>
+                    <code>FOK 无法全部立即成交就撤销</code> <!--, <code> GTX 无法成为挂单方就撤销</code>-->
                 </td>
             </tr>
             <tr>
@@ -6208,8 +6212,10 @@ GET /api/fapi/v1/adlQuantile
             <li>FILLED</li>
             <li>CANCELED</li>
             <li>EXPIRED</li>
+<!--
             <li>NEW_INSURANCE 风险保障基金(强平)</li>
-            <li>NEW_ADL 自动减仓序列(强平)</li>
+-->
+<!--            <li>NEW_ADL 自动减仓序列(强平)</li>-->
         </ul>
 
         <p><strong>有效方式:</strong></p>
@@ -6218,7 +6224,7 @@ GET /api/fapi/v1/adlQuantile
             <li>GTC</li>
             <li>IOC</li>
             <li>FOK</li>
-            <li>GTX</li>
+<!--            <li>GTX</li>-->
         </ul>
 
         <h2 id='config-update'>杠杆倍数等账户配置 更新推送</h2>
