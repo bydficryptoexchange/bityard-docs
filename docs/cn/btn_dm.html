@@ -3921,7 +3921,15 @@ POST /api/fapi/v1/order/test (HMAC SHA256)
         </code></p>
 
         <p>查询订单状态</p>
+        <ul>
+            <li>请注意，如果订单满足如下条件，不会被查询到：
 
+                <ul>
+                    <li>订单的最终状态为 <code>CANCELED</code> 或者 <code>EXPIRED</code>, <strong>并且</strong> </li>
+                    <li>订单没有任何的成交记录, <strong>并且</strong></li>
+                    <li>订单生成时间 + 7天 &lt; 当前时间</li>
+                </ul></li>
+        </ul>
         <p><strong>权重:</strong>
             1</p>
 
@@ -4532,6 +4540,16 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
         <p><code>
             GET /api/fapi/v1/allOrders (HMAC SHA256)
         </code></p>
+        <p>查询订单状态</p>
+        <ul>
+            <li>请注意，如果订单满足如下条件，不会被查询到：
+
+                <ul>
+                    <li>订单的最终状态为 <code>CANCELED</code> 或者 <code>EXPIRED</code>, <strong>并且</strong> </li>
+                    <li>订单没有任何的成交记录, <strong>并且</strong></li>
+                    <li>订单生成时间 + 7天 &lt; 当前时间</li>
+                </ul></li>
+        </ul>
 
         <p><strong>权重:</strong><br>
             传symbol <strong>20</strong><br>
