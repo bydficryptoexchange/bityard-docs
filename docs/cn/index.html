@@ -3700,9 +3700,9 @@ GET /futures/data/basis
         <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span> <span class="c1">// 交易对</span>
         <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span> <span class="c1">// 有效方法</span>
         <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">,</span> <span class="c1">// 订单类型</span>
-        <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">, // (保留字段，暂时不可用</span>  <span class="c1">// 触发前订单类型</span>
-        <span class="s2">"activatePrice"</span><span class="p">:</span> <span class="s2">"9020"</span><span class="p">,</span> <span class="c1">// 跟踪止损激活价格</span>
-        <span class="s2">"priceRate"</span><span class="p">:</span> <span class="s2">"0.3"</span><span class="p">,</span> <span class="c1">// 跟踪止损回调比例</span>
+        <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">, // (保留字段，暂时不可用)</span>  <span class="c1">// 触发前订单类型</span>
+        <span class="s2">"activatePrice"</span><span class="p">:</span> <span class="s2">"9020"</span><span class="p">,</span> <span class="c1">// 跟踪止损激活价格 (保留字段，暂时不可用)</span>
+        <span class="s2">"priceRate"</span><span class="p">:</span> <span class="s2">"0.3"</span><span class="p">,</span> <span class="c1">// 跟踪止损回调比例 (保留字段，暂时不可用)</span>
         <span class="s2">"updateTime"</span><span class="p">:</span> <span class="mi">1566818724722</span><span class="p">,</span> <span class="c1">// 更新时间</span>
         <span class="s2">"workingType"</span><span class="p">:</span> <span class="s2">"CONTRACT_PRICE"</span><span class="p">,</span> <span class="c1">// 条件价格触发类型</span>
         <span class="s2">"priceProtect"</span><span class="p">:</span> <span class="kc">false</span>            <span class="c1">// 是否开启条件单触发保护(保留字段，暂时不可用）</span>
@@ -3946,9 +3946,9 @@ POST /api/dapi/v1/order/test (HMAC SHA256)
             <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USD"</span><span class="p">,</span> <span class="c1">// 交易对</span>
             <span class="s2">"timeInForce"</span><span class="p">:</span> <span class="s2">"GTC"</span><span class="p">,</span> <span class="c1">// 有效方法</span>
             <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">,</span> <span class="c1">// 订单类型</span>
-            <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">, // (保留字段，暂时不可用</span>  <span class="c1">// 触发前订单类型</span>
-            <span class="s2">"activatePrice"</span><span class="p">:</span> <span class="s2">"9020"</span><span class="p">,</span> <span class="c1">// 跟踪止损激活价格</span>
-            <span class="s2">"priceRate"</span><span class="p">:</span> <span class="s2">"0.3"</span><span class="p">,</span> <span class="c1">// 跟踪止损回调比例</span>
+            <span class="s2">"origType"</span><span class="p">:</span> <span class="s2">"LIMIT"</span><span class="p">, // (保留字段，暂时不可用)</span>  <span class="c1">// 触发前订单类型</span>
+            <span class="s2">"activatePrice"</span><span class="p">:</span> <span class="s2">"9020"</span><span class="p">,</span> <span class="c1">// 跟踪止损激活价格  (保留字段，暂时不可用)</span>
+            <span class="s2">"priceRate"</span><span class="p">:</span> <span class="s2">"0.3"</span><span class="p">,</span> <span class="c1">// 跟踪止损回调比例  (保留字段，暂时不可用)</span>
             <span class="s2">"updateTime"</span><span class="p">:</span> <span class="mi">1566818724722</span><span class="p">,</span> <span class="c1">// 更新时间</span>
             <span class="s2">"workingType"</span><span class="p">:</span> <span class="s2">"CONTRACT_PRICE"</span><span class="p">,</span> <span class="c1">// 条件价格触发类型</span>
             <span class="s2">"priceProtect"</span><span class="p">:</span> <span class="kc">false</span>            <span class="c1">// 是否开启条件单触发保护 （暂时不支持）</span>
