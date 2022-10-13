@@ -1864,7 +1864,7 @@ GET /api/fapi/v1/aggTrades
 </code></pre>
 
         <p><code>
-            GET /fapi/v1/indexPriceKlines
+            GET /fapi/market/v1/indexPriceKlines
         </code></p>
         <p>每根K线的开盘时间可视为唯一ID</p>
 
@@ -3135,7 +3135,7 @@ GET /futures/data/basis
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            POST /tranfer/v1/tranfer (HMAC SHA256)
+            POST /api/tranfer/v1/tranfer (HMAC SHA256)
         </code></p>
 
         <p>执行现货账户与合约账户之间的划转.</p>
@@ -3234,7 +3234,7 @@ GET /futures/data/basis
 <span class="p">}</span>
 </code></pre>
         <p><code>
-            GET /tranfer/v1/tranferRecord (HMAC SHA256)
+            GET /api/tranfer/v1/tranferRecord (HMAC SHA256)
         </code></p>
 
         <p>查询账户的划转记录.</p>
@@ -5418,7 +5418,7 @@ POST /api/fapi/v1/countdownCancelAll  (HMAC SHA256)
                 <td>交易对</td>
             </tr>
             <td>incomeType</td>
-            <td>LONG</td>
+            <td>String</td>
             <td>NO</td>
             <td>收益类型 "TRANSFER"划,"REALIZED_PNL"已实现盈亏，
                 "FUNDING_FEE"资金费用，"COMMISSION"手续费，
