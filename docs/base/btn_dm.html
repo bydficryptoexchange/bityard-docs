@@ -382,10 +382,9 @@
                 <li>
                     <a href="#k-4" class="toc-h2 toc-link" data-title="标记价格K线数据">{{标记价格K线数据}}</a>
                 </li>
-                <!--   <li>
-                      <a href="#24hr" class="toc-h2 toc-link" data-title="24hr价格变动情况">24hr价格变动情况</a>
-                  </li>
-                  -->
+                <li>
+                    <a href="#24hr" class="toc-h2 toc-link" data-title="24hr价格变动情况">{{24hr价格变动情况}}</a>
+                </li>
                 <li>
                     <a href="#8ff46b58de" class="toc-h2 toc-link" data-title="最新价格">{{最新价格}}</a>
                 </li>
@@ -1912,6 +1911,61 @@ GET /api/fapi/v1/aggTrades
                 </ul>
             </li>
         </ul>
+        <h2 id='24hr'>{{24hr价格变动情况}}</h2>
+        <blockquote>
+            <p><strong>Payload:</strong></p>
+        </blockquote>
+
+        <pre class="highlight javascript tab-javascript"><code>  <span class="p">{</span>
+      <span class="s2">"code"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+      <span class="s2">"msg"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+      <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="p"></span>
+            <span class="s2">"eventTime"</span><span class="p">:</span> <span class="mi">1646796690500</span><span class="p">,</span>         <span
+                    class="c1">// {{事件时间}}</span>
+            <span class="s2">"symbol"</span><span class="p">:</span> <span class="s2">"BTC-USDT"</span><span class="p">,</span>          <span
+                    class="c1">// {{交易对}}</span>
+            <span class="s2">"lastPrice"</span><span class="p">:</span> <span class="s2">"41892.0"</span><span class="p">,</span>          <span
+                    class="c1">// {{最近一次成交价}}</span>
+            <span class="s2">"priceChangePercent"</span><span class="p">:</span> <span class="s2">"5.989898"</span><span class="p">,</span>          <span
+                    class="c1">// {{24小时价格变化百分比}}</span>
+            <span class="s2">"priceChange"</span><span class="p">:</span> <span class="s2">"100.4760298773"</span><span class="p">,</span>          <span
+                    class="c1">// {{24小时价格变化}}</span>
+            <span class="s2">"openPrice"</span><span class="p">:</span> <span class="s2">"38623.29"</span><span class="p">,</span>          <span
+                    class="c1">// {{24小时前开始第一笔成交价格}}</span>
+            <span class="s2">"highPrice"</span><span class="p">:</span> <span class="s2">"40436.22"</span><span class="p">,</span>          <span
+                    class="c1">// {{24小时内最高成交价}}</span>
+            <span class="s2">"lowPrice"</span><span class="p">:</span> <span class="s2">"38001"</span><span class="p">,</span>          <span
+                    class="c1">// {{24小时内最低成交价}}</span>
+            <span class="s2">"volume"</span><span class="p">:</span> <span class="s2">"57777.46173"</span><span class="p">,</span>           <span
+                    class="c1">// {{成交量}}</span>
+            <span class="s2">"quoteVolume"</span><span class="p">:</span> <span class="s2">"2244334554.0126057"</span>               <span
+                    class="c1">// {{成交额}}</span>
+        <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre>
+        <p><code>
+            GET /fapi/market/v1/ticker
+        </code></p>
+        <p><strong>{{参数:}}</strong></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>{{名称}}</th>
+                <th>{{类型}}</th>
+                <th>{{是否必需}}</th>
+                <th>{{描述}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>symbol</td>
+                <td>STRING</td>
+                <td>YES</td>
+                <td>{{交易对}}</td>
+            </tr>
+            </tbody>
+        </table>
 
         <h2 id="8ff46b58de">{{最新价格}}</h2>
         <blockquote>
